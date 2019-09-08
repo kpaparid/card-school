@@ -1,0 +1,356 @@
+package com.example.marmi.cardschool.data;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
+import android.util.Log;
+
+import mainFragments.Menu;
+
+import com.example.marmi.cardschool.normal.CSVReader;
+import com.example.marmi.cardschool.normal.CSVWriter;
+import com.example.marmi.cardschool.normal.Translator;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
+import static java.math.RoundingMode.FLOOR;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+
+
+
+
+    private static final String TABLE_NAME = "words_table";
+
+
+
+    private Context c;
+    private static final String COL_TY = "type";
+    private static final String COL_RA = "rate";
+    private static final String COL_DE = "de_text";
+    private static final String COL_EN = "en_text";
+    private static final String COL_GR = "gr_text";
+    private static final String COL_HR = "hr_text";
+    private static final String COL_SR = "sr_text";
+
+    public static final String DATABASE_CREATE = "create table "
+            + TABLE_NAME + " ("
+                // SQL -> String
+            + COL_TY + " text not null,"
+            + COL_RA + " Int not null,"
+            + COL_DE + " text not null,"
+            + COL_EN + " text not null,"
+            + COL_GR + " text not null,"
+            + COL_HR + " text not null,"
+            + COL_SR + " text not null"
+
+
+            + ")";
+
+    public DatabaseHelper(Context context) {
+        super(context, TABLE_NAME, null, 8);
+        c = context;
+
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+
+        System.out.println("Database created");
+
+
+        db.execSQL("DROP TABLE IF EXISTS words_table");
+        db.execSQL(DATABASE_CREATE);
+
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        // TODO Auto-generated method stub
+       // db.execSQL("DROP TABLE IF EXISTS words_table");
+        onCreate(db);
+    }
+    public boolean addData(String type, Integer rate, String dtext, String entext, String grtext, String hrtext, String srtext ) {
+
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //contentValues.put(COL_ID, sID);
+        contentValues.put(COL_TY, type);    //5
+        contentValues.put(COL_RA, rate);    //5
+        contentValues.put(COL_DE, dtext);     //1
+        contentValues.put(COL_EN, entext);  //2
+        contentValues.put(COL_GR, grtext);  //3
+        contentValues.put(COL_HR, hrtext);
+        contentValues.put(COL_SR, srtext);
+
+        long result ;//= db.insert(TABLE_NAME, null, contentValues);
+
+
+//        String query = "UPDATE " + TABLE_NAME + " SET " + COL_EN +
+//                " = '" + entext + "' WHERE " + COL_DE + " = '" + dtext + "'";
+//
+//        db.execSQL(query);
+        result = db.update(TABLE_NAME, contentValues, COL_DE+"=?", new String[]{dtext});
+
+        if (result == 0){
+            db.insertWithOnConflict(TABLE_NAME,null,contentValues,SQLiteDatabase.CONFLICT_REPLACE);
+        }
+        return true;
+//        Log.e(TAG, "addData: result " + result );
+//        //if date as inserted incorrectly it will return -1
+//        if (result == -1) {
+//            Log.e(TAG, "addData: Epese " + dtext + " to " + TABLE_NAME);
+//            return false;
+//        } else {
+//            return true;
+//
+//        }
+    }
+
+    /**
+     * Returns all the data from database
+     *
+     * @return
+     */
+    public Cursor getData(String query)  {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String q ="SELECT * FROM " + TABLE_NAME +  query ;
+//
+//        q = "SELECT * FROM words_table WHERE _ROWID_ >= (abs(random()) % (SELECT max(_ROWID_) FROM words_table))";
+
+
+
+
+
+        Cursor data = db.rawQuery(q, null);
+//        data.moveToFirst();
+        if (!data.moveToFirst()){
+            data = null;
+
+        }
+
+
+        return data;
+    }
+    public Cursor getRandom(Integer n, String query) {
+
+       // Log.e(TAG, "getRandom");
+        SQLiteDatabase db = this.getWritableDatabase();
+        String q ="SELECT * FROM " + TABLE_NAME +  query;
+
+        Cursor data = db.rawQuery(q, null);
+        data.moveToFirst();
+
+
+
+
+        return data;
+    }
+    public Cursor shuffle(String query) {
+
+        Log.e(TAG, "Shuffle");
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String q ="SELECT * FROM " + TABLE_NAME +  query;
+
+        Cursor data = db.rawQuery(q, null);
+        data.moveToFirst();
+
+
+
+
+
+
+        //data.close();
+        return data;
+    }
+
+    /**
+     * Returns only the ID that matches the name passed in
+     *
+     * @param name
+     * @return
+     */
+    public Cursor getItemID(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL_TY + " FROM " + TABLE_NAME +
+                " WHERE " + COL_DE + " = '" + name + "'";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    /**
+     * Updates the name field
+     *
+     * @param newName
+     * @param id
+     * @param oldName
+     */
+    public void updateName(String newName, int id, String oldName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL_DE +
+                " = '" + newName + "' WHERE " + COL_TY + " = '" + id + "'" +
+                " AND " + COL_DE + " = '" + oldName + "'";
+        Log.d(TAG, "updateName: query: " + query);
+        Log.d(TAG, "updateName: Setting name to " + newName);
+        db.execSQL(query);
+    }
+
+    /**
+     * Delete from database
+     *
+     * @param name
+     */
+    public void deleteName(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "DELETE FROM " + TABLE_NAME + " WHERE "
+
+                 + COL_DE + " = '" + name + "'";
+        Log.d(TAG, "deleteName: query: " + query);
+        Log.d(TAG, "deleteName: Deleting " + name + " from database.");
+        db.execSQL(query);
+    }
+    public void delete() {
+        Log.e("DATABASE","Dropping Database");
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from " + TABLE_NAME);
+    }
+    public boolean checkDataBase(Context context) {
+
+        Boolean rowExists = Boolean.FALSE;
+
+
+        Log.e("DATABASE", "Checking Database" );
+        File dbFile = context.getDatabasePath(TABLE_NAME);
+        if (dbFile.exists()==true){
+
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            Cursor mCursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+            System.out.println("finishing check");
+            if (mCursor.moveToFirst())
+            {
+                // DO SOMETHING WITH CURSOR
+                rowExists = true;
+
+            } else
+            {
+                // I AM EMPTY
+                rowExists = false;
+                //Log.e(TAG, "Row DOESNT Exists  " );
+            }
+            mCursor.close();
+
+
+        }
+        return rowExists;
+    }
+    public void exportDB() {
+
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+        exportDir.mkdirs();
+        if (!exportDir.exists())
+        {
+            exportDir.mkdirs();
+        }
+
+        File file = new File(exportDir, "exportedFile.txt");
+        try
+        {
+            file.createNewFile();
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
+
+            while(curCSV.moveToNext())
+            {
+
+
+                String c0 = curCSV.getString(0);
+                String c1 = curCSV.getString(1);
+                String c2 = curCSV.getString(2);
+                String c3 = curCSV.getString(3);
+                String c4 = curCSV.getString(4);
+                String c5 = curCSV.getString(5);
+                String c6 = curCSV.getString(6);
+
+
+
+                String arrStr[] ={c0,c1,c2,c3,c4,c5,c6};
+                csvWrite.writeNext(arrStr);
+            }
+            csvWrite.close();
+            curCSV.close();
+        }
+        catch(Exception sqlEx)
+        {
+            Log.e("Menu", sqlEx.getMessage(), sqlEx);
+        }
+    }
+
+
+
+
+    public void readData(DatabaseHelper mDatabaseHelper, Context context){
+        /**
+         * if DB is empty then read from local
+         * else create from asset storage
+         */
+        System.out.println("reading");
+        if(checkDataBase(context)){
+
+            try {
+                /**
+                 * create database from Local
+                 */
+                new CSVReader(context,mDatabaseHelper,"Local");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            try {
+                /**
+                 * create database from Asset
+                 */
+                new CSVReader(context ,mDatabaseHelper,"Asset");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public boolean emptyCheck(Context context, Cursor dtb){
+        if (!dtb.moveToFirst()){
+
+
+
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+
+
+
+}

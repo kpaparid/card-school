@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Maskulin" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Feminin" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Neutrum" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Plural" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Nominativ" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="ein alter Mann" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="eine junge Frau" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="ein kleines Kind" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="- alte          Männer" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Akkusativ" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="einen alten Mann" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="eine junge Frau" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="ein kleines Kind" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="- alte Männer" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Dativ" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text=" 	einem alten Mann" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="einer jungen Frau" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="einem kleinen Kind" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="- alten Männern" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Genitiv" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="eines alten Mannes" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="einer jungen Frau" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="eines kleinen Kindes" />
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="- alter Männer" />
+        </TableRow>
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>

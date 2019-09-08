@@ -1,0 +1,1270 @@
+Nomen;30;Der Altbau, -ten;old building;παλιό κτήριο ;Starija zgrada;Стара зграда
+Nomen;30;Das Bad, -er;bath(room) ;τουαλέτα;kupaonica;купатило
+Nomen;30;Der Bewohner, - ;inhabitant ;κάτοικος ;stanovnik;резидент
+Nomen;30;der Fahrradraum, -e ;bicycle room ;αίθουσα ποδηλάτων ;skladištenje bicikla;бицикл за складиштење
+Nomen;30;das Grundstück, -e;plot of land;οικόπεδο ;svojstvo;имовина
+Nomen;30;das Haus, -er ;house ;σπίτι ;kuća;кућа
+Nomen;30;der Hausmeister, - ;caretaker, superintendant ;υπεύθυνος, επιβλέπων ;čuvar;чувар
+Nomen;30;die Kaltmiete, -n ;rent excl. utilities ;ενοίκιο χωρίς εξοδα (θερμανσης...);Mjesečni najam;месечна рента
+Nomen;30;die Warmmiete, -n ;rent incl. utilities ;ενοίκιο με έξοδα;Warmmiete;Варммиете
+Nomen;30;die Küche, -n;kitchen ;κουζίνα ;kuhinja;кухиња
+Nomen;30;der Makler, - ;estate agent ;κτηματομεσίτης ;posrednik;Брокер
+Nomen;30;der Mieter, - ;tenant ;ενοικιαστής ;stanar;станар
+Nomen;30;der Nachbar, -n ;neighbour ;γείτονας ;susjed;комшија
+Nomen;30;das Schlafzimmer, - ;bedroom ;υπνοδωμάτιο ;spavaća soba;спаваћа соба
+Nomen;30;der Wäschekeller, -;laundry cellar ;πλυντήριο κελάρι ;podrum rublja;подрум веш
+Nomen;30;das Wohnungsamt, -er ;housing office ;γραφείο στέγασης ;kućište ured;становање канцеларија
+Nomen;30;das Wohngeld, -er ;housing allowance ;στεγαστικό επίδομα ;kućište korist;становање корист
+Nomen;30;die Wohnung, -en ;apartment ;διαμέρισμα ;stan;стан
+Nomen;30;das Wohnzimmer, - ;living room ;σαλόνι ;dnevna soba;дневна соба
+Verb;30;kündigen;resign ;Έφυγα;Prestao sam;Престао сам
+Verb;30;leben;to live ;ζω;živjeti;живети
+Verb;30;renovieren;to renovate ;ανακαινίζω;obnoviti;реновирати
+Verb;30;umziehen;to move house ;μετακομοίζω;potez;потез
+Verb;30;vermieten;to rent out ;νοικιάζω σε άλλον;najam;најам
+Verb;30;wohnen;to live at/in ;κατοικώ;živjeti;живети
+Nomen;30;die Abteilung, -en ;department ;τμήμα;odjel;одељење
+Nomen;30;das Angebot, -e ;offer ;προσφορά;ponuda;понуда
+Nomen;30;die Fußgängerzone, -n;pedestrian precinct ;πεζοδρομημένη ζώνη;pješačka zona;пешачка зона
+Nomen;30;das Geschäft, -e;shop, store ;επιχείρηση;posao;посао
+Nomen;30;das Kaufhaus, -er ;department store ;πολυκατάστημα ;robna kuća;robna кућа
+Nomen;30;die Kleidung, -sstücke ;clothing ;τα ρούχα, τα τεμάχια ;odjeća;одећа
+Nomen;30;die Lebensmittel, - ;groceries ;φαγητό ;hrana;храна
+Nomen;30;die Marke, -n ;brand ;μάρκα;marka;марка
+Nomen;30;der Preis, -e ;price ;τιμή;cijena;цена
+Nomen;30;die Rechnung, -en ;bill ;λογαριασμός;račun;рачун
+Nomen;30;das Schaufenster, - ;shop window ;παράθυρο ταμείου;prozor;прозор
+Nomen;30;die Schreibwaren ;stationery ;χαρτικά ;pribor za pisanje ;прибор за писање 
+Nomen;30;das Sonderangebot, -e ;special offer ;καλή προσφορά;posebna ponuda;специјална понуда
+Nomen;30;die Qualität (nur Sg.);quality ;ποιότητα;Kvaliteta (samo sg.);Квалитет (само сг.)
+Verb;30;etw. bestellen ;to order ;να παραγγείλετε ;red;ред
+Verb;30;sich beschweren ;complain;να διαμαρτύρονται;žaliti se;жале
+Verb;30;etw. kaufen ;to buy ;για να αγορασω ;kupiti;купити
+Verb;30;passen ;to fit ;να ταιριαζω;odgovara;пристајати
+Verb;30;etw. verkaufen ;to sell ;να πουλήσει ;prodati;продати
+Verb;30;etw. zurückgeben;to return ;το να γυρίζεις ;povratak;повратак
+Nomen;30;die Autobahn, -en ;motorway ;the highway;autocesta;аутопут
+Nomen;30;die Bahn, -en ;train, railway ;the railways;vlak;воз
+Nomen;30;die S-Bahn, -en ;(sub)urban train, railway ;the S-Bahn;S-Bahn;С-Бахн
+Nomen;30;der Bahnhof, -e ;train station ;the station;kolodvor;железничка станица
+Nomen;30;die Fähre, -n;ferry ;the ferry;trajekt;трајект
+Nomen;30;die Fahrkarte, -n ;ticket ;εισιτηριο;ulaznica;карта
+Nomen;30;das Fahrrad, -er ;bicycle ;ποδηλατο;bicikl;бицикл
+Nomen;30;der Führerschein, -e;driver’s license ;διπλωμα ;vozačke dozvole;возачка дозвола
+Nomen;30;die Haltestelle, -n ;(bus, tram) stop ;σταση λεωφορειου;zaustaviti;стани
+Nomen;30;der ICE, -s ;Intercity Express train ;the ICE;ICE;Ице
+Nomen;30;der LKW, -s ;truck ;the truck;kamion;камион
+Nomen;30;das Motorrad, -er ;motor bike ;μηχανακι;motorcikl;мотоцикл
+Nomen;30;das Parkhaus, -er ;car park ;γκαραζ;parkiralište;паркиралиште
+Nomen;30;der PKW, -s ;car ;αυτοκινητο;automobil;ауто
+Nomen;30;der Stau, -s ;traffic jam ;κινηση ;pekmez;џем
+Nomen;30;der Unfall, -e ;accident ;ατυχημα;nesreća;незгода
+Verb;30;etw. abholen ;to pick up ;για να πάρει το κατι;pokupiti;покупити
+Verb;30;einsteigen ;to get in / aboard;επιβιβαζομαι;ući;унети
+Verb;30;gehen ;to jog ;πηγαίνω;ići;ићи
+Verb;30;weggehen ;to leave;φύγε;otići;отићи
+Verb;30;joggen ;to jog ;κανω jogging;trčati;гурнути
+Verb;30;kommen ;to go, to run ;ερχομαι;doći;доћи
+Verb;30;landen ;landing;προσγειωνω;zemljište;земљиште
+Verb;30;Laufen ;to run / walk;τρεχω/περπατω;trčanje;трчање
+Verb;30;parken ;park;παρκαρω;park;парк
+Verb;30;reisen ;to travel;ταξιδευω;putovanje;путовање
+Verb;30;rennen ;to run;τρεχω;utrka;раса
+Verb;30;geradeaus ;straight ahead ;ευθεια μπροστα;ravno;право
+Nomen;30;der/die Angestellte, -n ;employee ;υπάλληλος;zaposlenika;запосленог
+Nomen;30;der Arbeitsplatz, -e ;work place ;χώρο εργασίας;radnom mjestu;радно место
+Nomen;30;die Arbeitserlaubnis ;work permit ;άδεια εργασίας;radna dozvola ;радна дозвола 
+Nomen;30;die Aufgabe, -n ;task ;έργο;zadatak;задатак
+Nomen;30;die Aushilfe, -n ;temporal help;προσωρινη βοηθεια;privremena pomoć;привремена помоћ
+Nomen;30;die Ausbildung, -en ;vocation training ;επαγγελματική κατάρτιση;trening;обука
+Nomen;30;die Bewerbung, -en ;application ;εφαρμογή;primjena;апликација
+Nomen;30;die Bezahlung, -en ;salary ;πληρωμή;plaćanje;плаћање
+Nomen;30;das Einkommen, - ;income ;εισοδημα;prihod;приход
+Nomen;30;die Firma, Firmen ;company;εταιρια;poduzeće;компанија
+Nomen;30;die Industrie, -n ;the industry ;τη βιομηχανία;industrija;индустрија
+Nomen;30;der Ingenieur, -e ;the engineer;μηχανικος;inženjer;инжењер
+Nomen;30;der Kollege, -n, ;colleague ;συναδελφος;kolega;колега
+Nomen;30;der Mitarbeiter, - ;staff, employee ;προσωπικό, υπάλληλο;zaposlenik;запосленик
+Nomen;30;die Qualifikation, -en ;qualification ;προσόν;kvalifikacija;квалификација
+Nomen;30;die Rente, -n ;pension, retirement ;σύνταξη, συνταξιοδότηση;mirovina;пензија
+Nomen;30;die Stelle, -n ;position ;θέση;mjesto;место
+Nomen;30;die überstunde, -n;overtime ;υπερωρία;sat produžetke;сат прековременог рада
+Nomen;30;der Urlaub, -e ;holidays, vacation ;διακοπές, διακοπές ;odmor;одмор
+Verb;30;etw. bearbeiten ;to work (on) ;να δουλέψει;uređivanje;уреди
+Verb;30;etw. beantworten ;to answer ;να απαντήσω;odgovor;одговор
+Verb;30;etw. bekommen ;to get, to receive ;να πάρει, να λάβει;dobiti;добити
+Verb;30;etw. drucken ;to print ;για εκτύπωση ;otisak;штампа
+Verb;30;jdn. einstellen ;to hire ;να μισθώσω;prilagoditi;подесити
+Verb;30;etw. erlauben ;to permit ;να επιτρέψει;dopustiti;допустити
+Verb;30;jdm. etw. erklären;to explain ;να εξηγήσει;objasniti;објаснити
+Verb;30;jobben ;to have a casual job ;να έχει μια απλή δουλειά;povremeni rad;повремени рад
+Verb;30;jdn. krankschreiben ;to give a sick note ;να γραφτω αρρωστος;bolovanje;боловање
+Verb;30;sich krankmelden ;to report sick ;να αναφέρετε άρρωστο;poziv u bolesne;јавила да је болесна
+Verb;30;kündigen bei;to hand in one’s notice ;να παραιτηθω;okončati;окончати
+Verb;30;sprechen mit ;to talk to ;να μιλήσετε;govoriti;говорити
+Verb;30;arbeitslos sein ;to be unemployed ;να είναι άνεργος;nezaposlen;незапослен
+Verb;30;zu spät kommen;to be late ;να καθυστερήσει;doći;доћи
+Verb;30;Vollzeit arbeiten ;to work full time ;να εργάζονται με πλήρη απασχόληση;posao;рад
+Verb;30;Teilzeit arbeiten ;to work part time ;να εργάζονται με μερική απασχόληση ;posao;рад
+Nomen;30;das Abitur (nur Sg.) ;the graduation exams ;το δίπλωμα γυμνασίου ;Srednja škola (samo sg.) ;Средња школа (само сг.) 
+Nomen;30;die Berufsschule, -n ;vocational college ;επαγγελματική σχολή;srednja stručna škola;средња стручна школа
+Nomen;30;die Einladung, -en ;invitation ;πρόσκληση;poziv;позив
+Nomen;30;der Elternabend, -e ;parent-teacher conference ;διάσκεψη γονέων-εκπαιδευτικών;Elternabend;Елтернабенд
+Nomen;30;die Ferien (nur Pl.) ;holidays ;διακοπές;Praznici (samo pl.) ;Празници (само пл.) 
+Nomen;30;das Fest, -e ;celebration ;εορτασμός;gozba;гозба
+Nomen;30;die Grundschule, -n ;primary school ;δημοτικό σχολείο;osnovna škola;osnovna школа
+Nomen;30;der Kindergarten, - ;kindergarten ;νηπιαγωγείο;zabavište;забавиште
+Nomen;30;die Lehre/Lehrstelle , -n ;apprenticeship ;μαθητεία;Nastava / naukovanje ;Настава / приправнички стаж 
+Nomen;30;der (Klassen) Lehrer, - ;(form) teacher ;δάσκαλος;Nastavnici;(Цлассес) учитељ
+Nomen;30;die Lösung -en;solution ;λύση;Rješenje -en;Солутион -ен
+Nomen;30;der Mitschüler, -;schoolfellow ;συμμαθητής;drug iz razreda;друг из разреда
+Nomen;30;die Note, -n ;grade, mark ;βαθμός, σήμα;bilješka;белешка
+Nomen;30;die Pause, -n ;break ;διαλλειμα;pauza;пауза
+Nomen;30;die Realschule, -n ;secondary school (16) ;δευτεροβάθμια εκπαίδευση (16);Realschule;Реалсцхуле
+Nomen;30;die Schule, -n ;school ;σχολείο;škola;школа
+Nomen;30;der Stundenplan, -e ;timetable ;χρονοδιάγραμμα;raspored;распоред
+Nomen;30;die Tagesmutter, - ;childminder ;φύλαξη παιδιών;osoba koja vodo računa o djeci;особа која водо рачуна о деци
+Nomen;30;der Unterricht (nur Sg.) ;lessons ;διδασκαλία;Lekcije (samo sg.) ;Лекције (само сг.) 
+Nomen;30;die (Unterrichts)Stunde, -n ;lesson ;ώρα διδασκαλίας;(Uputa) sat;(Инструцтион) хоур
+Verb;30;etw. anerkennen ;to acknowledge ;να αναγνωρίσουν;prepoznati;препознати
+Verb;30;etw. Anfangen ;to begin ;για να ξεκινήσει;početi;почети
+Verb;30;jdn./sich anmelden ;to register ;να εγγραφείτε;prijaviti;регистровати
+Verb;30;jdn. Anrufen ;to call (on the phone) ;να καλέσετε (στο τηλέφωνο);poziv;позив
+Verb;30;jdm. antworten ;to answer ;να απαντήσω;odgovor;одговорити
+Verb;30;bedeuten ;to mean ;να σημαίνει;značiti;значити
+Verb;30;jdn. betreuen ;to look after ;να φροντίσουν;paziti;пазити
+Verb;30;dabei sein ;to take part ;να πάρει μέρος;tamo;тамо
+Verb;30;sich entschuldigen bei ;to apologize ;να ζητήσω συγγνώμη;izgovor;изговор
+Verb;30;jdm. etw. erlauben ;to permit ;να επιτρέψει;dopustiti;допустити
+Verb;30;etw./jdm. schreiben ;to write ;να γράψω;pisati;писати
+Verb;30;stattfinden ;to take place ;να λάβει χώρα;održati;одвијати
+Verb;30;etw. wiederholen ;to repeat ;επαναλαμβάνω;ponoviti;понављање
+Verb;30;aktuell ;current ;τρέχων;struja;струја
+Adjektiv;30;begrenzt ;limited ;περιορισμένη;ograničen ;ограничен 
+Adjektiv;30;einfach ;simple ;απλός;samo ;само 
+Adjektiv;30;fleißig;diligent ;Επιμελής / εργατικός;marljiv;марљив
+Adjektiv;30;intelligent ;intelligent ;έξυπνος;inteligentan ;интелигентан 
+Adjektiv;31;schwierig ;difficult ;δύσκολος;težak ;тежак 
+Adjektiv;31;zusammen ;together ;μαζί ;zajedno ;заједно 
+Nomen;31;Das Dachgeschoss, -e ;attic ;σοφίτα ;potkrovlje;поткровље
+Nomen;31;Das Erdgeschoss, -e ;ground floor;ισόγειο ;prizemlje;приземље
+Nomen;31;die Gegend, -en ;area ;περιοχή ;područje;област
+Nomen;31;der Haushalt, -e ;household ;νοικοκυριό ;domaćinstvo;домаћинство
+Nomen;31;die Hausverwaltung, -en ;property management ;διαχείριση ακινήτων ;upravljanje nekretninama;property манагемент
+Nomen;31;die Kaution, -en ;deposit ;την προκαταβολή ;depozit;депозит
+Nomen;31;die Lage, -n ;location ;τοποθεσία ;lokacija;локација
+Nomen;31;die Nebenkosten (Pl.) ;additional costs ;πρόσθετες δαπάνες ;Dodatni troškovi (pl.) ;Додатни трошкови (пл.) 
+Nomen;31;das Obergeschoss, -e ;upper storey ;ανώτερος όροφος ;gore;горе
+Nomen;31;die Provision, -en ;commission ;προμήθεια;komisija;комисија
+Nomen;31;der Umzug, -e ;move ;μετακόμοιση;parada;парада
+Nomen;31;der Vermieter, - ;landlord ;σπιτονοικοκύρης ;posjednik;газда
+Nomen;31;der Vertrag, -e ;contract ;συμβόλαιο;sporazum;споразум
+Nomen;31;der Vorort, -e ;suburb ;προάστιο ;predgrađe;предграђе
+Nomen;31;die Haushaltsware, -n ;household products ;οικιακά αγαθά;Houseware;хоусеваре
+Nomen;31;der Kassenbeleg, -e ;the receipt;απόδειξη;Prijem prodaje;продаја пријем
+Nomen;31;der Laden, - ;shop, store ;το κατάστημα;dućan;продавница
+Nomen;31;die Werbung (nur Sg.) ;advertisement ;διαφήμιση;Oglašavanje (samo sg.) ;Оглашавање (само сг.) 
+Nomen;31;die Quittung, -en ;receipt ;απόδειξη;potvrda;признаница
+Verb;31;etw. besorgen ;to get ;για να πάρει ;dobiti;добити
+Verb;31;gefallen ;to be liked ;να αρέσει ;molim;молим
+Verb;31;etw. umtauschen ;to (ex)change ;ανταλλάσσω ;razmjena;размена
+Nomen;31;der Aufzug, -e ;lift ;the elevator;dizalo;лифт
+Nomen;31;der Ausflug, -e ;trip ;the excursion;izlet;екскурзија
+Nomen;31;der Bahnsteig, -e ;platform ;the platform;platforma;платформа
+Nomen;31;das Fahrzeug, -e ;vehicle, car ;οχημα;vozilo;возило
+Nomen;31;das Flugzeug, -e ;airplane ;αεροπλανο;zrakoplov;авион
+Nomen;31;das Gepäck, die Gepackte;luggage;αποσκευες;prtljaga;пртљаг
+Nomen;31;die Geschwindigkeit, -en ;speed ;ταχυτητα;brzina;брзина
+Nomen;31;das Kraftfahrzeug, -e ;vehicle, car ;μηχανοκινητο οχημα;motorna vozila;моторно возило
+Nomen;31;der Laster, - ;vice;αντιπροεδρος;zamjenik;порок
+Nomen;31;das Reisebüro, -s;travel agency ;ταξιδιωτικο γραφειο;putnička agencija;туристичка агенција
+Nomen;31;die Rückfahrt, -en;return journey ;δρομος γυρισμου;povratak putovanje;Цена повратне
+Nomen;31;das Verkehrsmittel, - ;(means of) transport ;μεσα μεταφορας;prijevozna sredstva;превозна средства
+Nomen;31;das Verkehrszeichen, - ;traffic sign ;σηματα κυκλοφοριας;prometni znak;путоказ
+Verb;31;abbiegen ;to turn ;στριβω;red;ред
+Verb;31;abfahren ;to depart ;αναχωρήσει;odstupiti;отићи
+Verb;31;losfahren ;to move off ;φευγω;pomaći;одгурнути
+Verb;31;wegfahren ;to leave;φευγω;odvući;одвући
+Verb;31;sich bewegen ;move;να κινούμαι;potez;потез
+Verb;31;umsteigen ;to change (trains) ;αλλαγή;promjena;промена
+Verb;31;wenden ;to turn ;στριβω;red;ред
+Verb;31;zurückbleiben ;to remain ;παραμένουν;ostati;остати
+Verb;31;aufwärts;up(wards) ;πάνω;gore;горе
+Verb;31;abwärts;down(wards) ;κάτω;dolje;доле
+Verb;31;vorwärts;forwards ;προς τα εμπρός;naprijed;напред
+Verb;31;rückwärts;backwards ;προς τα πίσω;natrag;уназад
+Nomen;31;die Besprechung, -en ;meeting ;συνάντηση;sastanak;састанак
+Nomen;31;der Betrieb, -e ;the operation;λειτουργια;radni;радни
+Nomen;31;der Betriebsrat, -e ;work council;συμβουλιο εργαζομενων;djela;дела
+Nomen;31;die Fortbildung, -en ;skills enhancement ;βελτίωση δεξιοτήτων;daljnje obrazovanje;даље образовање
+Nomen;31;das Gehalt, Gehälter;salary ;πληρωμή;sadržaj;садржина
+Nomen;31;die Gewerkschaft, -en ;staff, employee ;προσωπικό, υπάλληλο;unija;унија
+Nomen;31;die Leistung, -en ;the services;υπηρεσιες;snaga;снага
+Nomen;31;die Schicht, -en ;layer/shift;Επιπεδο / βάρδια;sloj;слој
+Verb;31;sich bewerben um ;to apply for ;να υποβάλουν αίτηση για;primijeniti;применити
+Verb;31;jdn./sich beraten ;to advise someone, to discuss ;να συμβουλεύει κάποιον, να συζητά;savjetovati;саветовати
+Verb;31;etwas. benötigen;to need ;να χρειαστεί;trebati;требати
+Verb;31;jdn. entlassen ;to fire ;για φωτιά;puštanje;пуштање
+Verb;31;etw. entscheiden ;to decide ;να αποφασίσει;odlučiti;одлучити
+Verb;31;etw. erledigen ;to get done ;για να γίνει;brinuti o;бринути о
+Verb;31;verdienen ;to earn ;να κερδίσουν;zaraditi;зарадити
+Verb;31;angestellt sein ;to be employed ;να χρησιμοποιηθούν;zaposlen;запослен
+Verb;31;berufstätig sein;to be employed or self- employed ;να απασχολούνται ή να εργάζονται ως αυτοαπασχολούμενοι;rad;рад
+Verb;31;dafür sein;to be in favour of ;να είναι υπέρ του;za to;за то
+Verb;31;dagegen sein ;to be against ;να είναι εναντίον;međutim;међутим
+Nomen;31;der Abschluss, -e ;degree, certificate ;βαθμό, πιστοποιητικό;završetak;завршетак
+Nomen;31;die Betreuung, -en ;the care;τη φροντίδα ;briga;нега
+Nomen;31;der Elternbrief, -e ;information letter for parents ;ενημερωτική επιστολή για τους γονείς;Pismo roditeljima;писмо родитељима
+Nomen;31;die Erzieherin, -nen ;kindergarten teacher ;νηπιαγωγείο;nastavnik;просветитељ
+Nomen;31;der Hort, -e ;day-home for schoolchildren;καθημερινό σπίτι για μαθητές;jaslice;јаслице
+Nomen;31;der Krippenplatz, -e ;kindergarten ;νηπιαγωγείο;Manger trg;мангер Трг
+Nomen;31;die Tagesstätte, -n;day-care centre ;κέντρο ημερήσιας φροντίδας;njega;dan нега
+Verb;31;etw./jdn. abholen ;to get, to pick up ;να πάρει, να πάρει;pokupiti;покупити
+Verb;31;abstimmen über;to vote on ;να ψηφίσουν;glas;глас
+Verb;31;etw. ändern;to change ;να αλλάξει;promjena;промена
+Verb;31;jdn. auffordern zu etw.;ask for something ;ζητήστε κάτι ;pitati;питати
+Verb;31;aufhören mit etw.;to stop ;να σταματήσει;zaustaviti;стани
+Verb;31;jdn. beraten ;to consult ;να συμβουλευτείτε;savjetovati;саветовати
+Verb;31;jdn. enttäuschen;to disappoint ;να απογοητεύσει;razočarati;разочарати
+Verb;31;fehlen ;to be missing ;να λείπει;nedostatak;недостатак
+Verb;31;schauen ;watch ;να κοιτάξουμε;gledati;погледати
+Verb;31;sitzen bleiben ;to repeat a year /remain seated;να επαναλάβω ένα χρόνο;ostati;остати
+Adjektiv;31;anstrengend ;exhausting ;εξαντλώντας;iscrpljujući ;исцрпљујући 
+Adjektiv;31;anwesend ;present ;παρόν;prisutan ;поклон 
+Adjektiv;31;aufmerksam ;attentive ;προσεκτικός;pažljivo ;pažljivo 
+Verb;31;befriedigend;satisfying;ικανοποιητικος;zadovoljavajući;задовољавајући
+Verb;31;empfehlen ;recommend ;συνιστώ ;preporučiti;препоручити
+Verb;31;verlieren ;lose;χανω;izgubiti;изгубити
+Nomen;31;die Apotheke, -n ;the pharmacy;το φαρμακείο;ljekarna;апотека
+Nomen;31;der Arzt, -e ;doctor ;γιατρός;liječnik;доктор
+Nomen;31;der Facharzt, -e ;specialist ;ειδικός;konzultant;консултант
+Nomen;31;die Erkältung, -en ;(head) cold ;κρύωμα;hladno;хладан
+Nomen;31;das Gesicht, -er ;face ;πρόσωπο;lice;лице
+Nomen;31;die Grippe, -n ;flu ;γρίπη;gripa;грип
+Nomen;31;der Husten, - ;cough ;βήχας;kašalj;кашаљ
+Nomen;31;der Körper, - ;body ;σώμα;tijelo;тело
+Nomen;31;der Krankenschein, -e ;certificate of illness ;πιστοποιητικό ασθένειας;Nju dobijate;Кранкенсцхеин
+Nomen;31;das Krankenhaus, -er ;hospital;νοσοκομείο;bolnica;болница
+Nomen;31;die Medizin (nur Sg.) ;medicine ;φάρμακο;Medicina (samo sg.) ;Медицина (само сг.) 
+Nomen;31;das Medikament, -e ;medication ;φαρμακευτική αγωγή;droga;лек
+Nomen;31;der Notfall, -e ;emergency ;επείγον;hitan;хитан
+Nomen;31;die Packungsbeilage, -n ;patient information leaflet ;ενημερωτικό φυλλάδιο για τους ασθενείς;letak;летак
+Nomen;31;der Patient, -en ;patient ;υπομονετικος;pacijent;пацијент
+Nomen;31;der Notruf, -e ;emergency call ;κλήση έκτακτης ανάγκης;poziva u nuždi;хитан позив
+Nomen;31;das Pflaster, - ;(sticking) plaster ;γύψος;pločnik;тротоар
+Nomen;31;die Praxis, Praxen ;practice ;πρακτική;praksa;пракса
+Nomen;31;das Quartal, -e ;quarter (of the year) ;τρίμηνο (του έτους);četvrtina;четвртина
+Nomen;31;das Rezept, -e ;prescription ;ιατρική συνταγή;recept;рецепт
+Nomen;31;der Rücken, - ;back ;πλάτη;natrag;назад
+Nomen;31;die Ruhe (nur Sg.) ;rest ;υπόλοιπο;Odmor (samo sg.) ;Одмор (само сг.) 
+Nomen;31;die Salbe, -n ;ointment ;αλοιφή;mast;маст
+Nomen;31;der Schnupfen, - ;Cold, runny nose ;κρύο, ρινική καταρροή;hladno;хладан
+Nomen;31;der Schmerz, -en ;pain ;πόνος;bol;бол
+Nomen;31;die Sprechstunde, -n ;consulting hours ;συμβουλευτικές ώρες;savjetovanje;консултације
+Nomen;31;die Untersuchung, -en ;examination ;εξέταση;istraga;истрага
+Nomen;31;der Verband, -e ;bandage ;επίδεσμος;preljev;прелив
+Nomen;31;die Verletzung, -en ;injury ;βλάβη;ozljeda;повреда
+Nomen;31;die Wunde, -n ;wound ;πληγή;rana;рана
+Verb;31;abnehmen ;to lose weight ;να χάνεις βάρος;smanjiti;смањење
+Verb;31;atmen ;to breathe ;να αναπνεύσει;disati;дисати
+Verb;31;jdn. behandeln ;to treat ;για τη θεραπεία;liječiti;лечити
+Verb;31;bluten ;to bleed ;για αιμορραγία;krvariti;крварити
+Verb;31;(ein Medikament) einnehmen ;to take (medicine) ;να πάρετε (ιατρική);uzeti;узети
+Verb;31;sich (gut/schlecht) ernähren ;to eat (healthily/unhealthily) ;να τρώτε (υγιεινά / ανθυγιεινά);stočna hrana;напајање
+Verb;31;jdn. heilen ;to heal ;να θεραπεύσει;liječiti;лечити
+Verb;31;husten ;to cough ;βήχω;kašalj;кашаљ
+Verb;31;jdn. operieren ;to operate ;για να λειτουργήσει;raditi;радити
+Verb;31;jmd. pflegen ;to care for ;να φροντίζει;održavati;одржавати
+Verb;31;etw. schadet jdn. ;smh harms someone ;κατι βλάπτει κάποιον;šteta;штета
+Verb;31;etw. schmerzt ;smh hurts ;κατι πονάει;boli;боли
+Verb;31;jdn. untersuchen ;to examine ;εξετάζω;istražiti;истражити
+Verb;31;etw. verschreiben ;to prescribe ;να συνταγογραφήσει;propisati;прописати
+Verb;31;wehtun ;to hurt ;να βλάψει;povrijediti;повредити
+Verb;31;zunehmen ;to gain weight ;να πάρω βάρος ;povećanje;повећати
+Adjektiv;31;dick ;fat ;Λίπος;gust ;дебео 
+Adjektiv;31;dünn ;thin ;λεπτός;tanak ;танак 
+Adjektiv;31;gesund ;healthy ;υγιής;zdrav ;здрав 
+Adjektiv;31;gut gebaut ;well-built ;καλοφτιαγμένο;dobro građena ;добро изграђен 
+Adjektiv;31;krank ;ill ;Εγώ θα;bolestan ;болестан 
+Adjektiv;31;mollig ;plump ;παχουλός;bucmast ;буцмаст 
+Adjektiv;31;schwanger ;pregnant ;έγκυος;trudna ;трудна 
+Adjektiv;31;kräftig ;strong, heavy ;ισχυρή, βαριά;snažno ;снажно 
+Nomen;31;der Abschnitt, -e ;section ;Ενότητα;odjeljak;одељак
+Nomen;31;die Anweisung, -en ;instruction ;εντολή;instrukcije;инструкције
+Nomen;31;die Anzeige, -n ;ad ;διαφημιση;prikaz;дисплеј
+Nomen;31;der Artikel, - ;article ;άρθρο;članak;чланак
+Nomen;31;der Beitrag, -e ;article, contribution ;άρθρο, συμβολή;doprinos;допринос
+Nomen;31;die Broschüre, -n ;brochure ;φυλλάδιο;brošura;брошура
+Nomen;31;der Prospekt, -e ;leaflet ;προσπεκτης;brošura;брошура
+Nomen;31;die Durchsage, -n ;announcement ;ανακοίνωση;objava;објава
+Nomen;31;die Einzelheit, -en ;detail ;λεπτομέρεια;detalj;детаљ
+Nomen;31;die Gebrauchsanweisung, -en ;instruction manual ;εγχειρίδιο οδηγιών;instrukcije;инструкције
+Nomen;31;der Hinweis, -e ;hint, reference ;υπόδειξη ;savjet;наговештај
+Nomen;31;das Interview, -s ;interview ;συνέντευξη;intervju;интервју
+Nomen;31;die Kritik, -en ;critique, criticism ;κριτική;kritika;критика
+Nomen;31;der Moderator, -en ;moderator, host ;συντονιστής ;predlagač;давалац
+Nomen;31;der Monitor, -e ;monitor ;οθόνη;monitor;монитор
+Nomen;31;die Nachricht, -en ;news ;το μήνυμα ;poruka;порука
+Nomen;31;die Presse (nur Sg.) ;press ;τύπος, ΜΜΕ;Pritisnite (samo Sg.) ;Притисните (само Сг.) 
+Nomen;31;der Rundfunk (nur Sg.) ;radio ;ραδιόφωνο;Emitiranje (samo sg.) ;Емитовање (само сг.) 
+Nomen;31;die Überschrift, -en ;headline ;επικεφαλίδα;naslov;наслов
+Nomen;31;die Sendung, -en ;programme ;εκπομπή ;predstava;шоу
+Nomen;31;der Vortrag, -e ;lecture ;διάλεξη;predavanje;предавање
+Nomen;31;die Zeitung, -en ;newspaper ;εφημερίδα;novine;новине
+Nomen;31;die Zeitschrift, -en ;magazine ;περιοδικό;časopis;магазин
+Nomen;31;die Serie, -n ;series ;σειρά;serija;серија
+Verb;31;anfangen mit ;to begin with ;για αρχή;početi;почети
+Verb;31;sich ärgern über ;to be angry with;να θυμώνω με;zafrkavati;задиркивати
+Verb;31;etw. beenden ;to finish ;να τελειώνω;izlaz;излаз
+Verb;31;etw. berichten ;to report ;να αναφέρω;izvješće;извештај
+Verb;31;etw. beschreiben ;to describe ;νε περιγράψω;opisati;описати
+Verb;31;sich informieren über ;to get informed ;να ενημερωθώ για...;obavijestiti;обавестити
+Verb;31;sich erinnern an ;be reminded of;να υπενθυμίσουμε;opoziv;опозив
+Verb;31;etw. Erzählen;to tell ;να πει;reći;рећи
+Verb;31;etw./jdn. kritisieren ;to criticize ;να επικρίνουν;kritikovati;критиковати
+Verb;31;etw./jdn. Schreiben ;to write ;να γράψω;pisati;писати
+Verb;31;etw. senden an/nach ;to send to ;για να στείλετε στο;poslati;послати
+Verb;31;sich unterhalten über ;to talk about ;να μιλήσουμε για;zabaviti;забавити
+Verb;31;etw./jdm. zuhören ;to listen ;για να ακούσω;slušati;слушати
+Verb;31;jdm. zuschauen bei ;to watch ;να δω;gledati;сат
+Nomen;31;der Abschluss, - e ;deegre, conclusion ;βαθμό, συμπέρασμα;završetak;завршетак
+Nomen;31;die Erfahrung, -en ;experience ;εμπειρία;iskustvo;искуство
+Nomen;31;der Erfolg, -e ;success ;επιτυχία;uspjeh;успех
+Nomen;31;das Ergebnis, -se ;result ;αποτέλεσμα;rezultat;резултат
+Nomen;31;der Fachmann, Fachleute ;specialist ;ειδικός;stručnjak;експерт
+Nomen;31;die Fachfrau, Fachleute ;specialist ;ειδικός;stručnjak;експерт
+Nomen;31;der Fehler, - ;mistake ;λαθος;greška;грешка
+Nomen;31;der Fortschritt, -e ;progress ;πρόοδος;napredak;напредак
+Nomen;31;die Fremdsprache, -n ;foreign language ;ξένη γλώσσα;strani jezik;страних језика
+Nomen;31;die Gebühr, -en ;fee ;τέλη;pristojba;провизија
+Nomen;31;die Kursgebühr, -en ;course fee ;αμοιβή μαθημάτων;naknada za tečaj;курса
+Nomen;31;das Hörverstehen (nur Sg.) ;auditory comprehension ;ακουστική κατανόηση;Razumijevanje sluha (samo sg.) ;Разумевање слуха (само сг.) 
+Nomen;31;der Kurs, -e ;course ;σειρά μαθημάτων;naravno;курс
+Nomen;31;der Intensivkurs, -e ;intensive course ;εντατικό μάθημα;ubrzani kurs;убрзани курс
+Nomen;31;der Kursleiter, - ;instructor ;εκπαιδευτής;instruktor;инструктор
+Nomen;31;die Kursleiterin, -nen ;instructor ;εκπαιδευτής;trener;тренер
+Nomen;31;der Lehrer, - ;teacher ;δάσκαλος;učitelj;учитељ
+Nomen;31;die Lehrerin, -nen ;teacher ;δάσκαλος;učitelj;учитељ
+Nomen;31;die Leute ;people ;Ανθρωποι;ljudi ;људи 
+Nomen;31;der Platz, - e ;place, space, spot ;τόπος, χώρος, σημείο;mjesto;место
+Nomen;31;die Prüfung, -en ;exam ;εξέταση;ispit;испит
+Nomen;31;der Teilnehmer, - ;participant ;συμμέτοχος;učesnik;учесник
+Nomen;31;der Test, -s ;test ;δοκιμή;test;проба
+Nomen;31;das Thema, Themen ;topic ;θέμα;tema;тема
+Nomen;31;die Übung, -en ;exercise ;άσκηση;vježba;вежба
+Nomen;31;das Zertifikat, -e ;certificate ;πιστοποιητικό;potvrda;потврда
+Nomen;31;das Zeugnis, -se ;testimony ;η μαρτυρία;svjedok;сведок
+Verb;31;etw. ausfüllen ;to fill out ;για να συμπληρώσετε;ispuniti;попунити
+Verb;31;bestehen ;to insist ;επιμένω;sastojati;састојати
+Verb;31;durchfallen ;to fail ;να αποτύχει;propasti;пропасти
+Verb;31;etw./jdn. hören ;to hear ;να ακούσω;čuti;чути
+Verb;31;lehren ;to teach ;να διδάξει;učiti;научити
+Verb;31;etw. lernen ;to learn ;να μάθω;naučiti;научити
+Verb;31;etw. lesen ;to read ;να διαβασω;čitati;читати
+Verb;31;etw. nachholen ;to catch up ;προλαβαίνω;nadoknaditi;надокнадити
+Verb;31;etw./jdn. prüfen ;to test ;να δοκιμάσω;uzeti u obzir;размотрити
+Verb;31;etw. schaffen ;to manage ;να καταφέρω;stvoriti;створити
+Verb;31;sprechen über ;to talk about ;να μιλήσουμε για;govoriti;говорити
+Verb;31;teilnehmen an ;to take part in ;να λάβουν μέρος;sudjelovati;учествовати
+Verb;31;etw. üben ;to practise ;να εξασκούμαι;praksa;пракса
+Verb;31;unterrichten ;to teach ;να διδάξει;učiti;научити
+Verb;31;etw./jdn. verstehen ;to understand ;να καταλαβεις;razumjeti;разумети
+Verb;31;etw./sich vorbereiten auf;to prepare ;για να προετοιμάσω;pripremiti;припремити
+Adjektiv;31;öffentlich ;publicly ;δημοσίως;javno ;јавно 
+Adjektiv;31;schriftlich ;in writing ;γραπτώς;u pisanom obliku ;у писаној форми 
+Adjektiv;31;schwer ;hard ;σκληρά;težak ;тежак 
+Adjektiv;31;verständlich ;comprehensible ;κατανοητός;razumljiv ;разумљив 
+Nomen;31;die Karriere, -n ;carrier ;φορέας;karijera;каријера
+Nomen;31;die Organisation, -en ;organisation ;οργάνωση;organizacija;организација
+Nomen;31;das Praktikum, Praktika ;internship ;πρακτική;plasman;постављање
+Nomen;31;das Projekt, -e ;project ;έργο;projekt;пројекат
+Nomen;31;das Programm, -e ;programme ;πρόγραμμα;program;програмски
+Nomen;31;das Semester, - ;semester ;εξάμηνο;semestar;семестар
+Nomen;31;das Studium, Studien ;(course of) study ;Πρόγραμμα Σπουδών;studija;студија
+Nomen;31;der/die Studierende, -n ;student ;μαθητης σχολειου;studentima;студентима
+Nomen;31;die Weiterbildung, -en ;skills enhancement, further training ;βελτίωση των δεξιοτήτων, περαιτέρω κατάρτιση;daljnje obrazovanje;даље образовање
+Verb;31;jdn. ausbilden ;to train ;να εκπαιδεύσω;vlak;воз
+Verb;31;etw. anbieten ;to offer ;να προσφέρω;ponuda;понуда
+Verb;31;etw. präsentieren ;to present ;να παρουσιάσει;prisutan;поклон
+Verb;31;etw. vortragen ;to present ;να παρουσιάσει;prisutan;поклон
+Adjektiv;31;offiziell ;official ;επίσημος;službeno ;званично 
+Adjektiv;31;niedrig ;low ;χαμηλός;nizak ;низак 
+Adjektiv;31;hoch ;high ;υψηλός;visok ;висок 
+Nomen;31;die Buchung, -en ;booking ;κράτηση;rezerviranje;резервација
+Nomen;31;der/die Bankangestellte, -n ;bank employee ;υπάλληλος τράπεζας;zaposlenika banke;запосленика банке
+Nomen;31;der Dauerauftrag, -e ;standing order ;μόνιμη παραγγελία;trajni nalog;трајни налог
+Nomen;31;der Geldautomat, -en ;cash machine ;μηχανή μετρητών;bankomat;банкомат
+Nomen;31;das Girokonto, -konten ;current account ;τρεχούμενος λογαριασμός;tekući račun;текући рачун
+Nomen;31;der Kontoauszug, - e ;bank statement ;τραπεζική δήλωση;izjava banke;извод из банке
+Nomen;31;der Kontoauszugsdrucker, - ;statement printer ;εκτυπωτή δήλωσης;Kontoauszugsdrucker;Контоаусзугсдруцкер
+Nomen;31;der Kredit, -e ;credit ;πίστωση;kredit;кредит
+Nomen;31;der Überziehungskredit, -e ;overdraft facility ;υπερανάληψης;nalog za isplatu koji nema dovoljno pokriće;Дозвољени минус
+Nomen;31;die PIN/TAN-Nummer, -n ;PIN/TAN number ;Αριθμός PIN / TAN;PIN / TAN;ПИН-/ Тан
+Nomen;31;der Scheck, -s ;cheque ;έλεγχος;provjeriti;проверити
+Nomen;31;die Überweisung, -en ;bank transfer ;τραπεζική μεταφορά ;prijenos;пренос
+Nomen;31;der Zins, -en ;interest rate ;επιτόκιο;interes;камата
+Verb;31;etw. abheben ;to withdraw ;να αποσύρω;povući;повући
+Verb;31;etw. einzahlen ;to pay in ;να πληρώσουν;depozit;депозит
+Verb;31;etw. überweisen ;to transfer ;να μεταφέρω;prijenos;пренос
+Nomen;31;die Arbeitslosenversicherung, -en ;unemployment insurance ;ασφάλεια ανεργίας;nezaposlenost;незапосленост
+Nomen;31;die Haftpflicht (Sg.) ;liability ;Ευθύνη;Odgovornost (Sg.) ;Одговорност (Сг.) 
+Nomen;31;die Haftpflichtversicherung, -en ;liability insurance ;ασφάλιση αστικής ευθύνης;osiguranje od odgovornosti;osiguranje од одговорности
+Nomen;31;die Krankenkasse, -n ;health insurance company ;ασφαλιστική εταιρεία υγείας;zdravstveno osiguranje;здравствено осигурање
+Nomen;31;die Krankenversicherung, -en;health insurance ;ασφάλεια υγείας;zdravstveno osiguranje;здравствено осигурање
+Nomen;31;die Laufzeit, -en ;term time ;μακροπρόθεσμα;vrijeme rada;руннинг тиме
+Nomen;31;die Lebensversicherung, -en ;life insurance ;ασφάλεια ζωής;osiguranje života;осигурање живота
+Nomen;31;der Versicherungsmakler, - ;insurance agent ;ΑΣΦΑΛΙΣΤΙΚΟΣ ΠΡΑΚΤΟΡΑΣ;brokera osiguranja;посредник у осигурању
+Nomen;31;die Versicherungsagentur, -en;insurance agency ;ασφαλιστική εταιρεία;Agencija za osiguranje;Агенција за осигурање
+Verb;31;eine Versicherung / einen Vertrag abschließen ;to conclude an (insurance) contract ;να συνάψει σύμβαση (ασφάλισης);potpun;комплетан
+Verb;31;sich versichern ;to get insured ;να ασφαλιστούν;osigurati;осигурати
+Verb;31;einen Vertrag kündigen ;to terminate a contract ;να λύσει μια σύμβαση;okončati;окончати
+Nomen;31;das Amt, Ämter ;department, office ;τμήμα, γραφείο;ured;канцеларија
+Nomen;31;der Antrag, -e ;application ;εφαρμογή;primjena;апликација
+Nomen;31;der Antragsteller, - ;applicant ;αιτών;podnositelj zahtjeva;подносилац молбе
+Nomen;31;das Ausländeramt, -er ;Foreigners' (Registration) Office ;Γραφείο Αλλοδαπών (Εγγραφή);Ured za imigraciju;imigracija Уред
+Nomen;31;die Arbeitserlaubnis (Sg.) ;work permit ;άδεια εργασίας;Radna dozvola (Sg.) ;Дозвола за рад (Сг.) 
+Nomen;31;der Aufenthalt, -e ;stay, residence ;διαμονή, διαμονή;ostati;остати
+Nomen;31;der Ausländer, - ;foreigner ;ξένος;stranci;странци
+Nomen;31;der Ausweis, -e ;ID card ;ταυτότητα;ID;ИД
+Nomen;31;der Beamte, -n ;official ;επίσημος;časnik;официр
+Nomen;31;die Behörde, -n ;department ;τμήμα;vlast;власт
+Nomen;31;das Büro, -s ;office ;γραφείο;ured;канцеларија
+Nomen;31;die Bürokratie, -n ;bureaucracy ;γραφειοκρατία;birokratija;бирократија
+Nomen;31;die Einbürgerung, -en ;naturalisation ;πολιτογράφηση;naturalizacija;натурализација
+Nomen;31;das Einwohnermeldeamt, -er;Residents’ Registration Office;Γραφείο Εγγραφών Κατοίκων;prijavni ured;kancelarija за регистрацију
+Nomen;31;die Erlaubnis (nur Sg.) ;permission ;άδεια;Dopuštenje (samo sg.) ;Дозвола (само сг.) 
+Nomen;31;das Formular, -e ;form ;μορφή;obrazac;образац
+Nomen;31;die Genehmigung, -en ;permission ;άδεια;odobrenje;одобрење
+Nomen;31;die GEZ (nur Sg.) ;GEZ (department for media fees) ;GEZ (υπηρεσία για τα μέσα ενημέρωσης);GEZ (samo sg.) ;ГЕЗ (само сг.) 
+Nomen;31;die Kindergeldstelle, -n ;Child Benefit Office ;Γραφείο Παροχών Παιδιών;Agencija za alimentaciju;подршка агенција дете
+Nomen;31;das Papier, -e ;paper ;χαρτί;papir;папир
+Nomen;31;der Sachbearbeiter, - ;person responsible ;υπεύθυνος;službenik;службеник
+Nomen;31;der Termin, -e ;appointment ;ραντεβού;imenovanje;именовање
+Nomen;31;das Visum, Visa ;visa ;Visa;viza;виза
+Nomen;31;der Vordruck, -e ;form ;μορφή;obrazac;образац
+Nomen;31;die Zuständigkeit, -en ;(area of) responsibility ;(περιοχή) της ευθύνης;nadležnost;надлежност
+Verb;31;etw. ablehnen ;to reject ;να απορρίψω;odbiti;одбити
+Verb;31;sich melden ;to register, to report ;να εγγραφείτε, να αναφέρετε;izvješće;извештај
+Verb;31;sich anmelden ;Sign in;εγγράφομαι;prijaviti;регистровати
+Verb;31;etw. ausstellen ;to issue, to write out ;να εκδίδει, να γράφει;izložak;експонат
+Verb;31;etw. beantragen ;to apply for ;κάνω αίτηση για;podnijeti zahtjev za;важе за
+Verb;31;sich befinden ;to find oneself;βρίσκονται;su;су
+Verb;31;verantwortlich sein ;to be responsible ;να είναι υπεύθυνος;odgovoran;одговоран
+Verb;31;zuständig sein ;to be responsible, relevant ;να είναι υπεύθυνη, σχετική ;odgovoran;одговоран
+Verb;31;sich bedanken für ;thank you for;ευχαριστώ για;zahvaliti;захвалити
+Verb;31;sich beeilen ;hurry up;βιαστείτε;žuriti;пожурити
+Verb;31;sich bewerben ;apply;να εφαρμόσει;primijeniti;применити
+Verb;31;sich beziehen auf ;refer to;ανατρέξτε στο;dobiti;добити
+Verb;31;sich etwas einbilden ;imagine something;να φανταστούμε κάτι;zamisliti;замислити
+Verb;31;sich einigen ;agree;να συμφωνήσω;neki;неки
+Verb;31;sich entscheiden zu ;to decide;να αποφασίσει;odlučiti;одлучити
+Verb;31;sich entschließen zu ;decide to;αποφασίσει να;odlučiti;одлучити
+Verb;31;sich ereignen ;to occur;συμβεί;doći;доћи
+Verb;31;sich erholen ;to recover;για να ανακάμψει;oporaviti se;опоравити се
+Verb;31;sich erkälten ;catch a cold ;να κρυώσει ;prehladiti;прехладе
+Verb;31;sich erkundigen bei/über ;inquire with / about;Ρωτήστε με / περίπου;raspitati se;распитати се
+Verb;31;sich freuen auf/über ;look forward to / about;ανυπομονώ να / περίπου;molim;молим
+Verb;31;sich irren ;are wrong;είναι λάθος;biti u krivu;бити у криву
+Verb;31;sich kümmern um ;to care about;να νοιάζει;briga;брига
+Verb;31;sich verlassen auf;rely on;βασιστείτε;ostaviti;оставити
+Verb;31;sich verlieben in ;fall in love;ερωτευμένος;u;у
+Verb;31;sich wundern über ;wonder about;αναρωτιέστε;iznenađenje;изненађење
+Verb;31;sich ändern ;change;αλλάζω;promjena;промена
+Verb;31;sich anziehen ;to get dressed;να ντυθείς;privući;привући
+Verb;31;sich aufregen über ;get excited about;να ενθουσιάζομαι;uzrujan;узнемирен
+Verb;31;sich beherrschen ;keep calm;να παραμένω ήρεμος;dominirati;доминирати
+Verb;31;sich bemühen ;endeavor;να προσπαθώ σκληρά;nastojati;настојати
+Verb;31;sich beruhigen ;to calm oneself down;να ηρεμισω;umiriti;ублажити
+Verb;31;sich beschäftigen mit ;deal with;να ασχολούμαι με;zaposliti;запослити
+Verb;31;sich beteiligen an ;participate in;να συμμετάσχω σε;angažirati;ангажовати
+Verb;31;sich entschuldigen ;to apologize;να ζητήσω συγγνώμη;izgovor;изговор
+Verb;31;sich fürchten vor ;be afraid of;να φοβαμαι το...;strah;страх
+Verb;31;sich hinlegen ;lay down;χαλαρώνω;položiti;положити
+Verb;31;sich informieren ;get informed;ενημερώνω;obavijestiti;обавестити
+Verb;31;sich interessieren ;Interested in;ενδιαφέρομαι;interes;камата
+Verb;31;sich langweilen ;be bored;να βαριεμαι;bušotina;бушотина
+Verb;31;sich treffen ;meet;συναντώ;sastati;срести
+Verb;31;sich trennen von ;separate from;να χωρίζω;odvojen;засебан
+Verb;31;sich unterhalten;talk;να μιλω, να συζητω;zabaviti;забавити
+Verb;31;sich unterscheiden von ;differ from;να διαφέρω απο...;razlikovati;разликовати
+Verb;31;sich verabreden mit ;arrange to meet;να κανονίσω συνάντηση;urediti;уредити
+Verb;31;sich verabschieden von ;say goodbye to;να πω αντίο;usvojiti;усвојити
+Verb;31;sich verletzen an ;hurt themselves;να βλάψω τον εαυτό μου;povrijediti;повредити
+Verb;31;sich verstehen mit ;to get along with;να καταλαβαινομαστε;razumjeti;разумети
+Verb;31;sich vorbereiten auf ;to prepare for;να προετοιμαστεί για;pripremiti;припремити
+Verb;31;mir etwas ansehen ;look at something;να δούμε κάτι ;pogled;поглед
+Verb;31;mir etwas ausdenken ;to come up with something;να σκεφτούμαι κατι;izmisliti;измислити
+Verb;31;mir etwas holen ;get something;να πάρω κατι (πιάσω);dobiti;добити
+Verb;31;mir etwas nehmen ;to take something;να παρω κατι;uzeti;узети
+Verb;31;mir etwas kaufen ;to buy something;να αγοράσει κάτι;kupiti;купити
+Verb;31;mir etwas vorstellen ;imagine something;φανταστείτε κάτι;prisutan;поклон
+Verb;31;mir etwas waschen ;to wash something;να πλύνετε κάτι;pranje;прање
+Verb;31;mir etwas merken ;remember something ;κάτι μου θυμηζει;zapamtiti;запамтити
+Nomen;31;Das Erlebnis -se;experience ;εμπειρία ζωής;Avanture -se;Адвентуре -се
+Nomen;31;Die überraschung – en;surprise ;η εκπληξη;iznenađenje - hr;изненађење
+Adjektiv;31;mutig;Courageous / brave;θαραλλεος;hrabar;храбар
+Nomen;31;Die Meldung;report/news;τα νέα, ειδήσεις;poruka;порука
+Nomen;31;die überschrift -en;headings ;η επικεφαλίδα;naslov -en;хеадинг -ен
+Verb;31;verschwinden;disappear ;Εξαφανίζομαι;Ja nestajem;Нестајем
+Verb;31;wundern sich;wonder/surprise;αναρωτιέμαι ;iznenađenje;изненађење
+Adjektiv;31;zwar;though;μολονότι, αν και;doista;заиста
+Nomen;31;der Mut;courage;κουράγιο;hrabrost;храброст
+Verb;31;erereichen;reach;να φτάσω;erereichen;еререицхен
+Verb;31;verwechseln;confuse;μπερδεύω;zbuniti;збунити
+Verb;31;mittel;middle;μέση;srednji;средњи
+Verb;31;retten;rescue ;σώζω ;uštedjeti;сачувати
+Verb;31;aus reichen;be sufficient;να είναι επαρκής ;biti dosta;довољан
+Adjektiv;31;zumindest;at least ;τουλάχιστον ;najmanje;најмање
+Verb;31;absperren ;shut off ;να διακόψω;zatvoriti;затворити
+Verb;31;festnehmen;arrest ;συλλαμβάνω;uhapsiti;ухапсити
+Nomen;31;Der Einbrecher;The burglar ;ο διαρρήκτης;provalnik;провалник
+Verb;31;fliehen;flee ;Φεύγω;Bježim;Бјежим
+Adjektiv;31;schiessen;instantly ;στιγμιαια;pucati;пуцати
+Verb;31;erschrecken;scare ;Φοβάμαι ;uplašiti;уплашити
+Verb;32;täuschen;cheat ;Είμαι ανόητος;Zezam se;Заваравам
+Verb;32;durchfallen;fail ;Αποτυγχάνω;Ne uspijevam;Не успевам
+Nomen;32;Die Note;grade ;σημείωση;bilješka;белешка
+Verb;32;graduieren;graduate ;Αποφοιτούμαι;Diplomirao sam;Дипломирао сам
+Nomen;32;Die Vorlesung;lecture ;διάλεξη;predavanje;предавање
+Verb;32;bestehen;pass ;Επιμένω;Inzistiram;Инсистирам
+Nomen;32;Die Forschung;research ;έρευνα;istraživanje;истраживање
+Nomen;32;Das Trimester;term ;τρίμηνο;tromjesečje;тромесечје
+Nomen;32;Das Kolloquium;tutorial;συμπόσιο;kolokvij;колоквијум
+Nomen;32;Das Studentenheim;hall of residence;κοιτώνα;spavaonica;спаваоница
+Verb;32;neue Freundschaften schließen;make new friends;κλείστε νέες φιλίες;zatvoriti nova prijateljstva;затворити нова пријатељства
+Verb;32;Studentendarlehen;student loan;φοιτητικά δάνεια;studentski krediti;студентски кредити
+Nomen;32;Die Genauigkeit;accuracy ;ακρίβεια;točnost;тачност
+Nomen;32;Die Ewigkeit;ages;αιωνιότητα;vječnost;вечност
+Verb;32;vereinbaren;arrange ;Συμφωνώ;Slažem se;Слажем се
+Verb;32;versuchen;attempt ;Προσπαθώ;Pokušavam;Покушавам
+Verb;32;vermeiden;avoid ;Αποφεύγω;Izbjegavam;Избегавам
+Nomen;32;Das Gleichgewicht;balance ;ισορροπία;ravnoteža;равнотежа
+Verb;32;basieren;base ;Βασίζομαι;Ja sam utemeljen;Ја сам базиран
+Adjektiv;32;ähnlich;be like (somebody);παρόμοιος;sličan;сличан
+Nomen;32;Die Pause;break ;παύση;pauza;пауза
+Conj;32;übrigens;by the way;από τον τρόπο;uostalom;уосталом
+Verb;32;nicht leiden;can’t stand;Μην υποφέρετε;ne pate;не пате
+Nomen;32;Die Auswahl;choice ;επιλογή;izbor;избор
+Nomen;32;Die lästige Pflicht;chore;ενοχλητικό καθήκον;dosadna dužnost;досадна дужност
+Verb;32;erscheinen;come up (=appear);Εμφανίζω;Ja se pojavljujem;Ја се појавим
+Nomen;32;die Konzentration;concentration ;συγκέντρωση;koncentracija;концентрација
+Nomen;32;Die Einzelheit;details ;λεπτομέρειες;pojedinosti;појединости
+Verb;32;besprechen;confer with;Συζητώ;Razgovaram;Разговарам
+Verb;32;tauchen;dive ;Καταδύομαι;Ja ronim;Ја роним
+Nomen;32;die Dauer;duration ;διάρκεια;trajanje;трајање
+Nomen;32;die Erde;ground ;γη;zemlja;земља
+Verb;32;fördern;encourage ;Προωθώ;Ja promičem;Ја промовишем
+Adjektiv;32;Umwelt-;environmental ;περιβαλλοντικών;ekološki;еколошки
+Nomen;32;das Ausrufezeichen;exclamation mark;θαυμαστικό;znak uzvika;знак узвика
+Verb;32;erwarten;expect ;Αναμένω;Očekujem;Очекујем
+Verb;32;erleben;experience ;Έχω εμπειρία;Osjećam;Имам искуства
+Verb;32;etw entdecken;find out about;για να ανακαλύψετε το sth;otkriti sth;да откријемо стх
+Nomen;32;der Flug;flight ;πτήση;let;лет
+Verb;32;zwingen;force ;Δέχομαι;Prisiljavam;Присиљавам
+Nomen;32;das Überbrückungsjahr;gap year;Gap έτους;jaz godine;јаз године
+Adjektiv;32;dankbar;grateful ;ευγνώμων;zahvalan;захвалан
+Verb;32;etw abgeben;hand something in;να παραδώσει το sth;dostaviti sth;да достави стх
+Nomen;32;der Informationsdienst;helpline;υπηρεσία πληροφοριών;servisne informacije;сервисне информације
+Nomen;32;der Höhepunkt;highlight ;αποκορύφωμα;vrhunac;врхунац
+Adjektiv;32;humanitär;humanitarian;ανθρωπιστική;humanitarac;хуманитарац
+Adjektiv;32;theoretisch;theoretical ;θεωρητικά;teoretski;теоретски
+Conj;32;statt;instead of;αντί της;umjesto;уместо
+Verb;32;unterbrechen;interrupt ;Διακοπή;Prekidam;Прекидам
+Verb;32;ärgern;irritate ;Ανησυχώ;Uvredio sam se;Увредио сам се
+Verb;32;motivieren;motivate ;Ενθαρρύνω;Ja motiviram;Ја мотивирам
+Conj;32;nie;never (adv) ;ποτέ;nikada;никад
+Nomen;32;der Lärm;noise ;θόρυβος;šum;бука
+Nomen;32;das Ereignis;incident ;συμβάν;događaj;догађај
+Nomen;32;Die Möglichkeit;option ;ευκαιρία;prilika;прилика
+Adjektiv;32;zur Waise werden;orphaned;να γίνει ορφανό;postati siroče;постати сироче
+Adjektiv;32;praktisch;practical ;πρακτικώς;praktično;практично
+Adjektiv;32;ruhig;quiet ;ήσυχα;tiho;тихо
+Verb;32;feststellen;realize ;Συνειδητοποιώ;Shvaćam;Схватам
+Nomen;32;das Verhältnis;relationship ;αναλογία;omjer;однос
+Verb;32;riskieren;risk ;Διακινδυνεύω;Riskiram;Ризикујем
+Nomen;32;der Weg;route ;τρόπος;način;начин
+Verb;32;sparen;save up;Εξοργώ;Štedim;Ја штедим
+Adjektiv;32;vernünftig;sensible ;λογικός;razuman;разуман
+Adjektiv;32;spezifisch;specific ;συγκεκριμένος;specifična;специфичан
+Verb;32;auf eigenen Beinen stehen;stand on one’s own two feet;σταθείτε στα δικά σας πόδια;stojte na svoje dvije noge;стојте на своје две ноге
+Conj;32;sofort;straight away (adv);αμέσως;odmah;одмах
+Nomen;32;Thema;topic ;θέμα;tema;тема
+Nomen;32;Uni;uni;Uni;Uni;уни
+Adjektiv;32;unbestimmt;unspecified;απροσδιόριστο;neodređen;неодређен
+Adjektiv;32;gültig;valid ;έγκυρος;vrijedi;важи
+Adjektiv;32;Freiwillige;volunteer ;εθελοντής;dobrovoljac;волонтер
+Nomen;32;der Geldbeutel;wallet;πορτοφόλι;torbica;ташна
+Adjektiv;32;nass;wet ;υγρός;mokar;мокар
+Conj;32;würde lieber;would rather;θα προτιμούσε;radije;радије
+Conj;32;noch;yet (adv) ;περισσότερο;više;више
+Verb;32;Gleitzeit arbeiten;be on flexi-time;Ευέλικτη εργασία;Fleksibilni rad;Флекитиме ворк
+Adjektiv;32;für etw verantwortlich sein;be responsible for;να είναι υπεύθυνος για την αλήθεια;biti odgovoran za sth;да буде одговоран за стх
+Verb;32;kümmern;deal with;Φροντίζω;Brinem se;Бринем се
+Verb;32;verdienen;earn ;Κερδίζω;Zaradim;Зарадио сам
+Adjektiv;32;Angestellte;employee ;υπάλληλος;zaposlenik;запосленик
+Nomen;32;Die Erfahrung;experience ;εμπειρία;iskustvo;искуство
+Adjektiv;32;ganztags;full-time ;πλήρους απασχόλησης;puno radno vrijeme;Пуно радно време
+Conj;32;drinnen;indoors (adv) ;εντός κτίριου;u kući;унутра
+Adjektiv;32;manuell;manual ;με το χέρι;ručno;ручно
+Conj;32;im Freien;outdoors (adv);σε εξωτερικούς χώρους;vani;на отвореном
+Nomen;32;der Papierkram;paperwork ;γραφειοκρατία;kancelarijski posao;папирологија
+Adjektiv;32;Teilzeit ;part-time ;μερική απασχόληση ;dio vremena ;хонорарни 
+Nomen;32;die Qualifikation;qualification ;προσόν;kvalifikacija;квалификација
+Nomen;32;der Gehalt;salary ;περιεχόμενο;sadržaj;садржина
+Adjektiv;32;selbstständig ;self-employed;ανεξάρτητα ;nezavisno ;независно 
+Adjektiv;32;ausgebildet;educated;μορφωμένος;obrazovan;образован
+Adjektiv;32;anstrengend;stressful;εξαντλώντας;iscrpljujući;исцрпљујући
+Nomen;32;die Ausbildung;education ;εκπαίδευση;trening;обука
+Adjektiv;32;gut bezahlt;well-paid;καλά καταβληθεί;dobro plaćen;добро плаћен
+Verb;32;befördert werden;get promotion;μεταφέρονται;biti prevezeni;бити транспортован
+Verb;32;ausfüllen;fill in;Συμπληρώνομαι;Popunjavam;Попуњавам
+Verb;32;vorankommen;get ahead;Προχωρώ;Idem naprijed;Идем напред
+Verb;32;weitermachen;keep at;Συνεχίζω;Ja nastavljam;Ја настављам
+Verb;32;gründen;set up;Αρχίζω;Počinjem;Почињем
+Verb;32;übernehmen;take over;αναλαμβάνουμε;preuzimamo;преузимамо
+Verb;32;ablehnen;turn down;Απορρίπτω;Odbijam;Одбијам
+Verb;32;etw bearbeiten;work on;Για να δουλέψω;Za rad na sth;За рад на стх
+Nomen;32;die Unterkunft;accommodation ;κατάλυμα;smještaj;смештај
+Verb;32;sich leisten;afford ;Μπορώ να αντέξω;Mogu si priuštiti;Могу си приуштити
+Conj;32;alles in allem;all things considered;Συνολικά;Sve u svemu;Све у свему
+Verb;32;gelten;apply to;Εφαρμόζω;Prijavljujem se;Ја аплицирам
+Conj;32;sowohl … als auch;as well as;τόσο ... όσο και;i ... i;и ... и
+Nomen;32;das Balkendiagramm;bar graph;ραβδόγραμμα;trakasti grafikon;дијаграм
+Verb;32;sich verhalten;behave ;Εγώ συμπεριφέρομαι στον εαυτό μου;Ja se ponašam;Ја се понашам
+Verb;32;beißen;bite ;Δαγκώνω;Ja grizem;Ја гризем
+Nomen;32;Die Grenze;border ;σύνορο;granica;граница
+Nomen;32;der Kandidat;candidate ;υποψήφιος;kandidat;кандидат
+Nomen;32;der Kanal;channel ;κανάλι;kanal;канал
+Verb;32;sich beklagen;complain ;Παραπονέμαι;Žalim se;Жалим се
+Nomen;32;die Kritik;criticism ;κριτική;kritika;критика
+Nomen;32;die Menschenmenge;crowd ;πλήθος;gužva;гомила
+Adjektiv;32;anständig;decent ;ευπρεπώς;pristojno;пристојно
+Verb;32;demonstrieren;demonstrate ;Επιδεικνύω;Pokazujem;Показујем
+Nomen;32;die Ablenkung;distraction ;περισπασμός;distrakcija;забава
+Verb;32;diversifizieren;diversify;Διαφοροποιώ;Ja diverzificiram;Ја диверсификујем
+Nomen;32;der Führerschein;driving licence;άδεια οδήγησης;vozačke dozvole;возачка дозвола
+Nomen;32;die Wirtschaftsrezession;economic recession;οικονομική ύφεση;ekonomska recesija;економска рецесија
+Adjektiv;32;gebildet;educated;μορφωμένος;obrazovan;образован
+Adjektiv;32;gleich;equal ;ίσος;jednak;једнак
+Nomen;32;Der Feuerwehrmann;firefighter;πυροσβέστης;vatrogasac;ватрогасац
+Adjektiv;32;flexibel;flexible;ευέλικτος;fleksibilan;флексибилан
+Nomen;32;Die Nahrungsmittelverarbeitung;food processing;Επεξεργασίας Τροφίμων;Obrada hrane;Прехрамбена индустрија
+Conj;32;zum Beispiel;for instance;για παράδειγμα;na primjer;на пример
+Nomen;32;der Golfwagen;golf buggy;αμαξάκια του γκολφ;golf kolica;кола за голф
+Verb;32;wachsen;grow ;Εγώ μεγαλώνω;Ja rastem;Ја растем
+Nomen;32;Die Schlagzeile;headline ;επικεφαλίδα;naslov;наслов
+Conj;32;jedoch;however ;ωστόσο;međutim;међутим
+Nomen;32;die Eile;hurry ;βιασύνη;žuriti;пожурити
+Adjektiv;32;idealistisch;idealistic;ιδεαλιστική;idealistički;идеалистички
+Nomen;32;die Einwanderung;immigration ;μετανάστευση;imigracija;имиграција
+Conj;32;zusätzlich;in addition;επιπλέον;dodatno;додатно
+Nomen;32;die Fachsprache;jargon;ορολογία;žargon;жаргон
+Nomen;32;die Qualle;jellyfish;μέδουσα;meduza;медуза
+Adjektiv;32;Arbeitssuchende;job seeker;άτομα που αναζητούν εργασία;traže posao;траже посао
+Nomen;32;das Diagramm;line graph;διάγραμμα;grafikon;графикон
+Nomen;32;der Luxus;luxury ;πολυτέλεια;luksuz;луксуз
+Nomen;32;Die Mehrheit;majority ;πλειοψηφία;većina;већина
+Nomen;32;der Migrant;migrant;μετανάστης;putnik;који се сели
+Nomen;32;Der Bergarbeiter;miner ;μεταλλωρύχος;rudar;рудар
+Adjektiv;32;vorbildlich;model ;παραδειγματικός;primjeran;узоран
+Conj;32;dennoch;nevertheless (adv) ;παρ &#39;όλα αυτά;ipak
+Conj;32;aufgrund + gen.;on the basis of;λόγω + gen.;zbog + gen.;због + ген.
+Nomen;32;der Strauß;ostrich;στρουθοκάμηλος;noj;ној
+Nomen;32;der Fahrgast;passenger ;επιβάτης;putnik;путник
+Adjektiv;32;Chefsekretär;personal assistant;αρχιγραμματέας;glavni tajnik;glavni секретар
+Nomen;32;die Pressekonferenz;press conference ;συνέντευξη τύπου;konferencija za novinare;конференција за штампу
+Verb;32;befördern;promote ;Φέρνω;Ja nosim;Ја носим
+Adjektiv;32;Werbe-;promotional;διαφήμιση;oglašavanje;оглашавање
+Adjektiv;32;richtig;properly;δεξιά;pravo;десно
+Nomen;32;das Zitat;quote ;παράθεση;citat;цитат
+Verb;32;erhöhen;raise ;Εγείρουν;Podižem;Подижем
+Nomen;32;der Abfall;rubbish ;απόβλητα;otpad;отпадни
+Nomen;32;der Plan;scheme ;σχέδιο;plan;план
+Verb;32;teilen;share ;Μοιράζομαι;Dijelim;И схаре
+Adjektiv;32;einzige;single ;μονόκλινο;jedan;сингл
+Adjektiv;32;klitschnass;soaking wet;μούσκεμα;mokri;сва мокра
+Verb;32;lösen;solve ;Λύσω;Ja rješavam;Ја решавам
+Adjektiv;32;Ersatz-;spare ;αντικατάσταση;zamjena;замена
+Verb;32;stechen;stin;Τσιμπάω;Žalim;Стинг
+Nomen;32;der Stachel;sting;τσίμπημα;ubod;убод
+Verb;32;zusammenfassen;sum up;Συνοψίζω;Ja sumiram;Ја сумирам
+Nomen;32;der Chirurg;surgeon ;χειρουργός;hirurg;хирург
+Nomen;32;Die Beziehung;tie ;σχέση;odnos;однос
+Verb;32;Reise;tour ;Ταξιδεύω;Putujem;Путујем
+Verb;32;trecken;trek;Τρέφω;Rastezam se;Ја се протежем
+Verb;32;aufschließen;unlock ;Ξεκλείδω;Otključam;Ја откључам
+Verb;32;uploaden;upload;Ανεβάζω;Učitavam;И уплоад
+Nomen;32;die Villa;villa ;βίλα;vila;вила
+Adjektiv;32;reich;wealthy ;πλούσιος;bogat;богат
+Nomen;32;die Waffe;weapon ;όπλο;oružje;оружје
+Adjektiv;32;wohlhabend;well-off;πλούσιος;bogat;богат
+Adjektiv;32;akademisch;academic ;ακαδημαϊκός;akademski;академски
+Nomen;32;der Campus;campus ;πανεπιστημιούπολη;kampus;студентски град
+Adjektiv;32;konstruktiv;constructively (adv);εποικοδομητικός;konstruktivan;конструктиван
+Nomen;32;Austausch;exchange ;ανταλλαγή;razmjena;размена
+Adjektiv;32;frustrierend;frustrating ;απογοητευτικό;frustrirajući;фрустрирајући
+Verb;32;erfüllen;fulfil ;Εκπληρώνομαι;Ja ispunjavam;Ја испуњавам
+Nomen;32;der Talisman;lucky charm;φυλαχτό;amajlija;амајлија
+Adjektiv;32;unvergesslich;memorable;αξέχαστη;znamenit;памћење
+Adjektiv;32;schmerzhaft;painful ;επώδυνος;bolan;болан
+Adjektiv;32;leidenschaftlich;passionate ;παθιασμένος;strasan;страстан
+Adjektiv;32;stimulierend;stimulating;τόνωση;stimuliranje;стимулишући
+Adjektiv;32;sprachlich;linguistic ;γλώσσα;jezik;језик
+Nomen;32;der Astronaut;astronaut ;αστροναύτης;astronaut;космонаут
+Nomen;32;der Astronom;astronomer;αστρονόμος;astronom;астроном
+Nomen;32;der Kosmos;cosmos;σύμπαν;kosmos;космос
+Nomen;32;Die Mannschaft;crew ;ομάδα;tim;тим
+Nomen;32;die Schwerkraft;gravity ;βαρύτητα;gravitacija;гравитација
+Verb;32;landen;land ;Προσγειώ;Slijećem;И ланд
+Nomen;32;die Landung;landing ;προσγείωση;slijetanje;слетање
+Nomen;32;der Abschuss;launch ;εκτόξευση;lansiranje;лансирање
+Nomen;32;der Meteorit;meteorite;αερόλιθος;meteorit;метеорит
+Nomen;32;die Mission;mission ;αποστολή;misija;мисија
+Verb;32;wiedereintreten;re-enter;Επαναλαμβάνω;Ponovno ulazim;Улазим поново
+Nomen;32;der Wiedereintritt;re-entry;είσοδος;ulazak je;поновни улазак
+Nomen;32;die Raumfähre;space shuttle;διαστημόπλοιο;spejs šatl;спејс шатл
+Nomen;32;die Raumstation;space station;διαστημικό σταθμό;svemirska postaja;свемирска станица
+Nomen;32;das Raumfahrzeug;spacecraft;διαστημόπλοιο;kosmički brod;космички брод
+Nomen;32;das Teleskop;telescope ;τηλεσκόπιο;teleskop;телескоп
+Nomen;32;das Universum;universe ;σύμπαν;svemir;свемир
+Verb;32;zusammenarbeiten;cooperate ;Δουλεύω μαζί;Radim zajedno;Радим заједно
+Verb;32;unbrauchbar machen;disable;Απενεργοποιώ;Onemogućim ga;Онемогућим га
+Verb;32;nicht übereinstimmen;disagree ;Δεν συμφωνώ;Ne slažem se;Не слажем се
+Verb;32;nicht gehorchen;disobey;Δεν υπακούω;Ne slušam;Не слушам
+Adjektiv;32;unlogisch;illogical;παράλογος;nelogičan;нелогичан
+Adjektiv;32;ungeduldig;impatient ;ανυπόμονος;nestrpljiv;нестрпљив
+Adjektiv;32;unmöglich;impossible ;αδύνατος;nemoguć;немогућ
+Adjektiv;32;unwahrscheinlich;unlikely ;απίθανος;nevjerojatno;невероватно
+Adjektiv;32;unfähig;incapable;ανίκανος;nesposoban;неспособан
+Adjektiv;32;lückenhaft;incomplete;ανομοιογενής;pjegav;неједнак
+Adjektiv;32;international;international ;σε διεθνές επίπεδο;međunarodno;међународно
+Adjektiv;32;unsichtbar;invisible ;αόρατος;nevidljiv;невидљив
+Adjektiv;32;unregelmäßig;irregular ;ακανόνιστα;nepravilno;неправилно
+Adjektiv;32;unverantwortlich;irresponsible;ανεύθυνος;neodgovoran;неодговоран
+Verb;32;falsch berechnen;miscalculate;Υπολογίζω λάθος;Računam pogrešno;Израчунам погрешно
+Verb;32;missverstehen;misunderstand;Παρερμηνεύω;Pogrešno sam shvatio;Ја погрешно разумем
+Adjektiv;32;überbuchen;overbooked;υπερκράτηση;Prebukiranje;овербоок
+Adjektiv;32;überbevölkert;overpopulated;υπερπληθυσμό;prenapučena;пренасељен
+Adjektiv;32;prähistorisch;prehistoric;προϊστορικός;pretpovijesni;праисторијски
+Verb;32;überdenken;reconsider;Σκέφτομαι;Razmišljam o tome;Размишљам о томе
+Verb;32;umschreiben;rewrite ;Ξαναγράφω;Ja prepisujem;Ја преправљам
+Verb;32;unterschätzen;underestimate ;Υποτιμώ;Podcjenjujem;Потцењујем
+Adjektiv;32;unterbezahlt;underpaid;κακοπληρωμένες;nedovoljno plaćen;недовољно плаћен
+Adjektiv;32;unerwartet;unexpected ;απροσδόκητα;neočekivano;неочекивано
+Adjektiv;32;unnötig;unnecessary ;περιττός;nepotreban;непотребан
+Adjektiv;32;nicht aufzuhalten;unstoppable;ασταμάτητη;nezaustavljiv;незаустављив
+Adjektiv;32;unerfolgreich;unsuccessful ;ανεπιτυχής;neuspješan;неуспешан
+Adjektiv;32;ungewöhnlich;unusual ;ασυνήθιστος;neuobičajen;неуобичајен
+Nomen;32;Die Bearbeitung;adaptation ;επεξεργασία;obrada;обрада
+Nomen;32;Die Verabredung;appointment ;ραντεβού;imenovanje;именовање
+Nomen;32;Die Voraussetzung;assumption ;απαίτηση;zahtjev;услов
+Nomen;32;das Kabel;cable ;καλώδιο;kabel;кабл
+Nomen;32;die Kettenreaktion;chain reaction;αλυσιδωτή αντίδραση;lančana reakcija;ланчана реакција
+Adjektiv;32;verstopft;congested;συμφόρηση;zakrčen;запушен
+Verb;32;kolonisieren;colonize;Αποικίζομαι;Koloniziram;Колонизујем
+Verb;32;begegnen;confront ;Γνωρίζω;Susrećem se;И меет
+Verb;32;geweiht an;consecrated to;Ανοησίασα;Ja sam posvetio;Ја сам посветио
+Verb;32;fertig werden mit;cope with;Τελειώνω με;Završavam;Завршио сам
+Nomen;32;der Krater;crater;κρατήρας;krater;кратер
+Verb;32;vernichten;crush ;Καταστρέφω;Ja uništavam;Ја уништавам
+Verb;32;besiegen;defeat ;Νίκημαι;Porazio sam;Поразио сам
+Verb;32;zerstören;ruin ;Καταστρέφω;Ja uništavam;Ја уништавам
+Nomen;32;die Flucht;flight ;πτήση;let;лет
+Adjektiv;32;getäuscht;fooled;εξαπάτησε;prevaren;преварени
+Adjektiv;32;hektisch;frantic ;πυρετώδης;grozničav;грозничав
+Nomen;32;Der Öltank;fuel tank;δεξαμενή πετρελαίου;spremnik ulja;оил танк
+Nomen;32;Der General;general ;γενικός;opći;општи
+Adjektiv;32;ernst;grave ;σοβαρά;ozbiljno;озбиљно
+Nomen;32;Der Ernst;gravity ;βαρυτητα;ozbiljno;озбиљно
+Nomen;32;Zusammenprall;impact ;σύγκρουση;sukob;сукоб
+Adjektiv;32;unvermeidlich;inescapable;αναπόφευκτος;neizbježan;неизбежан
+Nomen;32;der Trödel;junk ;σκουπίδια;starudija;ђубре
+Adjektiv;32;bemannt;manned;επανδρωμένα;punktove;људском посадом
+Verb;32;sich anhäufen;pile up;Συσσωρεύω;Gomila sam se;Гомила сам се
+Adjektiv;32;positiv;positive ;θετικός;pozitivan;позитиван
+Adjektiv;32;schwanger;pregnant ;έγκυος;trudna;трудна
+Nomen;32;der Zweck;purpose ;σκοπός;svrha;сврха
+Verb;32;verstärken ;reinforce ;Ενισχύω;Ja pojačavam;Ја појачавам
+Adjektiv;32;relativ;relatively;σχετικά;relativno;релативно
+Nomen;32;der Ruf;reputation ;φήμη;ugled;углед
+Nomen;32;der Anstieg;rise ;αύξηση;povećanje;повећати
+Verb;32;legen;route;Καθίζω;Ja legnem;Лежао сам
+Verb;32;erkunden;scout;Εξερευνώ;Istražujem;Ја истражујем
+Nomen;32;das Gefühl;sensation ;συναίσθημα;osjećaj;осећај
+Adjektiv;32;simuliert;simulated;προσομοίωση;simuliran;симулиран
+Adjektiv;32;überrraschend;startling;überrraschend;überrraschend;уберррасцхенд
+Nomen;32;Die Vormachtstellung;ascendancy;υπεροχή;vrhovna vlast;врховна власт
+Nomen;32;Die Oberfläche;surface ;επιφάνεια;površina;површина
+Verb;32;anschwellen;swell ;Πρήνω;Ja naduvam;Ја надувам
+Verb;32;zerreißen;tear ;Σκίζω;Suzam;И суза
+Verb;32;verfolgen;track ;Ακολουθώ;Ja slijedim;Пратим
+Verb;32;niedertrampeln;trample;καταπατώ ;Ja gazim;Ја газим
+Adjektiv;32;trivial;trivial ;ασήμαντος;trivijalan;тривијалан
+Verb;32;vertreiben;uproot;Οδηγώ;Ja vozim;Ја возим
+Nomen;32;die Spitze;vanguard;κορυφή;vrh;врх
+Adjektiv;32;ehrgeizig;ambitious ;φιλόδοξος;ambiciozan;амбициозан
+Adjektiv;32;arrogant;arrogant ;αλαζονικός;arogantan;арогантан
+Adjektiv;32;energisch;assertive;ζωηρά;snažno;енергично
+Adjektiv;32;angeberisch;big-headed;απαιτητικός;pretenciozan;претенциозан
+Adjektiv;32;herrisch;bossy;αυταρχικός;zapovjednički;заповеднички
+Adjektiv;32;tolerant;broad-minded;ανεκτικός;tolerantan;толерантан
+Adjektiv;32;brüsk;brusque;απότομα;osorno;осорно
+Adjektiv;32;entschlossen;determined ;αποφασισμένος;odlučan;одлучан
+Adjektiv;32;gelassen;easy-going;ήρεμα;mirno;мирно
+Adjektiv;32;offen;frank ;ανοιχτό;otvoreno;отворен
+Adjektiv;32;großzügig;generous ;γενναιόδωρος;velikodušan;великодушан
+Adjektiv;32;begabt;talented ;προικισμένος;darovit;даровит
+Adjektiv;32;unreif;immature;ανώριμος;nezreo;незрео
+Adjektiv;32;unsicher;insecure;αβέβαιος;nesiguran;несигуран
+Adjektiv;32;bescheiden;modest ;μέτρια;skromno;скромно
+Adjektiv;32;engstirnig;narrow-minded;στενόμυαλος;uskogrudan;затуцан
+Adjektiv;32;nervös;nervous ;νευρικά;nervozno;нервозно
+Adjektiv;32;kontaktfreudig;outgoing;κοινωνικός;društven;дружељубив
+Adjektiv;32;übermäßig;pushy;υπερβολικά;pretjerano;прекомерно
+Adjektiv;32;reserviert;reserved;κατοχυρωμένα;rezerviran;резервисан
+Adjektiv;32;selbstsicher;self-confident;αυτοπεποίθηση;samouvjeren;самоуверен
+Adjektiv;32;langsam;slow ;αργά;polako;полако
+Adjektiv;32;stur;stubborn ;πεισματάρης;tvrdoglav;тврдоглав
+Adjektiv;32;taktvoll;tactful;προσεκτικός;taktičan;тактичан
+Adjektiv;32;taktlos;tactless;απρεπής;netaktičan;нетактичан
+Adjektiv;32;knickrig;tight-fisted;knickrig;knickrig;кницкриг
+Nomen;32;die Fähigkeit;ability ;ικανότητα;sposobnost;способност
+Nomen;32;die Maßnahmen;action ;μέτρα;mjere;mere
+Nomen;32;die Aktivität;activity ;δραστηριότητα;djelatnost;активност
+Nomen;32;das Aussehen;appearance ;εμφάνιση;izgled;изглед
+Nomen;32;das Selbstvertrauen;confidence ;αυτοπεποίθηση;samopouzdanje;самопоуздање
+Nomen;32;die Kreation;creation ;δημιουργία;stvaranje;стварање
+Nomen;32;Die Kreativität;creativity ;δημιουργικότητα;kreativnost;креативност
+Nomen;32;Der Schöpfer;creator ;δημιουργός;tvorac;творац
+Nomen;32;Die Dunkelheit;darkness ;σκοτάδι;tama;тама
+Nomen;32;der Unterschied;difference ;διαφορά;razlika;разлика
+Nomen;32;die Elektrizität;electricity ;ηλεκτρισμός;elektricitet;електрицитет
+Nomen;32;das Glück;happiness ;ευτυχία;sreća;срећа
+Nomen;32;Die Wichtigkeit;importance ;σπουδαιότητα;važnost;значај
+Nomen;32;Die Verbesserung;improvement ;βελτίωση;poboljšanje;побољшање
+Nomen;32;Die Erfindung;invention ;εφεύρεση;izum;изум
+Nomen;32;Der Erfinder;inventor ;εφευρέτης;izumitelj;проналазач
+Nomen;32;Die Untersuchung;investigation ;έρευνα;istraga;истрага
+Nomen;32;der Wahnsinn;madness ;τρέλλα;ludilo;лудило
+Nomen;32;Der Musiker;musician ;μουσικός;glazbenik;музичар
+Nomen;32;Der Künstler;performer ;καλλιτέχνης;umjetnik;уметник
+Nomen;32;Der Professor;professor ;καθηγητής;profesor;професор
+Nomen;32;die Relevanz;relevance ;συνάφεια;relevantnost;релевантност
+Nomen;32;Der Wissenschaftler;scientist ;επιστήμονας;naučnik;научник
+Verb;32;erwerben;acquire ;Αγοράζω;Shvaćam;Стекла сам
+Nomen;32;die Autorität;authority ;εξουσία;vlast;власт
+Adjektiv;32;untere;bottom ;χαμηλότερος;niže;нижи
+Adjektiv;32;buschig;bushy;θαμνώδης;gust;жбунаст
+Nomen;32;die Zusammenarbeit;collaboration ;συνεργασία;saradnja;сарадња
+Verb;32;unterscheiden;distinguish ;Διακρίνω;Razlikujem;Разликујем
+Verb;32;aussteigen;drop out of;Βγαίνω;Silazim;Силазим
+Adjektiv;32;mühelos;effortlessly (adv);αβίαστα;bez napora;напора
+Adjektiv;32;Elite-;elite;αφρόκρεμα;elita;елита
+Adjektiv;32;ermutigend;encouraging ;ενθάρρυνση;ohrabrujući;охрабрујући
+Nomen;32;Die Gleichung;equation ;εξίσωση;jednačina;једначина
+Nomen;32;der Sachverstand;expertise ;πραγματογνωμοσύνη;ekspertiza;експертиза
+Nomen;32;der Fluss;flow ;ροή;teći;проток
+Nomen;32;das Vermögen;fortune ;περιουσιακών στοιχείων;imovina;актива
+Nomen;32;der Geheimdienst;intelligences;νοημοσύνη;inteligencija;интелигенција
+Nomen;32;die Glühbirne;light bulb;λάμπα;žarulja;сијалица
+Verb;32;messen;measure ;Μετρούμαι;Ja mjerim;Ја мерим
+Adjektiv;32;munter;merry;φαιδρά;veselo;весело
+Nomen;32;der Mythos;myth ;μύθος;mit;мит
+Verb;32;navigieren;navigate;Πλοηγώ;Ja plovim;Ја пловим
+Nomen;32;Die Gelegenheit;opportunity ;ευκαιρία;prilika;прилика
+Nomen;32;die Pfote;paw ;πόδι ζώου;šapa;шапа
+Nomen;32;das Potenzial;potential ;δυνητικός;potencijal;потенцијал
+Nomen;32;das Vorurteil;prejudice ;προκατάληψη;predrasuda;предрасуда
+Adjektiv;32;Prestige-;prestigious;κύρους;prestižan;престижан
+Nomen;32;das Wunder;prodigy;θαύμα;čudo;чудо
+Verb;32;beweisen;prove ;Αποδεικνύω;Dokazujem;Доказујем
+Adjektiv;32;rebellisch;rebellious;ανυπότακτος;buntovnički;бунтован
+Adjektiv;32;ungefähr;roughly ;για;oko;око
+Verb;32;schockieren;shock ;Είμαι συγκλονισμένος;Šokiran sam;Шокиран сам
+Adjektiv;32;räumlich;spatial;χωρική;prostorni;просторни
+Adjektiv;32;sensationell;spectacular ;συγκλονιστικός;senzacionalan;сензационалан
+Nomen;32;der Strom;stream ;ρεύμα;struja;струја
+Adjektiv;32;unterstützend;supportive;υποστηρικτική;podržavaju;подршку
+Nomen;32;Der Tastsinn;touch ;αίσθηση της αφής;osjećaj dodira;чуло додира
+Nomen;32;der Reichtum;abundance;πλούτος;bogatstvo;богатство
+Nomen;32;die  Anpassungsfähigkeit;adaptability;ικανότητα προσαρμογής;prilagodljivost;прилагодљивост
+Adjektiv;32;alt;ancient ;παλαιός;stari;стар
+Verb;32;nach etw streben;aspire to;Αγωνίζομαι για κάτι;Težim sth;Тежим стх
+Adjektiv;32;konventionell;conventional ;συμβατικά;konvencionalno;конвенционално
+Nomen;32;Ding Verachtung;disdain;περιφρόνηση;prezir;презир
+Verb;32;sich duellieren;duel;Εγώ μονομαχούμαι;Ja sam se dvoboj;Ја сам се борио
+Verb;32;erheben;elevate;Ανυψώ;Podižem;Подижем
+Verb;32;sich auszeichnen;excel;Διακρίνω τον εαυτό μου;Razlikujem se;Ја се разликујем
+Verb;32;unterbringen;house ;Εγώ φιλοξενώ;Smjestim se;Прихватам
+Adjektiv;32;luxuriös;luxurious;πολυτελής;luksuzan;луксузан
+Verb;32;staunen;marvel;Είμαι έκπληκτος;Ja sam zapanjen;Ја сам запањен
+Nomen;32;die Meritokratie;meritocracy;αξιοκρατία;meritokracije;заслузи
+Verb;32;entwickeln;nurture;Αναπτύσσω;Ja se razvijam;Ја се развијам
+Nomen;32;die Odyssee;odyssey;Οδύσσεια;Odiseja;Одисеја
+Verb;32;entwachsen;outgrow;Αναπτύχθηκα;Prerasla sam;Прерасла сам
+Nomen;32;die Sensation;sensation ;αίσθηση;senzacija;сензација
+Nomen;32;die Zeitkapsel;time capsule;χρονοκάψουλα;vremenska kapsula;Тиме capsule
+Verb;32;verwandeln;transform ;Μεταμορφώνομαι;Ja se transformiram;Ја се трансформишем
+Nomen;32;Das Kind;youngster ;παιδί;dijete;дете
+Nomen;32;der Gelegenheitskauf;bargain ;παζάρι;pogodba;погодба
+Nomen;32;Das Bargeld;cash ;μετρητά;gotovina;готовина
+Nomen;32;Das Kleingeld;change ;ψιλά;sitan novac;ситан новац
+Nomen;32;das Skonto;discount ;έκπτωση στα μετρητά;gotovinski popust;попуст за готовину
+Nomen;32;Die Quittung;receipt ;παραλαβή;potvrda;признаница
+Nomen;32;Die Rückerstattung;refund;επιστροφή χρημάτων;povrat;враћање новца
+Nomen;32;Das Verkauf;sale ;πώληση;prodaja;продаја
+Adjektiv;32;preisgünstig;value for money;φθηνό;jeftin;јефтин
+Verb;32;verschwenden;waste ;Σπαταλάω;Ja gubim;Ја губим
+Nomen;32;Die Rechnung;bill ;νομοσχέδιο;račun;рачун
+Nomen;32;Das Geldautomat;cashpoint;ATM;bankomat;банкомат
+Nomen;32;der Kredit;credit ;πίστωση;kredit;кредит
+Nomen;32;das Girokonto;current account;τρεχούμενος λογαριασμός;tekući račun;текући рачун
+Nomen;32;das Debet;debit;χρεώσεις;dugovanja;задужења
+Verb;32;sich verschulden;get into debt;πάρει χρέος;ući u dugove;задужити се
+Nomen;32;der Zins;interest ;τόκος;interes;камата
+Nomen;32;Die Kontoüberziehung;overdraft;Overdraft;nalog za isplatu koji nema dovoljno pokriće;Дозвољени минус
+Nomen;32;das Sparkonto;savings account;αποταμιευτικός λογαριασμός;štedni račun;штедни рачун
+Verb;32;Geld abheben;withdraw money;Ανάληψη χρημάτων;Povuci novac;Повуци новац
+Verb;32;sich belaufen auf;come to;Αξίζει να;Iznosim;Износим
+Verb;32;sich einschränken;cut back;Περιορίζω τον εαυτό μου;Ograničavam se;Ограничавам се
+Verb;32;verteilen;give away;Διανέμω;Ja distribuiram;Ја дистрибуирам
+Verb;32;zurückzahlen;pay back;Πληρώνω πίσω;Vraćam;Враћам
+Verb;32;aufschnappen;pick up;Κλείνω;Razbijam se;Разбијам се
+Verb;32;ausverkaufen;sell out;Πουλάω έξω;Ja prodajem;Ја се продајем
+Verb;32;sich spendieren;splash out;Αγοράζω τον εαυτό μου;Kupujem sebe;Купујем себе
+Nomen;32;Die Abkürzung;abbreviation ;συντόμευση;prečac;пречица
+Adjektiv;32;entgeistert;aghast;άναυδος;zapanjen;запањен
+Nomen;32;Die Verzeihung;apology ;συγχώρεση;praštanje;опроштај
+Nomen;32;der Applaus;applause;χειροκροτήματα;pljesak;аплауз
+Verb;32;streiten;argue ;Υποστηρίζω;Ja se svađam;Ја се свађам
+Adjektiv;32;erstaunt;astounded;έκπληκτος;začuđen;запањен
+Verb;32;wert sein;be worth;αξίζει;biti vrijedan;бе вортх
+Nomen;32;die Zweigstelle;branch ;υποκατάστημα;poslovnica;filijala
+Nomen;32;der Rand;brink ;σύνορο;granica;граница
+Verb;32;Beifall klatschen;clap ;Αγκαλιάζομαι;Ja plješću klicati;Ја пљескам навијачице
+Verb;32;verlangen;demand ;Απαιτώ;Zahtijevam;Захтевам
+Nomen;32;der Zweifel;doubt ;αμφιβολία;sumnja;сумња
+Adjektiv;32;mit leeren Händen;empty-handed;με άδειο χέρι;praznih ruku;празних руку
+Verb;32;grinsen;grin ;Χαζεύω;Ja se smijem;Осмехујем се
+Nomen;32;die Handschrift;handwriting ;γραφικός χαρακτήρας;rukopis;рукопис
+Nomen;32;die Zentrale;headquarters ;αρχηγείο;štab;штаб
+Nomen;32;der Anreiz;incentive ;κίνητρο;pobuda;подстицај
+Verb;32;ausstellen;issue ;Εκθέτω;Ja izlažem;Ја излажем
+Nomen;32;der Hauptgewinn;jackpot;το πρώτο βραβείο;prva nagrada;prva награда
+Nomen;32;der Magister;MA;Magister;Magister;Магистар
+Adjektiv;32;riesig;massive ;τεράστιος;ogroman;огроман
+Nomen;32;der Schein;note ;νομοσχέδιο;račun;рачун
+Adjektiv;32;freiwillig;optional ;οικειοθελώς;dobrovoljno;добровољно
+Verb;32;schulden;owe ;Χρωστάω;Dugujem ti;Дугујем ти
+Nomen;32;die Nachwelt;posterity;απόγονοι;potomstvo;потомство
+Verb;32;bewahren;preserve ;Διατηρώ;Ja čuvam;Ја чувам
+Nomen;32;der Beweis;proof ;απόδειξη;dokazi;доказ
+Conj;32;vorausgesetzt;provided that;υπό την προϋπόθεση;ako;обезбеђен
+Nomen;32;die Ration;ration;σιτηρέσιο;obrok;следовање
+Verb;32;erzielen;reach ;Επιτυγχάνω;Postižem;Ја постижем
+Verb;32;wiederaufnehmen;resume ;Επαναλαμβάνω;Nastavljam;Настављам
+Verb;32;behalten;retain ;Κρατώ;Zadržavam;Држим
+Verb;32;aufdecken;reveal ;Αποκαλύπτω;Ja otkrivam;Ја откривам
+Nomen;32;die Rupie;rupee;ρουπία;rupija;рупија
+Nomen;32;Die Ultraschalluntersuchung;scan ;υπέρηχος;ultrazvuk;ултразвук
+Verb;32;unterschreiben;sign ;Υπογράφω;Potpisujem;Потписујем
+Nomen;32;die Erkennungsmelodie;signature tune;τραγούδι;karakteristična melodija;сонг
+Verb;32;überfliegen;skim;Έχω απομακρυνθεί;Prelistao sam;Прелистао сам
+Adjektiv;32;sprachlos;stunned;άφωνος;bez riječi;без речи
+Nomen;32;Summe;sum ;άθροισμα;suma;збир
+Adjektiv;32;unheilbare (Krankheit);terminal illness;ανίατη ασθένεια;neizlječive bolesti;неизлечиве болести
+Nomen;32;die Transaktion;transaction ;συναλλαγή;transakcija;трансакција
+Adjektiv;32;unbewacht;unattended;αφύλακτος;nečuvan;незаштићен
+Adjektiv;32;unangenehm;unpleasant ;δυσάρεστος;neugodan;непријатан
+Nomen;32;Das Automat;vending machine;μηχανή;mašina;машина
+Conj;32;wohingegen;whereas ;ενώ;a;а
+Verb;32;flüstern;whisper ;Ψιθυρίζω;Šaputam;Шапутам
+Conj;32;ohne Weiteres;without further ado;χωρίς περαιτέρω πτώση;bez daljeg odlaganja;без даљег одлагања
+Nomen;32;der Knöchel;ankle ;αστράγαλος;gležanj;чланак
+Nomen;32;die Arterie;artery;αρτηρία;arterija;артерија
+Nomen;32;der Knochen;bone ;οστό;kost;кост
+Nomen;32;die Brust;chest ;στήθος;grudi;груди
+Nomen;32;das Kinn;chin ;πηγούνι;brada;брада
+Nomen;32;das Herz;heart ;καρδιά;srce;срце
+Nomen;32;Die Ferse;heel ;φτέρνα;peta;пета
+Nomen;32;Die Hüfte;hip ;ισχίο;kuk;кук
+Nomen;32;Die Niere;kidney ;νεφρό;bubreg;бубрег
+Nomen;32;die Leber;liver ;συκώτι;jetra;јетра
+Nomen;32;die lage;lung ;πνεύμονας;plućno krilo;плућно крило
+Nomen;32;die Haut;skin ;δέρμα;koža;кожа
+Nomen;32;der Schenkel;thigh ;πόδι;noga;нога
+Nomen;32;die Kehle;throat ;λαιμός;grlo;грло
+Nomen;32;Die Zunge;tongue ;γλώσσα;jezik;језик
+Nomen;32;Ader;vein ;φλέβα;vena;вена
+Nomen;32;Handgelenk;wrist ;καρπό;ručni zglob;ручни зглоб
+Adjektiv;32;gegen etw allergisch sein;be allergic to;να είσαι αλλεργικός στο sth;biti alergični na sth;бити алергичан на стх
+Verb;32;süchtig sein/werden;be/become addicted to;να είναι εθισμένοι;biti ovisnik;бе аддицтед
+Verb;32;fettleibig sein/werden;be/become obese;να είστε παχύσαρκοι;biti pretilo;бити гојазан
+Verb;32;sbrechen;break ;Σπάω;Ja slomim;И бреак
+Verb;32;verrenken;dislocate;Σφάλω;Pogriješio sam;Грешим
+Verb;32;schwindelig sein;feel dizzy;να ζαλίζετε;budite vrtoglavi;бити вртоглаво
+Verb;32;brechen;fracture;Σπάω;Ja slomim;И бреак
+Verb;32;sich von einer Krankheit erholen;get over an illness;να ανακάμψει από μια ασθένεια;da se oporavi od bolesti;да се опорави од болести
+Verb;32;sich eine Krankheit zuziehen;get/catch an infection;να συρρικνωθεί μια ασθένεια;zaraziti bolest;болест
+Verb;32;Medizin erhalten/verschreiben;get/give a prescription;Λήψη / συνταγογράφηση φαρμάκου;Primanje / propisivanje lijeka;Примајте / преписујете лекове
+Verb;32;eine Überprüfung untergehen;go for check-up;για να πάει κάτω μια αναθεώρηση;da pregledamo pregled;да пређемо на преглед
+Verb;32;eine ausgeglichene Nahrung haben;have a balanced diet;να έχει μια ισορροπημένη διατροφή;imati uravnoteženu prehranu;имати уравнотежену исхрану
+Verb;32;Fieber haben;have a temperature;Έχετε πυρετό;Imajte groznicu;Имам грозницу
+Verb;32;sich operieren lassen;have an operation;για να λειτουργήσει;za rad;да се оперише
+Verb;32;sich spritzen lassen / eine Spritze geben;have/give an injection;πάρτε πιτσιλιστεί / δώστε ένεση;poprskati / dati injekciju;попрскати / дати ињекцију
+Verb;32;das Risiko vergrößern;increase the risk of;αυξάνουν τον κίνδυνο;povećati rizik;повећати ризик
+Verb;32;sich verletzen;injure oneself;Πονάω τον εαυτό μου;Povrijedio sam se;Повредио сам се
+Verb;32;Symptome abschwächen;relieve symptoms;Μειώστε τα συμπτώματα;Ublažiti simptome;Ублажити симптоме
+Verb;32;zittern;shiver ;Κουνάω;Tresem se;Ја се тресем
+Verb;32;verstauchen;sprain;Διαστρέφω;Uganuo sam;И угануће
+Verb;32;an Herzkrankheit leiden;suffer from heart disease ;να υποφέρουν από καρδιακές παθήσεις;da pate od srčanih bolesti;да пате од срчаних обољења
+Verb;32;Blutdruck messen;take your blood pressure;Μετρήστε την αρτηριακή πίεση;Izmjerite krvni tlak;Измерите крвни притисак
+Verb;32;behandeln;treat somebody (for);Αντιμετωπίζω;Ja liječim;Ја лечим
+Verb;32;verdrehen;twist ;Στρίβω;Ja se okrećem;Уврнула сам се
+Verb;32;trainieren;work out;Εκπαιδεύω;Treniram;Тренирам
+Adjektiv;32;gesund wie ein Fisch im Wasser sein;be as right as rain;να είναι υγιής ως ψάρι στο νερό;budite zdravi kao riba u vodi;будите здрави као риба у води
+Adjektiv;32;wieder auf den Beinen sein;be back on your feet;να είναι και πάλι στα πόδια του;da bude ponovno na nogama;да опет буде на ногама
+Adjektiv;32;kerngesund sein;be as fit as a fiddle;να είστε υγιείς;biti zdrav;буди здрав
+Adjektiv;32;sich kaum noch auf den Beinen halten können;be on your last legs;μπορεί να σταθεί στα πόδια τους;jedva stoje na nogama;једва стоје на ногама
+Adjektiv;32;nicht ganz auf dem Posten sein;be/feel under the weather ;όχι στη θέση;ne baš na mjestu;не баш на том мјесту
+Adjektiv;32;wie die Fliegen sterben;drop like flies;πώς πεθαίνουν οι μύγες;kako muhe umiru;како муве умиру
+Adjektiv;32;in Form bleiben;keep in shape;να μείνετε σε φόρμα;ostani u formi;остани у форми
+Conj;32;solange;as long as;όσο;sve dok;све док
+Nomen;32;der Aspekt;aspect ;άποψη;aspekt;аспект
+Nomen;32;Verfügbarkeit;availability ;διαθεσιμότητα;dostupnost;Доступност
+Adjektiv;32;verfügbar;available ;διαθέσιμος;dostupan;доступан
+Nomen;32;Die Vermeidung;avoidance;αποφυγή;izbjegavanje;избегавање
+Verb;32;erfolgreich bekämpfen;beat ;Αγωνίζομαι με επιτυχία;Uspješno se borim;Успешно се борим
+Verb;32;das Bewusstsein verlieren;black out;Χάω συνείδηση;Gubim svijest;Губим свест
+Nomen;32;der Körper;body ;σώμα;tijelo;тело
+Verb;32;kochen;boil ;Μαγειρεύω;Kuham;Кухам
+Nomen;32;die Gehirnzelle;brain cell;κυττάρων του εγκεφάλου;stanica mozga;можданих ћелија
+Nomen;32;das Kalzium;calcium ;ασβέστιο;kalcijum;калцијум
+Adjektiv;32;chronisch;chronic ;χρόνιος;kroničan;хроничан
+Adjektiv;32;tödlich;deadly ;θανάσιμα;ubojit;смртан
+Nomen;32;Die Benachteiligung;deprivation;διάκριση;diskriminacija;дискриминација
+Conj;32;trotz;in spite of;παρά;bez obzira na;упркос
+Nomen;32;der Nachtisch;dessert ;επιδόρπιο;desert;десерт
+Adjektiv;32;Ernahrungs-;dietary;αντιμετώπιση των θρεπτικών συστατικών;hranjivi liječenje;лечење нутриент
+Adjektiv;32;behindert;disabled ;ανάπηρος;onesposobljen;онемогућен
+Nomen;32;Die Ausrüstung;equipment ;εξοπλισμός;oprema;опрема
+Verb;32;übersteigen;exceed ;Υπερβαίνω;Prekoračim;Прекорачио сам
+Verb;32;ausschließen;exclude ;Εγώ αποκλείω;Ja isključujem;Ја искључујем
+Nomen;32;Die Augenkarte;eye chart;γράφημα μάτι;oko grafikon;око графикон
+Nomen;32;Die Flexibilität;flexibility ;ευκαμψία;savitljivost;еластичност
+Nomen;32;Die Bratpfanne;frying pan;τηγάνι;tava;тигањ
+Nomen;32;das Gluten;gluten;γλουτένη;gluten;глутен
+Adjektiv;32;Regierungs-;governmental;κυβέρνηση;vlada;влада
+Nomen;32;der Heuschnupfen;hay fever;αλλεργική ρινίτιδα;peludna groznica;поленска грозница
+Nomen;32;die Schwerindustrie;heavy industry;βαριά βιομηχανία;teška industrija;teška индустрија
+Conj;32;in dem Fall;in case;στην περίπτωση;u slučaju;у случају
+Adjektiv;32;Innenstadt-;inner-city;inner-city;Inner-City;градске
+Nomen;32;die Aufnahme;intake ;εγγραφή;snimanje;снимање
+Nomen;32;Eisen;iron ;σίδερο;željezo;гвожђе
+Verb;2;abrechnen;settle;εγκαθιστούμε;se smjestimo;се решавамо
+Verb;2;ankommen auf;arrive;φτάνουμε;stižemo;стижемо
+Verb;2;aufgeben;give up;εγκαταλείπουμε;odustajemo;одустајемо
+Verb;2;automatisieren;automate;αυτοματοποιούμε;automatiziramo;аутоматизујемо
+Verb;2;bestellen;order;διατάζουμε;naručujemo;наручујемо
+Verb;2;sich bewerben bei/auf;apply at / on;εφαρμόζουμε σ/ on;primjenjujemo u / on;примењујемо на / он
+Verb;2;einstellen;hire;μισθούμε;unajmljujemo;унајмљујемо
+Verb;2;entstehen;arise;αναδυόμαστε;ustati;се појавимо
+Verb;2;erfassen;capture;συλλαμβάνουμε;hvatamo;хватамо
+Verb;2;erledigen;do it;κάνουμε;radimo to;то радимо
+Verb;2;erreichen;achieve;φτάνουμε;dolazimo;долазимо
+Verb;2;ersetzen;replace;αντικαθιστούμε;zamjenjujemo;ве реплаце
+Verb;2;finanzieren;finance;χρηματοδοτούμε;financiramo;финансирамо
+Verb;2;liefern;deliver;παραδίδουμε;isporučujemo;испоручујемо
+Verb;2;sich verändern;change;αλλάζουμε;se mijenjamo;се променимо
+Verb;2;warten;are waiting;περιμένουμε;čekamo;чекамо
+Nomen;2;die Arbeitshandschuhe, -;work gloves;τα γάντια εργασίας;rukavice;радне рукавице
+Nomen;2;die Außendienst, -;field service;την υπηρεσία πεδίου;na terenu;на терену
+Nomen;2;die Beziehung, -en;relationship;τη σχέση;odnos;однос
+Nomen;2;die Bohrmaschine, -n;drill;τρυπάνι;bušilica;бушилица
+Nomen;2;das Eimer, -;bucket;τον κάδο;u kantu;тхе буцкет
+Nomen;2;die Filiale, -n;branch;υποκατάστημα;grani;тхе бранцх
+Nomen;2;die Fortfildung, -en;fortification;την οχύρωση;utvrda;фортификација
+Nomen;2;der Hammer, -ä;hammer;σφυρί;čekić;чекић
+Nomen;2;der Hausartzt, -äe;family doctor;τον οικογενειακό γιατρό;obiteljskog liječnika;породичног лекара
+Nomen;2;die Heizung, -en;heating system;τη θέρμανση;grijanje;гријање
+Nomen;2;die Leitung, -en;The administration;τη γραμμή;na liniji;линија
+Nomen;2;das Marketing, -;marketing;την εμπορία;marketing;маркетинг
+Nomen;2;der Mitmensch, -en;fellow man;ο συνάνθρωπος;čovjeku;човек
+Nomen;2;der Nebenjob, -s;part-time job;τη μερική απασχόληση;skraćeno radno vrijeme;посао са скраћеним радним временом
+Nomen;2;die Neuigkeit, -en;news;τις ειδήσεις;vijesti;вијести
+Nomen;2;der Pinsel, -;brush;πινέλο;četkom;четком
+Nomen;2;die Praxis, -;practice;την πρακτική;praksi;пракси
+Nomen;2;der Roboter, -;robot;ρομπότ;robota;робот
+Nomen;2;der Scanner, -;scanner;σαρωτή;skener;скенер
+Nomen;2;der Schutzhelm, -e;protective helmet;κράνος ασφαλείας;zaštitnu kacigu;заштитну кацигу
+Nomen;2;die Schwäche, -n;weakness;την αδυναμία;slabost;слабост
+Nomen;2;die Schwierigkeit, -en;difficulty;τη δυσκολία;poteškoća;потешкоћа
+Nomen;2;die Solaranlage, -n;solar system;ηλιακό σύστημα;Sunčev sustav;соларног система
+Nomen;2;die Stärke, -n;strenght;τη δύναμη;snagu;снагу
+Nomen;2;das Stipendium, -ien;scholarship;την υποτροφία;stipendiju;стипендију
+Nomen;2;der Umsatz, -üe;sales;τον κύκλο εργασιών;prometa;промет
+Nomen;2;die Veränderung, -en;change;την αλλαγή;promjena;промене
+Nomen;2;das Vermögen, -;Fortune;την τύχη;bogatstvo;среће
+Nomen;2;der Wandel, -;change;την αλλαγή;promjena;промене
+Nomen;2;der Wasserhahn, -äe;faucet;τη βρύση;slavina;тхе фауцет
+Nomen;2;der Werkzeugkasten, -ä;toolbox;την εργαλειοθήκη;alatni okvir;тоолбок
+Nomen;2;die Zange, -n;forceps;τα πένσα;kliješta;клешта
+Nomen;2;die Zulassung, -en;admission;έγκριση;odobrenje;одобрење
+Adjektiv;2;automatisch;automatically;αυτομάτως;automatsko;аутоматско
+Adjektiv;2;einsam;lonely;μοναχικός;usamljen;усамљен
+Adjektiv;2;vergleichbar;comparable;συγκρίσιμος;usporedivo;упоредив
+Nomen;1;der Anhang, -ä;appendix;προσάρτημα;u dodatku;у додатку
+Nomen;1;das Anschreiben, -;cover letter;τη συνοδευτική επιστολή;popratnog pisma;пропратно писмо
+Nomen;1;das Aufgabengebiet, -e;task area;περιοχή εργασιών;područje zadatka;задатак
+Nomen;1;die Branche, -n;industry;βιομηχανία;industriji;индустрије
+Nomen;1;die Charaktereigenschaft, -en;character trait;χαρακτηριστικό χαρακτήρα;karakterna crta;карактерна црта
+Nomen;1;die Einarbeitung, -;The training;την εκπαίδευση;treninga;тренинга
+Nomen;1;die Gerschäftsbedingungen, -;business conditions;τους επιχειρηματικούς όρους;uvjetima poslovanja;услови пословања
+Nomen;1;der Lebensabschnitt, -e;period of life;την περίοδο της ζωής;razdoblje života;периоду живота
+Nomen;1;die Leidenschaft, -en;passion;πάθος;strast;тхе пассион
+Nomen;1;die Pflicht, -en;duty;καθήκον;dužnost;дужност
+Nomen;1;das Profil, -e;profile;προφίλ;profila;профил
+Nomen;1;der Rucksack, -üe;backpack;σακίδιο;ruksak;руксак
+Nomen;1;die Spezialität, -en;specialty;την ειδικότητα;specijalitet;специјалитет
+Nomen;1;der Steckbrief, -e;profile;προφίλ;profila;профил
+Nomen;1;die Vorlage, -n;template;πρότυπο;predložak;шаблон
+Nomen;1;die Zusage, -n;commitment;τη δέσμευση;obvezu;обавеза
+Nomen;1;die Zusatzqualifikation, -en;additional qualification;πρόσθεπροσόν;dodatnu kvalifikaciju;додатна квалификација
+Verb;1;abschalten;turn off;απενεργοποιούμε;isključimo;искључимо
+Verb;1;achten auf;pay attention;δίνουμε προσοχή;obraćamo pozornost;обраћамо пажњу
+Verb;1;etwas angeben;specify something;αναφέρουμε κάτι;određujemo nešto;Ми нешто прецизирамо
+Verb;1;sich begeistern;are excited;είμαστε ενθουσιασμένοι;uzbuđeni smo;узбуђени смо
+Verb;1;behaupten;claim;ισχυριζόμαστε;tvrdimo;тврдимо
+Verb;1;sich beschweren bei/über;complain at / about;διαμαρτύρονται για / περίπου;žalimo se na / oko;жалимо се на / око
+Verb;1;erwähnen;mention;αναφέρουμε;ćemo spomenuti;споменемо
+Verb;1;funtionieren;work;δουλεύουμε;radimo;радимо
+Verb;1;sich gewöhnen;get used to it;συνηθίζουμε σε αυτό;navikavamo se na to;навикавамо се на то
+Verb;1;verlosen;We are giving away;δίνουμε μακριά;dijelimo;дајемо
+Verb;1;wirken;work;δουλεύουμε;radimo;радимо
+Verb;1;sich wohlfühlen;feel good;αισθανόμαστε καλά;osjećamo se dobro;осећамо се добро
+Adjektiv;1;angemessen;reasonable;λογικός;razuman;разуман
+Adjektiv;1;geeignet;suitable;κατάλληλος;pogodan;погодан
+Adjektiv;1;gefühlvoll;emotional;συναισθηματική;emocionalan;емотиван
+Adjektiv;1;geizig;stingy;τσιγκούνης;škrt;шкрт
+Adjektiv;1;kollegial;cooperative;συνεργατική;zadruga;задруга
+Adjektiv;1;launisch;moody;κακόκεφος;ćudljiv;суморан
+Adjektiv;1;lebendig;alive;ζωντανός;živ;жив
+Adjektiv;1;schüchtern;shy;ντροπαλός;stidljiv;стидљив
+Adjektiv;1;sparsam;economical;οικονομικός;ekonomičan;економичан
+Adjektiv;1;temperamentvoll;spirited;ζωηρός;odlučan;ватрен
+Adjektiv;1;unbefristet;permanent;μόνιμος;trajan;трајан
+Adjektiv;1;unternehmungslustig;enterprising;επιχειρηματικός;poduzetan;предузимљив
+Adjektiv;1;vergesslich;forgetful;ξεχασιάρης;zaboravan;забораван
+Adjektiv;1;verpflichtet;Committed;όριο;granica;граница
+Adjektiv;1;vollständig;Completed;εντελώς;potpuno;потпуно
+Adjektiv;1;zurückhaltend;cautious;προσεκτικός;obazriv;обазрив
+Nomen;2;die Phase, -n;phase;τη φάση;faza;фаза
+Nomen;2;das Gehirn, e ;brain;τον εγκέφαλο;mozak;мозак
+Nomen;2;die Pubertät, -;puberty;εφηβεία;pubertet;пубертет
+Nomen;2;der Altersgenosse, -n;peer;του ομότιμου;vršnjak;вршњак
+Verb;2;austragen;carry out;πραγματοποιούμε;provodimo;спроводимо
+Nomen;2;die Geburt, -en;birth;τη γέννηση;rođenje;рођење
+Nomen;2;die Gleichaltrige, -n;peers;τους συνομηλίκους;vršnjaci;вршњаци
+Verb;2;gestalten;design;σχεδιάζουμε;dizajniramo;дизајнирамо
+Nomen;2;die Umstellung, -en;conversion;τη μετατροπή;pretvaranje;конверзија
+Verb;2;hinauszögern;delay;καθυστερούμε;odgađamo;одлажемо
+Nomen;2;der Durchschnitt, -e;average;μέσο όρο;prosjek;просек
+Adjektiv;2;mühsam;laborious;κοπιώδης;mučan;тежак
+Nomen;1;die Nachricht, -en;message;μήνυμα;poruka;порука
+Adjektiv;1;sehenswert;worth seeing;αξίζει να δείτε;vrijedi vidjeti;вреди видети
+Conj;1;weiterhin;Farther;επί πλέον;osim toga;штавише
+Verb;1;beobachten;observe;παρακολουθούμε;gledamo;гледамо
+Nomen;1;das Wettbewerb, -e;competition;τον ανταγωνισμό;natjecanje;такмичење
+Nomen;1;das Naturschutygebiet, -e;natural area;τη φυσική περιοχή;prirodno područje;природно подручје
+Nomen;1;die Geschäftsbedingungen, -;terms and conditions;τους όρους και τις προϋποθέσεις;odredbe i odredbe;услове и одредбе
+Nomen;1;das Stichwort, -ö er;keyword;τη λέξη-κλειδί;ključna riječ;кључна реч
+Adjektiv;1;passend;suitable;κατάλληλος;pogodan;погодан
+Nomen;2;das Heimweh, -;homesickness;νοικοκυριό;kucnost;куцност
+Nomen;3;die Gardine, -n;curtain;την κουρτίνα;zavjesa;завеса
+Nomen;3;das Parkett, -s;parquet;παρκέ;parket;паркет
+Nomen;3;die Puppe, -n;doll;την κούκλα;lutka;лутка
+Nomen;3;der Rollladen, -ä;shutter;κλείστρο;zatvarač;затварач
+Nomen;3;das Kissen, -;pillow;μαξιλάρι;jastuk;јастук
+Nomen;3;die Kommode, -n;dresser;κομμωτήριο;komoda;комода
+Nomen;3;die Schulblade, -n;school board;σχολικό συμβούλιο;školskog odbora;школски одбор
+Nomen;3;die Stehlampe, -n;lamp;φωτιστικό δαπέδου;podne svjetiljke;подна лампа
+Nomen;3;das Spielzeug, -e;toy;παιχνίδι;igračka;играчка
+Nomen;3;die Wolldecke, -n;rug;χαλί;prostirka;тепих
+Nomen;3;das Einkommen, -;income;εισόδημα;dohodak;приход
+Nomen;3;die Einrichtung, -en;device;τη συσκευή;uređaj;уређај
+Verb;3;sich einig sein (über);agree (over);συμφωνούμε (πάνω);slažemo se (pre);слажемо се (пре)
+Nomen;3;die Tiefkühlschrank, -ä e;freezer;την καταψύκτη;zamrzivač;замрзивач
+Nomen;3;der Wasserkocher, -;water heater;βραστήρα;čajnik;чајник
+Adjektiv;3;geräumig;spacious;ευρύχωρο;prostran;простран
+Nomen;3;der Grundriss, -e;floor plan;κάτοπτρο;tlocrt;тлоцрт
+Verb;3;sich vormerken lassen;can reserve;μπορούμε να διατηρήσουμε;možemo rezervirati;можемо резервисати
+Nomen;3;die Unterlagen ,-;documents ;τα έγγραφα ;dokumenti ;докумената 
+Nomen;3;der Nachweis, -e;The proof;την απόδειξη;dokaz;доказ
+Nomen;3;die Hausverwaltung, -en;property management;τη διαχείριση ιδιοκτησίας;upravljanje imovinom;управљање имовином
+Verb;3;beauftragen;hire;μισθούμε;unajmimo;ангажујемо
+Verb;3;schleifen;grind;αλέθουμε;brusimo;мељемо
+Verb;3;streichen;delete;διαγράψουμε;brišemo;бришемо
+Nomen;3;die Fliese, -n;tile;κεραμίδι;pločica;плочица
+Nomen;3;der Internetanschluss, -ü e;The internet access;τη σύνδεση σδιαδίκτυο;internetska veza;интернет конекција
+Verb;3;anschliessen;connect;συνδέουμε;povežemo;повежемо
+Verb;3;besorgen;get;παίρνουμε;dobivamo;добијамо
+Nomen;3;der Sekt, -;champagne;τον αφρώδη οίνο;pjenušac;газирајуће вино
+Verb;3;anstossen;toast;εμείς τοστ;nazdravimo;наздравимо
+Verb;3;(sich) ummelden;(re) register;εμείς (επαν) εγγραφή;se (ponovno) registriramo;се (поново) региструјемо
+Nomen;3;der Handyanbieter, -;mobile provider;φορέα κινητής τηλεφωνίας;davatelj usluga mobilne telefonije;мобилни провајдер
+Nomen;3;der Klick, -s;click;κλικ;klik;клик
+Nomen;3;die Einweihungsparty, -s;housewarming party;πάρτι για σπίτι;domaćica;домјенак
+Verb;3;einen Nachsendeantrag stellen;will submit a re-transmission request;θα υποβάλουμε αίτημα επανάληψης;podnijet ćemo zahtjev za ponovnim prijenosom;поднећемо захтев за поновни пренос
+Nomen;3;der Umzugskarton, -s;moving box;κινούμενο κιβώτιο;pokretna kutija;покретна кутија
+Nomen;3;der Fliesenleger, -;tiler;πλακάκι;pločica;цилер
+Nomen;3;die Mieterhöhung, -en;rent increase;την αύξηση του ενοικίου;povećanje najamnine;повећање најамнине
+Nomen;3;die Gelegenheit, -en;opportunity;την ευκαιρία;prilika;прилика
+Nomen;3;die Wohnfläche, -n;living space;ζωτικό χώρο;životni prostor;животни простор
+Adjektiv;3;befristet;limited;περιορισμένη;ograničen;ограничен
+Adjektiv;3;verbindlich;binding;δεσμευτικός;vezivanje;везивање
+Conj;3;eventuell;perhaps;πιθανώς;možda;могуће
+Nomen;3;die Vorauszahlung, -en;advance payment;την προκαταβολή;predujam;авансно плаћање
+Nomen;3;die Betriebskosten, -;operating costs;κόστος λειτουργίας;operativni troškovi;оперативни трошкови
+Adjektiv;3;gründlich;thoroughly;πλήρως;temeljito;темељно
+Nomen;3;die Reinigung, -en;cleaning;τον καθαρισμό;čišćenje;чишћење
+Nomen;3;der Schaden, -ä;damage;τη ζημιά;šteta;штету
+Adjektiv;3;zumutbar;reasonable;λογικός;razuman;разуман
+Nomen;3;die Kündigungsfrist, -en;notice period;την περίοδο προειδοποίησης;otkazni rok;отказни рок
+Verb;3;ein Angebot einholen;get an offer;έχουμε μια προσφορά;dobivamo ponudu;добијамо понуду
+Adjektiv;3;ausgebucht;booked up;κράτηση μέχρι;rezervirano gore;заузета
+Verb;3;entgegenkommen;meet;συναντάμε;susrećemo se;срећемо се
+Nomen;3;der Fixpreis, -e;fixed price;η σταθερή τιμή;fiksna cijena;фиксна цена
+Adjektiv;3;spontan;spontaneous;αυθόρμητα;spontano;спонтано
+Adjektiv;3;neugierig sein;pry;να είναι περίεργος;budite znatiželjni;будите знатижељни
+Nomen;3;die Bemühung, -en;effort;την προσπάθεια;napor;труд
+Nomen;3;die Verkehrsanbindung, -;traffic connection;τη σύνδεση κυκλοφορίας;prometna veza;саобраћајна веза
+Nomen;3;der Vorort, -e;suburb;προάστιο;predgrađu;предграђу
+Nomen;3;der Abfluss, -ü e;drain;την αποχέτευση;odvod;одвод
+Nomen;3;die Sprechanlage, -n;intercom;την ενδοεπικοινωνία;interkom;интерфон
+Nomen;3;der Fenstergriff, -e;window handle;τη λαβή παραθύρου;kvaka prozora;квака прозора
+Nomen;3;die Türklinke, -n;door handle;τη λαβή της πόρτας;kvaka vrata;квака на вратима
+Verb;3;tropfen;drops;πτώση;ispustiti;кап
+Verb;3;etwas austauschen;exchange something;ανταλλάσσουμε κάτι;nešto razmjenjujemo;размењујемо нешто
+Verb;3;klemmen;pinch;πιέζουμε;štipamo;штипамо
+Verb;3;abbrechen;stop;Σταματάμε;stajemo;стајемо
+Adjektiv;3;dicht;close;κοντά;blizu;близу
+Verb;3;anschrauben;screw on;βιδώνω;vijak ;вијак 
+Verb;3;entlüften;vent;εξαερίζω;provjetravati ;проветрити
+Verb;3;verständigen;inform;ενημερώνουμε;obavještavamo;обавештавамо
+Verb;3;einen Schäden beheben;fix a damage;διορθώνουμε μια ζημιά;popravljamo štetu;исправљамо штету
+Conj;3;bei Bedarf;if necessary;αν είναι απαραίτητο;ako je potrebno;ако је потребно
+Verb;3;ein Problem schildern;describe a problem;περιγράφουμε ένα πρόβλημα;opisujemo problem;описујемо проблем
+Verb;3;sich beziehen;relate;αναφερόμαστε;odnosimo se;се односимо
+Conj;3;im Voraus;in advance;εκ των προτέρων;unaprijed;унапред
+Nomen;3;die Nachbesserung, -en;rework;την ανακατασκευή;preraditi;прерадити
+Verb;3;etwas vereinbaren;agree something;συμφωνούμε κάτι;nešto se slažemo;нешто се слажемо
+Verb;3;ein Problem klären;clarify a problem;διευκρινίζουμε ένα πρόβλημα;razjašnjavamo problem;разјашњавамо проблем
+Nomen;3;die Rückfrage, -n;consultation;τη διαβούλευση;savjetovanje;консултације
+Verb;3;etwas veranlassen;do something;κάνουμε κάτι;nešto radimo;нешто радимо
+Verb;3;zurechtkommen;get along;παίρνουμε μαζί;slažemo se;слажемо се
+Nomen;2;der Umgang , -;handling ;χειρισμός;rukovanje ;руковање 
+Nomen;1;die Agentur, -en;Agency;πρακτορείο;agencija;агенција
+Nomen;1;die Berufserfahrung, -en;work experience;επαγγελματική πείρα;profesionalno iskustvo;професионално искуство
+Nomen;1;die Entspannung, -;relaxation;η χαλάρωση;opuštanje;тхе релакатион
+Nomen;1;die Herausforderung, -en;challenge;πρόκληση;izazov;изазов
+Nomen;1;die Premiere, -n;release;πρεμιέρα;premijera;премијера

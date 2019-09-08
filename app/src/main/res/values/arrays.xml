@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="article">
+
+        <item>"der"</item>
+        <item>"die"</item>
+        <item>"das"</item>
+        <item>"Article"</item>
+    </string-array>
+    <string-array name="type">
+
+        <item>"Verb"</item>
+        <item>"Nomen"</item>
+        <item>"Adjektiv"</item>
+        <item>"Conj"</item>
+        <item>"Type"</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,107 @@
+Nomen;12;die Phase, -n
+Nomen;12;das Gehirn, e 
+Nomen;12;die Pubertät, -
+Nomen;12;der Altersgenosse, -n
+Verb;12;austragen
+Nomen;12;die Geburt, -en
+Nomen;12;die Gleichaltrige, -n
+Verb;12;gestalten
+Nomen;12;die Umstellung, -en
+Verb;12;hinauszögern
+Nomen;12;der Durchschnitt, -e
+Adjektiv;12;mühsam
+Nomen;11;die Nachricht, -en
+Adjektiv;11;sehenswert
+Conj;11;weiterhin
+Verb;11;beobachten
+Nomen;11;das Wettbewerb, -e
+Nomen;11;das Naturschutygebiet, -e
+Nomen;11;die Geschäftsbedingungen, -
+Nomen;11;das Stichwort, -ö er
+Adjektiv;11;angemessen
+Adjektiv;11;passend
+Nomen;12;das Heimweh, -
+Nomen;13;die Gardine, -n
+Nomen;13;das Parkett, -s
+Nomen;13;die Puppe, -n
+Nomen;13;der Rollladen, -ä
+Nomen;13;das Kissen, -
+Nomen;13;die Kommode, -n
+Nomen;13;die Schulblade, -n
+Nomen;13;die Stehlampe, -n
+Nomen;13;das Spielzeug, -e
+Nomen;13;die Wolldecke, -n
+Nomen;13;das Einkommen, -
+Nomen;13;die Einrichtung, -en
+Verb;13;sich einig sein (über)
+Nomen;13;die Tiefkühlschrank, -ä e
+Nomen;13;der Wasserkocher, -
+Adjektiv;13;geräumig
+Nomen;13;der Grundriss, -e
+Verb;13;sich vormerken lassen
+Nomen;13;die Unterlagen ,-
+Nomen;13;der Nachweis, -e
+Nomen;13;die Hausverwaltung, -en
+Verb;13;beauftragen
+Verb;13;schleifen
+Verb;13;streichen
+Nomen;13;die Fliese, -n
+Nomen;13;der Internetanschluss, -ü e
+Verb;13;anschliessen
+Verb;13;besorgen
+Nomen;13;der Sekt, -
+Verb;13;anstossen
+Verb;13;(sich) ummelden
+Nomen;13;der Handyanbieter, -
+Nomen;13;der Klick, -s
+Nomen;13;die Einweihungsparty, -s
+Verb;13;einen Nachsendeantrag stellen
+Nomen;13;der Umzugskarton, -s
+Nomen;13;der Fliesenleger, -
+Nomen;13;die Mieterhöhung, -en
+Nomen;13;die Gelegenheit, -en
+Nomen;13;die Wohnfläche, -n
+Adjektiv;13;befristet
+Adjektiv;13;verbindlich
+Conj;13;eventuell
+Nomen;13;die Vorauszahlung, -en
+Nomen;13;die Betriebskosten, -
+Adjektiv;13;gründlich
+Nomen;13;die Reinigung, -en
+Nomen;13;der Schaden, -ä
+Adjektiv;13;zumutbar
+Nomen;13;die Kündigungsfrist, -en
+Verb;13;ein Angebot einholen
+Adjektiv;13;flexibel
+Adjektiv;13;ausgebucht
+Verb;13;entgegenkommen
+Nomen;13;der Fixpreis, -e
+Adjektiv;13;spontan
+Adjektiv;13;neugierig sein
+Nomen;13;die Bemühung, -en
+Nomen;13;die Verkehrsanbindung, -
+Nomen;13;der Vorort, -e
+Nomen;13;der Abfluss, -ü e
+Nomen;13;die Sprechanlage, -n
+Nomen;13;der Fenstergriff, -e
+Nomen;13;die Türklinke, -n
+tropfen;13;tropfen
+Adjektiv;13;verstopft
+Verb;13;etwas austauschen
+Verb;13;klemmen
+Verb;13;abbrechen
+Adjektiv;13;dicht
+Verb;13;anschrauben
+Verb;13;entlüften
+Verb;13;verständigen
+Verb;13;einen Schäden beheben
+Conj;13;bei Bedarf
+Verb;13;ein Problem schildern
+Verb;13;sich beziehen
+Conj;13;im Voraus
+Nomen;13;die Nachbesserung, -en
+Verb;13;etwas vereinbaren
+Verb;13;ein Problem klären
+Nomen;13;die Rückfrage, -n
+Verb;13;etwas veranlassen
+Verb;13;zurechtkommen
