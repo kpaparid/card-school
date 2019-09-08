@@ -396,8 +396,6 @@ return v;
 
         }
         protected void onPostExecute(String feed) {
-            // TODO: check this.exception
-            // TODO: do something with the feed
             flagTranslate = true;
         }
     }
