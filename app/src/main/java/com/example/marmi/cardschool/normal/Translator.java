@@ -22,9 +22,7 @@ public class Translator extends AsyncTask<Language, String, String> {
     protected String doInBackground(Language... languages) {
         // this might take a while ...
         String translated = "";
-
         String target = languages[0].target;
-//        String wordText = languages[0].word.getWordText();
         String wordText = languages[0].word.getWiki();
         String source = languages[0].source;
 

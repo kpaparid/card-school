@@ -76,12 +76,7 @@ public class Word implements Serializable {
     void setNewWord(){
         flag = Boolean.FALSE;
         archivedLanguages = new ArrayList<>();
-
-
-
         checkTranslated();
-
-
 //        getArticle();
         if (type.equals("Adjektiv")){
             color = Color.parseColor("#f4b942");
@@ -342,11 +337,6 @@ public class Word implements Serializable {
     }
 
 
-    public void exportDB() {
-
-
-
-    }
 
 
 

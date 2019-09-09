@@ -32,6 +32,8 @@ import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.Language;
 import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 import com.example.marmi.cardschool.normal.Translator;
 
 import java.io.File;
@@ -145,12 +147,23 @@ public class cardo extends templateFragment{
 
     @Override
     public void postExecute(){
-        word = new Word(dtb);
+//        word = new Word(dtb);
+//        System.out.println("colorize");
+//        layout.setBackgroundColor(word.getColor());
+//        progressBar.setVisibility(View.INVISIBLE);
+//        wordTxt.setText(word.getWordText());
+//        startTranslation(word);
+
+
+
+        WordModel wordModel = new WordModel();
+        wc = new WordController(wordModel);
+        wc.importWord(dtb);
         System.out.println("colorize");
-        layout.setBackgroundColor(word.getColor());
+        layout.setBackgroundColor(wc.getColor());
         progressBar.setVisibility(View.INVISIBLE);
-        wordTxt.setText(word.getWordText());
-        startTranslation(word);
+        wordTxt.setText(wc.getWordText());
+
 
     }
 

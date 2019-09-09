@@ -90,7 +90,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        //contentValues.put(COL_ID, sID);
         contentValues.put(COL_TY, type);    //5
         contentValues.put(COL_RA, rate);    //5
         contentValues.put(COL_DE, dtext);     //1
@@ -98,29 +97,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_GR, grtext);  //3
         contentValues.put(COL_HR, hrtext);
         contentValues.put(COL_SR, srtext);
-
-        long result ;//= db.insert(TABLE_NAME, null, contentValues);
-
-
-//        String query = "UPDATE " + TABLE_NAME + " SET " + COL_EN +
-//                " = '" + entext + "' WHERE " + COL_DE + " = '" + dtext + "'";
-//
-//        db.execSQL(query);
+        long result ;
         result = db.update(TABLE_NAME, contentValues, COL_DE+"=?", new String[]{dtext});
 
         if (result == 0){
             db.insertWithOnConflict(TABLE_NAME,null,contentValues,SQLiteDatabase.CONFLICT_REPLACE);
         }
         return true;
-//        Log.e(TAG, "addData: result " + result );
-//        //if date as inserted incorrectly it will return -1
-//        if (result == -1) {
-//            Log.e(TAG, "addData: Epese " + dtext + " to " + TABLE_NAME);
-//            return false;
-//        } else {
-//            return true;
-//
-//        }
     }
 
     /**
@@ -129,25 +112,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      * @return
      */
     public Cursor getData(String query)  {
-
         SQLiteDatabase db = this.getWritableDatabase();
-
         String q ="SELECT * FROM " + TABLE_NAME +  query ;
-//
-//        q = "SELECT * FROM words_table WHERE _ROWID_ >= (abs(random()) % (SELECT max(_ROWID_) FROM words_table))";
-
-
-
-
-
         Cursor data = db.rawQuery(q, null);
-//        data.moveToFirst();
         if (!data.moveToFirst()){
             data = null;
-
         }
-
-
         return data;
     }
     public Cursor getRandom(Integer n, String query) {

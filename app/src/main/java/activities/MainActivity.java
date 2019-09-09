@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.WordController;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
      */
 
     @Override
-    public void onFragmentListener(Word word, String mode) {
+    public void onFragmentListener(WordController word, String mode) {
 
         if(mode.equals("Wiki"))
         {

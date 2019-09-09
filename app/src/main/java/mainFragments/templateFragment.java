@@ -19,6 +19,8 @@ import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.Language;
 import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 import com.example.marmi.cardschool.normal.Translator;
 
 import java.util.Arrays;
@@ -31,7 +33,8 @@ import fragments.WiktionaryBtn;
 
 public class templateFragment extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
 
-    public Word word;
+    //public Word word;
+    public WordController wordController;
     public Translator translation;
     public String target = "en";
     public Activity context;
@@ -95,7 +98,7 @@ public class templateFragment extends Fragment implements FragmentLanguage.Fragm
      */
     @Override
     public void nestedListenerClicked(String mode) {
-        listener.onFragmentListener(word,mode);
+        listener.onFragmentListener(wordController,mode);
     }
 
     /**
@@ -145,7 +148,7 @@ public class templateFragment extends Fragment implements FragmentLanguage.Fragm
     public void postExecute(){}
     public int getLayoutID(){return 0;}
     public interface FragmentListener {
-        void onFragmentListener(Word Word, String mode);
+        void onFragmentListener(WordController Word, String mode);
     }
 
     public class initAsync extends AsyncTask<String, String, String> {
