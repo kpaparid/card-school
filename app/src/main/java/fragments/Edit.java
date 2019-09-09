@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -40,7 +41,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
     TextInputEditText grt;
     TextInputEditText set;
     TextInputEditText hrt;
-    TextInputEditText ratet;
+    EditText ratet;
     Button insert;
     List<String> list;
     List<String> listArticle;
@@ -168,8 +169,10 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
         word = v.findViewById(R.id.word);
         comma = v.findViewById(R.id.comma);
         plural = v.findViewById(R.id.plural);
-        wiki = v.findViewById(R.id.btnW);
+        wiki = v.findViewById(R.id.containera);
         ratet = v.findViewById(R.id.rate);
+
+
 
         insert = v.findViewById(R.id.insert);
         insert.setOnClickListener(submitListener);
@@ -196,6 +199,8 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
         articleSpinner.setAdapter(na);
         articleSpinner.setSelection(listArticle.size() - 1);
         articleSpinner.setOnItemSelectedListener(articleListener);
+
+
 
 
         mDatabaseHelper = new DatabaseHelper(getContext());
@@ -252,11 +257,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
                 if (word.getText().toString().equals("delete")) {
                     mDatabaseHelper.delete();
                     listener.test();
-                } else if (word.getText().toString().equals("print")) {
-
-                } else if (word.getText().toString().equals("")) {
-
-                } else {
+                }  else if(!word.getText().toString().equals("")) {
                     word.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
                 }
             }
@@ -304,12 +305,12 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
         sr = inputWord.getSr_translated();
         hr = inputWord.getHr_translated();
         rate = inputWord.getRate();
-
+        ratet.setText(rate.toString());
 
         if (type.equals("Nomen")) {
             plural.setText(inputWord.getPlural());
             word.setText(inputWord.getWordText().replace("-" + inputWord.getPlural(), "").replace(",", "").substring(4));
-            ;
+
 
         } else {
             word.setText(inputWord.getWordText());
@@ -327,7 +328,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
 
         WiktionaryBtn wik = new WiktionaryBtn();
         getChildFragmentManager().beginTransaction()
-                .replace(R.id.btnW, wik)
+                .replace(R.id.containera, wik)
                 .commit();
 
 

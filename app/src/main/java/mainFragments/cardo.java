@@ -5,10 +5,21 @@ import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
+import android.support.transition.Fade;
+import android.support.transition.Slide;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,34 +34,22 @@ import com.example.marmi.cardschool.data.Language;
 import com.example.marmi.cardschool.data.Word;
 import com.example.marmi.cardschool.normal.Translator;
 
+import java.io.File;
+import java.util.SimpleTimeZone;
 import java.util.concurrent.ExecutionException;
 
 import fragments.EditBtn;
 import fragments.FragmentLanguage;
 import fragments.WiktionaryBtn;
 
-public class CardFragment extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
+public class cardo extends templateFragment{
 
-    public Word word;
-    public Translator translation;
-    public String target = "en";
-    Activity context;
-    View v;
-    String nfrom;
-    String nto;
-    private ConstraintLayout layout;
+
     private ConstraintLayout mainlayout;
     private ConstraintLayout back;
-    private TextView wordTxt;
-    private TextView original;
     private Boolean end = Boolean.FALSE;
     private Boolean flag = Boolean.TRUE;
-    private Spinner spinner;
-    private Button btn;
-    private Cursor dtb;
-    String mode;
 
-    private FragmentListener listener;
     private View.OnClickListener textListener = new View.OnClickListener() {
         public void onClick(View v) {
             if (!end) {
@@ -88,22 +87,6 @@ public class CardFragment extends Fragment implements FragmentLanguage.FragmentL
         }
     };
 
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fr_card, container, false);
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            nfrom = getArguments().getString("nfrom");
-            nto = getArguments().getString("nto");
-            mode =getArguments().getString("mode");
-        }
-
-        initGUI();
-        new init().execute();
-        return v;
-
-    }
-
 
 
     private void origUI(Word w) {
@@ -111,21 +94,18 @@ public class CardFragment extends Fragment implements FragmentLanguage.FragmentL
         wordTxt.setText(w.getWordText());
         original.setText("");
     }
-
-    private void transUI(Word w) {
+    public void transUI(Word w) {
         layout.setBackgroundColor(Color.parseColor("#DB045B"));
         System.out.println("TARGET " + target);
         wordTxt.setText(w.getTranslated(target));
         original.setText("~ " + w.getWordText());
     }
-
-    private void startTranslation(Word w) {
+    public void startTranslation(Word w) {
         translation = new Translator();
         Language l = new Language(w, "de", target);
         translation.execute(l);
     }
-
-    private void finishTranslation(Word w) {
+    public void finishTranslation(Word w) {
         try {
             w.setTranslated(translation.get());
         } catch (ExecutionException e) {
@@ -136,8 +116,12 @@ public class CardFragment extends Fragment implements FragmentLanguage.FragmentL
         word = w;
     }
 
-    private void initGUI() {
-        addFragment();
+
+    @Override
+    public void initGUI() {
+        addFragment("wiki","a");
+        addFragment("edit","c");
+        addFragment("language","b");
         wordTxt = v.findViewById(R.id.word);
         mainlayout = v.findViewById(R.id.mainlayout);
         layout = v.findViewById(R.id.layout);
@@ -147,25 +131,31 @@ public class CardFragment extends Fragment implements FragmentLanguage.FragmentL
         back.setOnClickListener(backListener);
         original.setText("");
     }
+    @Override
+    public int getLayoutID(){
+        return R.layout.fr_card;
+    }
+    @Override
+    public void backGround(){
 
+        progressBar = v.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        initDB(" WHERE rate >= " + nfrom + " AND rate <= " + nto +" "+ mode + " ORDER BY RANDOM()");
+    }
 
-    void initDB(String query) {
-        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
-        dtb = mDatabaseHelper.getData(query);
-        if(dtb==null){
-           System.out.println("Reading Database cause Null");
-           mDatabaseHelper.readData(mDatabaseHelper, getContext());
-           dtb = mDatabaseHelper.getData(query);
-        }
-        mDatabaseHelper.close();
-        System.out.println("init db");
+    @Override
+    public void postExecute(){
+        word = new Word(dtb);
+        System.out.println("colorize");
+        layout.setBackgroundColor(word.getColor());
+        progressBar.setVisibility(View.INVISIBLE);
+        wordTxt.setText(word.getWordText());
+        startTranslation(word);
 
     }
 
-
     @Override
     public void onInputLanguage(CharSequence input) {
-
         if (!input.equals("Error")) {
             target = input.toString();
             System.out.println(target);
@@ -173,76 +163,7 @@ public class CardFragment extends Fragment implements FragmentLanguage.FragmentL
             if (!flag) {
                 finishTranslation(word);
                 transUI(word);
-
             }
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        listener = (FragmentListener) context;
-
-    }
-
-    @Override
-    public void nestedListenerClicked(String mode) {
-        listener.onFragmentListener(word,mode);
-
-    }
-
-    private void addFragment() {
-
-
-        WiktionaryBtn wik = new WiktionaryBtn();
-
-        getChildFragmentManager().beginTransaction()
-                .replace(R.id.containera, wik)
-                .commit();
-
-        FragmentLanguage fragmentLanguage = new FragmentLanguage();
-        getChildFragmentManager().beginTransaction()
-                .replace(R.id.containerb, fragmentLanguage)
-                .commit();
-
-        EditBtn editBtn = new EditBtn();
-        getChildFragmentManager().beginTransaction()
-                .replace(R.id.containerc, editBtn)
-                .commit();
-
-
-
-
-    }
-
-    public interface FragmentListener {
-        void onFragmentListener(Word Word, String mode);
-    }
-
-    public class init extends AsyncTask<String, String, String> {
-
-        private ProgressBar progressBar;
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            progressBar = v.findViewById(R.id.progressBar);
-            progressBar.setVisibility(View.VISIBLE);
-            initDB(" WHERE rate >= " + nfrom + " AND rate <= " + nto +" "+ mode + " ORDER BY RANDOM()");
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-
-            word = new Word(dtb);
-            System.out.println("colorize");
-            layout.setBackgroundColor(word.getColor());
-            progressBar.setVisibility(View.INVISIBLE);
-            wordTxt.setText(word.getWordText());
-
-            startTranslation(word);
         }
     }
 }

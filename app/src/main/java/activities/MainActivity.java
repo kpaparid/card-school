@@ -27,8 +27,12 @@ import mainFragments.CardFragment;
 import mainFragments.Menu;
 import mainFragments.QuizFragment;
 import mainFragments.TestFragment;
+import mainFragments.arto;
+import mainFragments.cardo;
+import mainFragments.quizo;
+import mainFragments.templateFragment;
 
-public class MainActivity extends AppCompatActivity implements CardFragment.FragmentListener, Menu.MenuListener, QuizFragment.FragmentListener, ArticleFragment.FragmentListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener{
+public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, templateFragment.FragmentListener {
 
     FragmentTransaction t;
     private WiktionaryWebFragment wik;
@@ -38,9 +42,6 @@ public class MainActivity extends AppCompatActivity implements CardFragment.Frag
     EditText nfrom;
     EditText nto;
     Edit edit;
-    PrintFragment print;
-    private String currentMode;
-    Queue<String> framgnetQueue = new LinkedList<String>();
 
 
     @Override
@@ -57,13 +58,16 @@ public class MainActivity extends AppCompatActivity implements CardFragment.Frag
 
     }
 
+
+    /**
+     *Listener from inside, swaps fragment to UtilFragments
+     */
+
     @Override
     public void onFragmentListener(Word word, String mode) {
 
         if(mode.equals("Wiki"))
         {
-            System.out.println("ftiaxnw Wiki");
-            System.out.println("Wiki");
             wik = new WiktionaryWebFragment();
             Bundle bundle = new Bundle();
             bundle.putString("message", word.getWiki());
@@ -75,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements CardFragment.Frag
 
         }
         else if(mode.equals("Edit")) {
-            System.out.println("Edit");
+            System.out.println("Edit "+word.getWordText());
             edit = new Edit();
             Bundle bundle = new Bundle();
             String DESCRIBABLE_KEY = "word_key";
@@ -118,18 +122,23 @@ public class MainActivity extends AppCompatActivity implements CardFragment.Frag
         return super.onKeyDown(keyCode, event);
     }
 
+
+    /**
+     *Gets Mode from Menu and changes fragment
+     */
+
     @Override
     public void onInputMenu(CharSequence input, String from, String to, String nmode) {
         System.out.println(input);
         Fragment previous = fragment;
         if (input.equals("card")) {
-            fragment = new CardFragment();
+            fragment = new cardo();
         } else if (input.equals("test")) {
             fragment = new TestFragment();
         } else if (input.equals("article")) {
-            fragment = new ArticleFragment();
+            fragment = new arto();
         } else if (input.equals("quiz")) {
-            fragment = new QuizFragment();
+            fragment = new quizo();
         } else if (input.equals("insert")) {
             fragment = new InsertFragment();
         }else if (input.equals("print")) {
@@ -144,17 +153,8 @@ public class MainActivity extends AppCompatActivity implements CardFragment.Frag
         bundle.putString("mode",nmode);
         fragment.setArguments(bundle);
         System.out.println("set argument "+ from+"\t"+to);
-
-
-
-
         t = getSupportFragmentManager().beginTransaction();
         animator(previous,fragment);
-
-
-
-
-
         t.replace(R.id.frs, fragment);
         t.addToBackStack(null);
         t.commit();

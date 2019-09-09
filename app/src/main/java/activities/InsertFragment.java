@@ -17,7 +17,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -36,7 +35,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import fragments.FragmentLanguage;
 import fragments.WiktionaryBtn;
 
 public class InsertFragment extends Fragment implements WiktionaryBtn.NestedListener {
@@ -118,7 +116,7 @@ return v;
         comma = v.findViewById(R.id.comma);
         plural = v.findViewById(R.id.plural);
         translate = v.findViewById(R.id.translate);
-        wiki  = v.findViewById(R.id.btnW);
+        wiki  = v.findViewById(R.id.containera);
         ratet = v.findViewById(R.id.rate);
 
         insert = v.findViewById(R.id.insert);
@@ -209,6 +207,9 @@ return v;
                 }
             }
         });
+
+        rate = 4;
+        ratet.setText(rate.toString());
         ratet.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
@@ -500,7 +501,7 @@ return v;
 
         WiktionaryBtn wik = new WiktionaryBtn();
         getChildFragmentManager().beginTransaction()
-                .replace(R.id.btnW, wik)
+                .replace(R.id.containera, wik)
                 .commit();
 
 
