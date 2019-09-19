@@ -75,15 +75,16 @@ return v;
             String mode = "";
             int skmode = seekBar.getProgress();
             if(skmode == 0){
-                mode = "AND type = Nomen";
+                mode = "AND type = 'Nomen'";
 
             }else if (skmode == 1){
-                mode = "AND type = Verb";
+                mode = "AND type = 'Verb'";
             }else if (skmode == 2){
-                mode = "AND type = Adjektiv";
+                mode = "AND type = 'Adjektiv'";
             }else if (skmode == 3){
                 mode = "";
             }
+
 
             listener.onInputMenu("print", from, to, mode);
         }

@@ -45,10 +45,10 @@ public class WiktionaryWebFragment extends Fragment {
     public Boolean onBack() {
         if (webview.canGoBack()) {
             webview.goBack();
-            System.out.println("wiki true return");
+            System.out.println("wiki back page");
             return true;
         } else {
-            System.out.println("wiki false return");
+            System.out.println("wiki exit ");
             return false;
         }
     }

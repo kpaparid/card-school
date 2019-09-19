@@ -3,6 +3,7 @@ package activities;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.transition.Fade;
 import android.support.transition.TransitionInflater;
@@ -15,25 +16,24 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.io.Serializable;
 
 import fragments.Edit;
 import fragments.WiktionaryWebFragment;
-import mainFragments.ArticleFragment;
-import mainFragments.CardFragment;
 import mainFragments.Menu;
-import mainFragments.QuizFragment;
 import mainFragments.TestFragment;
-import mainFragments.arto;
-import mainFragments.cardo;
+import mainFragments.artoView;
+import mainFragments.cardoView;
 import mainFragments.quizo;
+import mainFragments.quizoView;
 import mainFragments.templateFragment;
+import mainFragments.templateView;
+import test.quizView;
 
-public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, templateFragment.FragmentListener {
+public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, templateFragment.FragmentListener, templateView.FragmentListener, quizView.FragmentListener, Edit.FragmentListener {
 
     FragmentTransaction t;
     private WiktionaryWebFragment wik;
@@ -43,19 +43,65 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
     EditText nfrom;
     EditText nto;
     Edit edit;
+    private String currentFrName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         verifyStoragePermissions(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frs);
-        fragment = new Menu();
-        t = getSupportFragmentManager().beginTransaction();
-        t.add(R.id.frs, fragment);
-        t.commit();
-        nfrom = findViewById(R.id.nfrom);
-        nto = findViewById(R.id.nto);
+
+
+        if (savedInstanceState == null) {
+            fragment = new Menu();
+            t = getSupportFragmentManager().beginTransaction();
+            t.add(R.id.frs, fragment);
+            t.commit();
+            nfrom = findViewById(R.id.nfrom);
+            nto = findViewById(R.id.nto);
+            currentFrName = "menu";
+        }
+        else {
+            System.out.println("exw idi fragment");
+            fragment = getSupportFragmentManager().findFragmentById(R.id.frs);
+
+
+            if(fragment instanceof InsertFragment){
+                currentFrName = "insert";
+            }
+            else if(fragment instanceof PrintFragment){
+                currentFrName = "print";
+            }
+            else {
+
+                String query;
+                if(fragment instanceof cardoView){
+
+                    currentFrName = "card";
+                }
+                if(fragment instanceof quizView){
+
+                    currentFrName = "quiz";
+                }
+                if(fragment instanceof artoView){
+
+                    currentFrName = "article";
+
+                }
+            }
+
+
+
+
+
+
+        }
+
+
+
+
 
     }
 
@@ -69,12 +115,13 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
 
         if(mode.equals("Wiki"))
         {
+            System.out.println("Wiki");
             wik = new WiktionaryWebFragment();
             Bundle bundle = new Bundle();
             bundle.putString("message", word.getWiki());
             wik.setArguments(bundle);
             t = getSupportFragmentManager().beginTransaction();
-            t.replace(R.id.frs,wik);
+            t.add(R.id.frs,wik);
             t.addToBackStack(null);
             t.commit();
 
@@ -87,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
             bundle.putSerializable(DESCRIBABLE_KEY, word);
             edit.setArguments(bundle);
             t = getSupportFragmentManager().beginTransaction();
-            t.replace(R.id.frs, edit);
+            t.add(R.id.frs, edit);
             t.addToBackStack(null);
             t.commit();
         }
@@ -99,22 +146,29 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK:
-                    if(this.getSupportFragmentManager().getBackStackEntryCount()==0) {
+                    if(currentFrName.equals("menu")) {
                         System.out.println("Exit main");
                         finish();
                     }
-                    else if (wik == null || wik.isHidden()) {
-                        System.out.println("Exit default");
+                    else if ((wik == null || wik.isHidden())& edit == null) {
+                        System.out.println("Exit to Menu");
+                        currentFrName = "menu";
                         getSupportFragmentManager().popBackStack();
-                    }
-                    else if (wik.onBack()) {
-                        System.out.println("CLICKED BACK");
 
                     }
-                    else{
-                        System.out.println("backstack Count "+getSupportFragmentManager().getBackStackEntryCount());
-                        System.out.println("EXITING");
+                    else if(wik != null){
+                        if (wik.onBack()) {
+                            System.out.println("CLICKED BACK");
+                        }else {
+                            getSupportFragmentManager().popBackStack();
+                            wik = null;
+                        }
+                    }
+                    else if(edit != null){
+                        System.out.println("exit edit");
                         getSupportFragmentManager().popBackStack();
+                        edit = null;
+
                     }
 
                     return true;
@@ -128,35 +182,50 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
      *Gets Mode from Menu and changes fragment
      */
 
+
+
     @Override
     public void onInputMenu(CharSequence input, String from, String to, String nmode) {
         System.out.println(input);
         Fragment previous = fragment;
+
+
+
         if (input.equals("card")) {
-            fragment = new cardo();
-        } else if (input.equals("test")) {
-            fragment = new TestFragment();
-        } else if (input.equals("article")) {
-            fragment = new arto();
+            fragment = new cardoView();
+            currentFrName = "card";
+        }  else if (input.equals("article")) {
+            fragment = new artoView();
+            currentFrName = "article";
         } else if (input.equals("quiz")) {
-            fragment = new quizo();
+
+            fragment = new quizView();
+            currentFrName = "quiz";
+
         } else if (input.equals("insert")) {
             fragment = new InsertFragment();
+            currentFrName = "insert";
         }else if (input.equals("print")) {
+
+            currentFrName = "print";
             fragment = new PrintFragment();
+
         }
 
+        System.out.println("init db");
 
 
         Bundle bundle = new Bundle();
         bundle.putString("nfrom", from);
         bundle.putString("nto", to);
         bundle.putString("mode",nmode);
+
         fragment.setArguments(bundle);
-        System.out.println("set argument "+ from+"\t"+to);
+        System.out.println("set argument "+ from+"\t"+to+"\t"+nmode);
         t = getSupportFragmentManager().beginTransaction();
         animator(previous,fragment);
-        t.replace(R.id.frs, fragment);
+        t.add(R.id.frs, fragment);
+
         t.addToBackStack(null);
         t.commit();
     }

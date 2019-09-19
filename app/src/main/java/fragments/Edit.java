@@ -17,12 +17,13 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
-import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.WordController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +32,7 @@ import java.util.List;
 public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
 
 
-    Word inputWord;
+    WordController inputWord;
     TextInputEditText word;
     TextInputEditText plural;
     TextView comma;
@@ -43,12 +44,13 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
     TextInputEditText hrt;
     EditText ratet;
     Button insert;
+    ImageView deleteWord;
     List<String> list;
     List<String> listArticle;
     LayoutInflater inflator;
     List<String> missingAttribute;
     Button translate;
-    Integer rate = 11;
+    String rate = "11";
     String de;
     String en = "temp";
     String gr = "temp";
@@ -57,9 +59,10 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
     String article;
     String type;
     FrameLayout wiki;
+    FragmentManager fm;
     View v;
     private DatabaseHelper mDatabaseHelper;
-    private FragmentListener listener;
+    private FragmentListener listenerb;
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
             List misAt = getMissingAttribute();
@@ -80,15 +83,28 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
                 Log.e("translate", "sr:  " + sr);
 
                 mDatabaseHelper.deleteName(inputWord.getWordText());
-                mDatabaseHelper.addData(type, rate, de, en, gr, hr, sr);
+                mDatabaseHelper.addData(type, Integer.parseInt(rate), de, en, gr, hr, sr);
                 mDatabaseHelper.exportDB();
                 mDatabaseHelper.close();
-               FragmentManager fm = getActivity().getSupportFragmentManager();
-               fm.popBackStack();
+
+                fm.popBackStack();
 
             }
         }
     };
+
+
+    private View.OnClickListener deleteListener = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            mDatabaseHelper.deleteName(inputWord.getWordText());
+            mDatabaseHelper.exportDB();
+            fm.popBackStack();
+
+            }
+
+    };
+
     private AdapterView.OnItemSelectedListener articleListener = new AdapterView.OnItemSelectedListener() {
 
         @Override
@@ -147,19 +163,21 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        listener = (FragmentListener) getParentFragment();
+        listenerb = (FragmentListener) context;
     }
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inflator = inflater;
         v = inflater.inflate(R.layout.fr_insert2, container, false);
-        inputWord = (Word) getArguments().getSerializable("word_key");
+        inputWord = (WordController) getArguments().getSerializable("word_key");
         init();
         return v;
     }
 
     private void init() {
+
+        fm = getActivity().getSupportFragmentManager();
         addFragment();
         missingAttribute = new ArrayList<>();
         ent = v.findViewById(R.id.ent);
@@ -171,6 +189,9 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
         plural = v.findViewById(R.id.plural);
         wiki = v.findViewById(R.id.containera);
         ratet = v.findViewById(R.id.rate);
+        deleteWord = v.findViewById(R.id.deleteWord);
+        deleteWord.setOnClickListener(deleteListener);
+        deleteWord.setVisibility(View.VISIBLE);
 
 
 
@@ -216,7 +237,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
 
 //                List misAt = getMissingAttribute();
 ////                if(!misAt.contains("Word")){
-////                    de = word.getText().toString();
+////                    de = wc.getText().toString();
 ////                    String dev = de;
 ////
 ////                    if(type.equals("Verb")) {
@@ -256,12 +277,14 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
                                       int before, int count) {
                 if (word.getText().toString().equals("delete")) {
                     mDatabaseHelper.delete();
-                    listener.test();
+                    fm.popBackStack();
+
                 }  else if(!word.getText().toString().equals("")) {
                     word.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
                 }
             }
         });
+
         plural.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
@@ -305,10 +328,37 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
         sr = inputWord.getSr_translated();
         hr = inputWord.getHr_translated();
         rate = inputWord.getRate();
-        ratet.setText(rate.toString());
+        ratet.setText(rate);
+        ratet.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
+        ratet.addTextChangedListener(new TextWatcher() {
+
+            public void afterTextChanged(Editable s) {
+            }
+
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(ratet.getText().equals("")){
+                    ratet.setBackgroundResource(R.drawable.back);
+                    System.out.println("back ");
+                }
+                else
+                {
+                    ratet.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
+                }
+
+
+            }
+        });
 
         if (type.equals("Nomen")) {
             plural.setText(inputWord.getPlural());
+            if(inputWord.getPlural().equals("")){
+                plural.setText(" ");
+            }
             word.setText(inputWord.getWordText().replace("-" + inputWord.getPlural(), "").replace(",", "").substring(4));
 
 
@@ -361,11 +411,32 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
 
     @Override
     public void nestedListenerClicked(String mode) {
+        System.out.println("Clicked NestedListener");
+        List misAt = getMissingAttribute();
+        if(!misAt.contains("Word"))
+        {
+            System.out.println("wc text "+word.getText().toString());
+            System.out.println("wc type "+ type);
+            System.out.println("wc text "+ article);
+
+
+            //WordController wc = new WordController();
+            //wc.setWiki(word.getText().toString());
+
+
+
+
+
+            listenerb.onFragmentListener(inputWord, "Wiki");
+
+        }else {
+            System.out.println("wtf");
+        }
 
     }
 
     public interface FragmentListener {
-        void test();
+        void onFragmentListener(WordController word, String mode);
     }
 
     class NewAdapter extends BaseAdapter {

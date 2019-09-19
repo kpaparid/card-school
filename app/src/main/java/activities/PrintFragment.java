@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 import com.example.marmi.cardschool.normal.MyRecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -27,12 +29,19 @@ import fragments.EditBtn;
 public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.ItemClickListener {
 
     MyRecyclerViewAdapter adapter;
-    DatabaseHelper mDatabaseHelper;
-    ArrayList<Word> words;
+    ArrayList<WordController> words;
     Context context;
+    String nfrom = "0";
+    String nto = "20";
+    String mode = "";
+    Cursor dtb;
+
+    public void setDtb(Cursor dtb) {
+        this.dtb = dtb;
+    }
 
     public interface FragmentListener {
-        void onFragmentListener(Word Word, String mode);
+        void onFragmentListener(WordController Word, String mode);
     }
     FragmentListener listener;
     @Override
@@ -47,16 +56,33 @@ public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.Ite
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.activity_db, container, false);
 
+        if (getArguments() != null) {
+            nfrom = getArguments().getString("nfrom");
+            nto = getArguments().getString("nto");
+            mode =getArguments().getString("mode");
+        }
 
-        mDatabaseHelper = new DatabaseHelper(context);
-        String query = " WHERE rate >= " + 0 + " AND rate <= " + 20 +" ORDER BY rate";
-        Cursor cursor = mDatabaseHelper.getData(query);
+        String query = " WHERE rate >= " + nfrom + " AND rate <= " + nto +" "+ mode + " ORDER BY rate";
+
+        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
+        System.out.println("nfrom "+nfrom);
+        System.out.println("nto "+nto);
+        dtb = mDatabaseHelper.getData(query);
+        if(dtb==null){
+            System.out.println("Reading Database cause Null");
+            mDatabaseHelper.readData(mDatabaseHelper, getContext());
+            dtb = mDatabaseHelper.getData(query);
+        }
+        mDatabaseHelper.close();
+        System.out.println("init db");
         words = new ArrayList<>();
-        if (cursor.moveToFirst()) {
+        if (dtb.moveToFirst()) {
 
             do {
-                words.add(new Word(cursor));
-            } while (cursor.moveToNext());
+                WordController wc = new WordController();
+                wc.importWord(dtb);
+                words.add(wc);
+            } while (dtb.moveToNext());
 
         }
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
@@ -70,33 +96,10 @@ public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.Ite
 
     @Override
     public void onItemClick(View view, final int position) {
-        Toast.makeText(context, "You clicked " + adapter.getItem(position).getWordText() + " on row number " + position, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "You clicked " + adapter.getItem(position).getWordText() + " on row number " + position, Toast.LENGTH_SHORT).show();
         listener.onFragmentListener(adapter.getItem(position),"Edit");
 
 
-
-
-//        new AlertDialog.Builder(view.getContext())
-//                .setTitle("Delete")
-//                .setMessage("Do you really want to delete?\n\n"+adapter.getItem(position)+"\n\n")
-//                .setIcon(android.R.drawable.ic_dialog_alert)
-//                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//
-//                    public void onClick(DialogInterface dialog, int whichButton) {
-//                        System.out.println("click");
-//                        mDatabaseHelper.deleteName(adapter.getItem(position));
-//                        mDatabaseHelper.exportDB();
-//
-////                        System.out.println(words.get(position).text);
-////                        System.out.println("Words size  "+words.size());
-////                        System.out.println("position    "+position);
-//
-//                        words.remove(position);
-//                        adapter.notifyItemRemoved(position);
-//                        adapter.notifyItemRangeChanged(position,words.size());
-//
-//                    }})
-//                .setNegativeButton(android.R.string.no, null).show();
 
 
     }

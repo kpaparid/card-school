@@ -5,11 +5,9 @@ import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.Word;
 import com.example.marmi.cardschool.data.WordController;
 
 import java.util.ArrayList;
@@ -17,16 +15,17 @@ import java.util.ArrayList;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 
-public class arto extends templateFragment{
+public class artoView extends templateView {
 
 
     ArrayList<Button> buttons;
     private Button der;
     private Button die;
     private Button das;
-    private Integer index = 0;
     private TextView correctArticle;
-
+    private TextView wordTxt;
+    private ConstraintLayout layout;
+    private artoPresenter aP;
 
     private View.OnClickListener buttonListener = new View.OnClickListener() {
         public void onClick(View v)
@@ -36,32 +35,24 @@ public class arto extends templateFragment{
                     control(der);
                     break;
                 }
-
                 case R.id.die: {
                     control(die);
                     break;
                 }
-
-
                 case R.id.das: {
                     control(das);
                     break;
                 }
-
-
             }
             der.setClickable(false);
             die.setClickable(false);
             das.setClickable(false);
-            //next.setVisibility(View.VISIBLE);
-
-
             final Handler handler = new Handler();
             final Runnable r = new Runnable() {
                 public void run() {
                     resetGUI();
-                    if (!dtb.moveToNext()) {
-                        dtb.moveToFirst();
+                    if (!aP.moveNextdtb()) {
+                        aP.moveFirstdtb();
                     }
                     update();
                 }
@@ -77,31 +68,13 @@ public class arto extends templateFragment{
         return R.layout.fr_article;
     }
 
-
-
     private void update() {
-//        wc = new WordController();
-        wc.importWord(dtb);
-        wordTxt.setText(wc.getWordText().substring(4));
-        switch (wc.getArticle()) {
-            case "der": {
-                index = 0;
-                break;
-            }
-            case "die": {
-                index = 1;
-                break;
-            }
-            case "das": {
-                index = 2;
-                break;
-            }
-        }
-
+        aP.importNextWord();
+        wordTxt.setText(aP.getWord().getWordText().substring(4));
     }
+
     @Override
     public void initGUI() {
-
         addFragment("wiki","a");
         addFragment("edit","b");
 
@@ -162,29 +135,22 @@ public class arto extends templateFragment{
     private void wrong(Button btn) {
         System.out.println("WRONG");
         btn.setBackgroundColor(Color.RED);
-
-
         correctArticle.setVisibility(View.VISIBLE);
-
         correctArticle.setVisibility(View.VISIBLE);
-
-        correctArticle.setText(buttons.get(index).getText());
+        correctArticle.setText(buttons.get(aP.getIndex()).getText());
         correctArticle.setTextColor(RED);
-
     }
 
     private void right(Button btn) {
         btn.setBackgroundColor(GREEN);
         correctArticle.setVisibility(View.VISIBLE);
-        correctArticle.setText(buttons.get(index).getText());
+        correctArticle.setText(buttons.get(aP.getIndex()).getText());
         correctArticle.setTextColor(GREEN);
-
-
     }
 
     private void control(Button btn) {
         String text = btn.getText().toString();
-        if (text.equalsIgnoreCase(wc.getArticle())) {
+        if (text.equalsIgnoreCase(aP.getWord().getArticle())) {
             right(btn);
         } else {
             wrong(btn);
@@ -197,7 +163,7 @@ public class arto extends templateFragment{
     @Override
     public void onInputLanguage(CharSequence input) {
         if (!input.equals("Error")) {
-            target = input.toString();
+            aP.setTarget(input.toString());
         }
     }
 
@@ -205,20 +171,25 @@ public class arto extends templateFragment{
 
 
     @Override
-    public void backGround(){
+    public void preExecute(){
+
+
         progressBar = v.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
         articleContainer = v.findViewById(R.id.articleContainer);
-        initDB(" WHERE rate >= " + nfrom + " AND rate <= " + nto + " AND type = 'Nomen'"+ " ORDER BY RANDOM()");
+        aP = new artoPresenter(dtb);
+        initDB(" WHERE rate >= " + from + " AND rate <= " + to + " AND type = 'Nomen'"+ " ORDER BY RANDOM()");
 
 
     }
     @Override
     public void postExecute(){
+        initGUI();
         progressBar.setVisibility(View.INVISIBLE);
         articleContainer.setVisibility(View.VISIBLE);
         update();
     }
+    public WordController getWord(){return aP.getWord();}
 
 
 }

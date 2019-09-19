@@ -57,22 +57,24 @@ public class cardo extends templateFragment{
             if (!end) {
                 if (flag) {
                     System.out.println("Trans UI");
-                    finishTranslation(word);
+//                    finishTranslation(wc);
 
-                    transUI(word);
+                    transUI(wc);
                     flag = Boolean.FALSE;
                 } else {
                     if (dtb.moveToNext()) {
-                        word = new Word(dtb);
+//                        wc = new Word(dtb);
+                        wc.importWord(dtb);
                     } else {
                         dtb.moveToFirst();
-                        word = new Word(dtb);
+                        wc.importWord(dtb);
+//                        wc = new Word(dtb);
 
                     }
                     System.out.println("ORIG UI");
                     flag = Boolean.TRUE;
-                    startTranslation(word);
-                    origUI(word);
+//                    startTranslation(wc);
+                    origUI(wc);
                 }
             }
         }
@@ -80,10 +82,11 @@ public class cardo extends templateFragment{
     private View.OnClickListener backListener = new View.OnClickListener() {
         public void onClick(View v) {
             if (dtb.moveToPrevious()) {
-                word = new Word(dtb);
-                startTranslation(word);
-                finishTranslation(word);
-                transUI(word);
+//                wc = new Word(dtb);
+                wc.importWord(dtb);
+//                startTranslation(wc);
+//                finishTranslation(wc);
+                transUI(wc);
                 flag = Boolean.FALSE;
             }
         }
@@ -91,39 +94,39 @@ public class cardo extends templateFragment{
 
 
 
-    private void origUI(Word w) {
-        layout.setBackgroundColor(word.getColor());
+    private void origUI(WordController w) {
+        layout.setBackgroundColor(wc.getColor());
         wordTxt.setText(w.getWordText());
         original.setText("");
     }
-    public void transUI(Word w) {
+    public void transUI(WordController w) {
         layout.setBackgroundColor(Color.parseColor("#DB045B"));
         System.out.println("TARGET " + target);
         wordTxt.setText(w.getTranslated(target));
         original.setText("~ " + w.getWordText());
     }
-    public void startTranslation(Word w) {
-        translation = new Translator();
-        Language l = new Language(w, "de", target);
-        translation.execute(l);
-    }
-    public void finishTranslation(Word w) {
-        try {
-            w.setTranslated(translation.get());
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        word = w;
-    }
+//    public void startTranslation(Word w) {
+//        translation = new Translator();
+//        Language l = new Language(w, "de", target);
+//        translation.execute(l);
+//    }
+//    public void finishTranslation(Word w) {
+//        try {
+//            w.setTranslated(translation.get());
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        wc = w;
+//    }
 
 
     @Override
     public void initGUI() {
-        addFragment("wiki","a");
+        addFragment("wiki","b");
         addFragment("edit","c");
-        addFragment("language","b");
+        addFragment("language","a");
         wordTxt = v.findViewById(R.id.word);
         mainlayout = v.findViewById(R.id.mainlayout);
         layout = v.findViewById(R.id.layout);
@@ -147,17 +150,10 @@ public class cardo extends templateFragment{
 
     @Override
     public void postExecute(){
-//        word = new Word(dtb);
-//        System.out.println("colorize");
-//        layout.setBackgroundColor(word.getColor());
-//        progressBar.setVisibility(View.INVISIBLE);
-//        wordTxt.setText(word.getWordText());
-//        startTranslation(word);
 
 
 
-        WordModel wordModel = new WordModel();
-        wc = new WordController(wordModel);
+        wc = new WordController();
         wc.importWord(dtb);
         System.out.println("colorize");
         layout.setBackgroundColor(wc.getColor());
@@ -167,16 +163,55 @@ public class cardo extends templateFragment{
 
     }
 
+    public void addFragment(String type,String container) {
+        int layoutID = 0;
+        if(container.equals("a")){
+            layoutID = R.id.containera;
+        }else if(container.equals("b")){
+            layoutID = R.id.containerb;
+        }else if(container.equals("c")){
+            layoutID = R.id.containerc;
+        }
+
+        if(type.equals("wiki")){
+            WiktionaryBtn wik = new WiktionaryBtn();
+
+            getChildFragmentManager().beginTransaction()
+                    .replace(layoutID, wik)
+                    .commit();
+        }
+        else if(type.equals("language")){
+            FragmentLanguage fragmentLanguage = new FragmentLanguage();
+            getChildFragmentManager().beginTransaction()
+                    .replace(layoutID, fragmentLanguage)
+                    .commit();
+        }
+        else if(type.equals("edit")){
+            EditBtn editBtn = new EditBtn();
+            getChildFragmentManager().beginTransaction()
+                    .replace(layoutID, editBtn)
+                    .commit();
+        }
+
+
+
+
+
+
+
+    }
     @Override
     public void onInputLanguage(CharSequence input) {
         if (!input.equals("Error")) {
             target = input.toString();
             System.out.println(target);
-            startTranslation(word);
-            if (!flag) {
-                finishTranslation(word);
-                transUI(word);
-            }
+            transUI(wc);
+
+//            startTranslation(wc);
+//            if (!flag) {
+//                finishTranslation(wc);
+//                transUI(wc);
+//            }
         }
     }
 }

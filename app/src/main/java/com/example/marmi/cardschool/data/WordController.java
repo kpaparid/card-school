@@ -19,9 +19,13 @@ public class WordController implements Serializable {
     private WordView view;
 
 //    public WordController(WordModel wordModel, WordView view){
-        public WordController(WordModel wordModel){
-            this.wordModel = wordModel;
-            this.view = view;
+        public WordController(){
+            this.wordModel = new WordModel();
+
+    }
+    public WordController(Cursor row){
+        this.wordModel = new WordModel();
+        importWord(row);
     }
 
 
@@ -50,7 +54,7 @@ public class WordController implements Serializable {
         setHr_translated(hr_translated);
         setSr_translated(sr_translated);
         setPlural(plural);
-        setWiki();
+        setWiki(wordModel.getWordText());
         setArticle();
         setColor();
 
@@ -114,20 +118,24 @@ public class WordController implements Serializable {
         }
         wordModel.setArticle(article);
     }
-    public void setWiki(){
-        String wiki = wordModel.getWordText();
+    public void setWiki(String word){
+        String wiki = word;
+
         if(wordModel.getType().equals("Nomen")){
             int index = wiki.indexOf(",");
             if(index ==-1 ){
-                wiki = wiki.substring(4);
+                String article = wiki.substring(0,3);
+                if (article.contains("der")||article.contains("die")||article.contains("das")){
+                    wiki = wiki.substring(4);
+                }
+
             }
             else {
                 wiki = wiki.substring(4,index);
             }
         }
-        else
-        if(wordModel.getType().equals("Verb")){
-            System.out.println("wiki "+wiki);
+        else if(wordModel.getType().equals("Verb")){
+            //System.out.println("wiki "+wiki);
             if(wiki.contains("|")){
                 wiki = wiki.replace("|","");
             }
@@ -179,12 +187,30 @@ public class WordController implements Serializable {
     public void setSr_translated(String text){ wordModel.setSr_translated(text); }
 
 
+        public String getTranslated(String target) {
 
 
+                switch (target) {
+                    case "en": {
+                        return getEn_translated();
 
+                    }
+                    case "el": {
+                        return getGr_translated();
 
+                    }
+                    case "hr": {
+//                    System.out.println("HRRRRRRRRRRRRRRRRRRR RE");
+                        return getHr_translated();
 
+                    }
+                    case "sr": {
+                        return getSr_translated();
 
+                    }
+                }
 
+            return "ERROR";
+        }
 
 }

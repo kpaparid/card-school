@@ -23,6 +23,8 @@ import android.widget.TextView;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -76,7 +78,7 @@ public class InsertFragment extends Fragment implements WiktionaryBtn.NestedList
 
 
     public interface FragmentListener {
-        void onFragmentListener(Word word, String mode);
+        void onFragmentListener(WordController word, String mode);
     }
 
 
@@ -156,38 +158,6 @@ return v;
                     wiki.setVisibility(View.GONE);
                 }
 
-//                List misAt = getMissingAttribute();
-////                if(!misAt.contains("Word")){
-////                    de = word.getText().toString();
-////                    String dev = de;
-////
-////                    if(type.equals("Verb")) {
-////                        dev = "wir " + dev;
-////                        System.out.println(de);
-////                    }
-////                    try {
-////                        en = new translateasync("en",dev).execute().get();
-////                        en = en.replace("we ","");
-////                        en = en.replace("the ","");
-////                        gr = new translateasync("el",dev).execute().get();
-////                        gr = gr.replace("το ","");
-////                        hr = new translateasync("hr",dev).execute().get();
-////                        hr = hr.replace("mi ","");
-////                        sr = new translateasync("sr",dev).execute().get();
-////                        sr = sr.replace("ми ","");
-////
-////                        ent.setText(en);
-////                        grt.setText(gr);
-////                        set.setText(sr);
-////                        hrt.setText(hr);
-////
-////                    } catch (ExecutionException e) {
-////                        e.printStackTrace();
-////                    } catch (InterruptedException e) {
-////                        e.printStackTrace();
-////                    }
-////                }
-
             }
 
             public void beforeTextChanged(CharSequence s, int start,
@@ -210,50 +180,10 @@ return v;
 
         rate = 4;
         ratet.setText(rate.toString());
+        ratet.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
         ratet.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
-
-                if(!word.getText().toString().equals(""))
-                {
-                    wiki.setVisibility(View.VISIBLE);
-                }
-                else {
-                    wiki.setVisibility(View.GONE);
-                }
-
-//                List misAt = getMissingAttribute();
-////                if(!misAt.contains("Word")){
-////                    de = word.getText().toString();
-////                    String dev = de;
-////
-////                    if(type.equals("Verb")) {
-////                        dev = "wir " + dev;
-////                        System.out.println(de);
-////                    }
-////                    try {
-////                        en = new translateasync("en",dev).execute().get();
-////                        en = en.replace("we ","");
-////                        en = en.replace("the ","");
-////                        gr = new translateasync("el",dev).execute().get();
-////                        gr = gr.replace("το ","");
-////                        hr = new translateasync("hr",dev).execute().get();
-////                        hr = hr.replace("mi ","");
-////                        sr = new translateasync("sr",dev).execute().get();
-////                        sr = sr.replace("ми ","");
-////
-////                        ent.setText(en);
-////                        grt.setText(gr);
-////                        set.setText(sr);
-////                        hrt.setText(hr);
-////
-////                    } catch (ExecutionException e) {
-////                        e.printStackTrace();
-////                    } catch (InterruptedException e) {
-////                        e.printStackTrace();
-////                    }
-////                }
-
             }
 
             public void beforeTextChanged(CharSequence s, int start,
@@ -262,9 +192,16 @@ return v;
 
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(!ratet.getText().equals("")){
+                if(s.equals("")){
+                    ratet.setBackgroundResource(R.drawable.back);
+                }
+                else
+                {
+                    System.out.println(" ratet "+ratet.getText());
                     ratet.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
                 }
+
+
             }
         });
 
@@ -324,9 +261,8 @@ return v;
 
 
             List misAt = getMissingAttribute();
-            if(!(misAt.contains("Word")||misAt.contains("Article")||misAt.contains("Type"))){
-                translate.setVisibility(View.GONE);
-                insert.setVisibility(View.VISIBLE);
+            if(!(misAt.contains("Word"))){
+
                 de = word.getText().toString();
                 String dev = de;
 
@@ -513,10 +449,16 @@ return v;
         List misAt = getMissingAttribute();
         if(!misAt.contains("Word"))
         {
-            System.out.println("word text "+word.getText().toString());
-            System.out.println("word type "+ type);
-            System.out.println("word text "+ article);
-            listener.onFragmentListener(new Word("temp",-1,word.getText().toString(),"temp","temp","temp","temp"), "Wiki");
+            System.out.println("wc text "+word.getText().toString());
+            System.out.println("wc type "+ type);
+            System.out.println("wc text "+ article);
+
+
+            WordController wc = new WordController();
+            wc.setWiki(word.getText().toString());
+
+            System.out.println("wcc text "+wc.getWordText());
+            listener.onFragmentListener(wc, "Wiki");
 
         }else {
             System.out.println("wtf");
@@ -553,97 +495,6 @@ return v;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    private View.OnClickListener printListener = new View.OnClickListener() {
-//        public void onClick(View v) {
-//            Log.d("mpika","mpika");
-//            Cursor d = mDatabaseHelper.getData("");
-//            ArrayList<Cursor> listData = new ArrayList<>();
-//            while (d.moveToNext()) {
-//
-//                //Log.d("Word     ", d.getString(3));
-//
-//                String de = d.getString(0);
-//                String gr = d.getString(1);
-//                String en = d.getString(2);
-//                String th = d.getString(3);
-//                String typeSpinner = d.getString(4);
-//                Log.d("Databate\n","\t"+de+"\t"+en+"\t"+gr+"\t"+th+"\t"+typeSpinner);
-//
-//                listData.add(d);
-//            }
-//            Log.d("Insert    ","btn");
-//            Intent myIntent = new Intent(getActivity(), PrintFragment.class);
-//
-//            InsertFragment.this.startActivity(myIntent);
-//
-//
-//        }
-//
-//    };
-//    private View.OnClickListener deleteListener = new View.OnClickListener() {
-//
-//        public void onClick(View v) {
-//            Log.d("Database\n","delete");
-//            mDatabaseHelper.delete();
-//
-//            listener.onInsertListener();
-//        }
-//    };
 
 
 

@@ -5,17 +5,17 @@ import android.database.Cursor;
 import java.util.ArrayList;
 
 public class WordModel {
-    private String text;
-    private String type;
-    private String en_translated;
-    private String gr_translated;
-    private String hr_translated;
-    private String sr_translated;
-    private String plural;
-    private String article;
-    private String rate;
-    private int color;
-    private String wiki;
+    private String text = "";
+    private String type = "";
+    private String en_translated = "";
+    private String gr_translated = "";
+    private String hr_translated = "";
+    private String sr_translated = "";
+    private String plural = "";
+    private String article = "";
+    private String rate = "";
+    private int color = 0;
+    private String wiki = "";
 
 
 

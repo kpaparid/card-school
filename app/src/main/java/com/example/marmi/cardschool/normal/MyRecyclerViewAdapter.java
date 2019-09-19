@@ -9,18 +9,19 @@ import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.Word;
+import com.example.marmi.cardschool.data.WordController;
 
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private List<Word> mData;
+    private List<WordController> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
 
     // data is passed into the constructor
-    public MyRecyclerViewAdapter(Context context, List<Word> data) {
+    public MyRecyclerViewAdapter(Context context, List<WordController> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -38,25 +39,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         String tr = mData.get(position).getEn_translated();
         String de = mData.get(position).getWordText();
         String gr = mData.get(position).getGr_translated();
-//        String type = mData.get(position).type;
-        Integer rate = mData.get(position).getRate();
+        String rate = mData.get(position).getRate();
         String ty = mData.get(position).getType();
-//        String th = mData.get(position).theme;
-
         holder.de.setText(de);
         holder.en.setText(tr);
         holder.type.setText(ty);
         holder.gr.setText(gr);
-//        holder.gr.setText(gr);
-//        holder.type.setText(type);
-        holder.rate.setText(rate.toString());
+        holder.rate.setText(rate);
 
-
-//        holder.ty.setText(ty);
-//        holder.th.setText(th);
     }
 
-    // total number of rows
     @Override
     public int getItemCount() {
         return mData.size();
@@ -91,7 +83,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     // convenience method for getting data at click position
-    public Word getItem(int id) {
+    public WordController getItem(int id) {
         return mData.get(id);
 
     }
