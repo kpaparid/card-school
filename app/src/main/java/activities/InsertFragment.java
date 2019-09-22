@@ -17,17 +17,15 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.Word;
 import com.example.marmi.cardschool.data.WordController;
-import com.example.marmi.cardschool.data.WordModel;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -69,9 +67,10 @@ public class InsertFragment extends Fragment implements WiktionaryBtn.NestedList
     String sr = "temp";
     String article;
     String type;
+    ProgressBar pb;
     FrameLayout wiki;
 
-    Boolean flagTranslate = false;
+    Boolean translateFinished = true;
 
     private FragmentListener listener;
 
@@ -107,6 +106,9 @@ return v;
     }
 
     private void init() {
+
+        pb = v.findViewById(R.id.pB);
+
         addFragment();
         missingAttribute = new ArrayList<>();
 
@@ -221,12 +223,23 @@ return v;
             }
         });
     }
+    private void loading(Boolean bool){
+        if(bool){
+            System.out.println("bool true");
+            pb.setVisibility(View.VISIBLE);
+        }else {
+
+            System.out.println("bool false");
+            pb.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
 
 
         List misAt = getMissingAttribute();
-        if(!(misAt.contains("Word")||misAt.contains("Rate")||misAt.contains("Article")||misAt.contains("Type"))){
+        if(!(translateFinished||misAt.contains("Word")||misAt.contains("Rate")||misAt.contains("Article")||misAt.contains("Type"))){
             insert.setVisibility(View.GONE);
             translate.setVisibility(View.VISIBLE);
             if(type.equals("Nomen")){
@@ -270,70 +283,95 @@ return v;
                     dev = "wir " + dev;
                     System.out.println(de);
                 }
-                try {
-                    en = new translateasync("en",dev).execute().get();
-                    en = en.replace("we ","");
-                    en = en.replace("the ","");
-                    gr = new translateasync("el",dev).execute().get();
-                    gr = gr.replace("το ","");
-                    hr = new translateasync("hr",dev).execute().get();
-                    hr = hr.replace("mi ","");
-                    sr = new translateasync("sr",dev).execute().get();
-                    sr = sr.replace("ми ","");
 
-                    ent.setText(en);
-                    grt.setText(gr);
-                    set.setText(sr);
-                    hrt.setText(hr);
 
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                new translateasync(dev).execute();
+
+
+
+
             }
         }
     };
-    class translateasync extends AsyncTask<String, Void, String> {
+    class translateasync extends AsyncTask<String, Void, String[]> {
 
-        private final String lang;
         private final String word;
-        private Exception exception;
-        translateasync(String lang, String word){
-            this.lang = lang;
+        translateasync(String word){
             this.word = word;
 
         }
-        protected String doInBackground(String... urls) {
+
+        protected String translate(String lang) throws Exception{
             String wiki = word;
+            String urlStr = "https://script.google.com/macros/s/AKfycbyrvkKW6iSQtj4F7zLSknEJlQYAU-mdis60YcOp2dJJS1iIlBsD/exec" +
+                    "?q=" + URLEncoder.encode(wiki, "UTF-8") +
+                    "&target=" + lang +
+                    "&source=" + "de";
+            URL url = new URL(urlStr);
+            StringBuilder response = new StringBuilder();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            wiki = response.toString();
+            return wiki;
+        }
+
+
+        protected void onPreExecute() {
+            loading(true);
+            System.out.println("pre execute");
+            translateFinished = true;
+        }
+
+
+
+        protected String[] doInBackground(String... urls) {
+
+            String[] wiki = new String[4];
             try {
 
-                String urlStr = "https://script.google.com/macros/s/AKfycbyrvkKW6iSQtj4F7zLSknEJlQYAU-mdis60YcOp2dJJS1iIlBsD/exec" +
-                        "?q=" + URLEncoder.encode(wiki, "UTF-8") +
-                        "&target=" + lang +
-                        "&source=" + "de";
-                URL url = new URL(urlStr);
-                StringBuilder response = new StringBuilder();
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestProperty("User-Agent", "Mozilla/5.0");
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-                wiki = response.toString();
+                wiki[0] = translate("en");
+                wiki[1] = translate("el");
+                wiki[2] = translate("hr");
+                wiki[3] = translate("sr");
 
 
-            }catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
+            System.out.println("hmm");
             return wiki;
 
         }
-        protected void onPostExecute(String feed) {
-            flagTranslate = true;
+        protected void onPostExecute(String[] feed) {
+
+            System.out.println("post execute");
+            loading(false);
+            translateFinished = true;
+            en = feed[0];
+            en = en.replace("we ","");
+            en = en.replace("the ","");
+
+            gr = feed[1];
+            gr = gr.replace("το ","");
+
+            hr = feed[2];
+            hr = hr.replace("mi ","");
+
+            sr = feed[3];
+            sr = sr.replace("ми ","");
+            ent.setText(en);
+            grt.setText(gr);
+            set.setText(sr);
+            hrt.setText(hr);
+
+
         }
     }
     class NewAdapter extends BaseAdapter {
@@ -449,9 +487,9 @@ return v;
         List misAt = getMissingAttribute();
         if(!misAt.contains("Word"))
         {
-            System.out.println("wc text "+word.getText().toString());
-            System.out.println("wc type "+ type);
-            System.out.println("wc text "+ article);
+            System.out.println("wordController text "+word.getText().toString());
+            System.out.println("wordController type "+ type);
+            System.out.println("wordController text "+ article);
 
 
             WordController wc = new WordController();

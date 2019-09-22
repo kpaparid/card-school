@@ -57,23 +57,23 @@ public class cardo extends templateFragment{
             if (!end) {
                 if (flag) {
                     System.out.println("Trans UI");
-//                    finishTranslation(wc);
+//                    finishTranslation(wordController);
 
                     transUI(wc);
                     flag = Boolean.FALSE;
                 } else {
                     if (dtb.moveToNext()) {
-//                        wc = new Word(dtb);
+//                        wordController = new Word(dtb);
                         wc.importWord(dtb);
                     } else {
                         dtb.moveToFirst();
                         wc.importWord(dtb);
-//                        wc = new Word(dtb);
+//                        wordController = new Word(dtb);
 
                     }
                     System.out.println("ORIG UI");
                     flag = Boolean.TRUE;
-//                    startTranslation(wc);
+//                    startTranslation(wordController);
                     origUI(wc);
                 }
             }
@@ -82,10 +82,10 @@ public class cardo extends templateFragment{
     private View.OnClickListener backListener = new View.OnClickListener() {
         public void onClick(View v) {
             if (dtb.moveToPrevious()) {
-//                wc = new Word(dtb);
+//                wordController = new Word(dtb);
                 wc.importWord(dtb);
-//                startTranslation(wc);
-//                finishTranslation(wc);
+//                startTranslation(wordController);
+//                finishTranslation(wordController);
                 transUI(wc);
                 flag = Boolean.FALSE;
             }
@@ -118,7 +118,7 @@ public class cardo extends templateFragment{
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-//        wc = w;
+//        wordController = w;
 //    }
 
 
@@ -207,10 +207,10 @@ public class cardo extends templateFragment{
             System.out.println(target);
             transUI(wc);
 
-//            startTranslation(wc);
+//            startTranslation(wordController);
 //            if (!flag) {
-//                finishTranslation(wc);
-//                transUI(wc);
+//                finishTranslation(wordController);
+//                transUI(wordController);
 //            }
         }
     }

@@ -237,7 +237,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
 
 //                List misAt = getMissingAttribute();
 ////                if(!misAt.contains("Word")){
-////                    de = wc.getText().toString();
+////                    de = wordController.getText().toString();
 ////                    String dev = de;
 ////
 ////                    if(type.equals("Verb")) {
@@ -415,13 +415,13 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
         List misAt = getMissingAttribute();
         if(!misAt.contains("Word"))
         {
-            System.out.println("wc text "+word.getText().toString());
-            System.out.println("wc type "+ type);
-            System.out.println("wc text "+ article);
+            System.out.println("wordController text "+word.getText().toString());
+            System.out.println("wordController type "+ type);
+            System.out.println("wordController text "+ article);
 
 
-            //WordController wc = new WordController();
-            //wc.setWiki(word.getText().toString());
+            //WordController wordController = new WordController();
+            //wordController.setWiki(word.getText().toString());
 
 
 

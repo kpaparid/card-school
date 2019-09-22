@@ -33,7 +33,7 @@ import fragments.WiktionaryBtn;
 
 public class templateFragment extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
 
-//    public Word wc;
+//    public Word wordController;
 
     public WordController wc;
     public Translator translation;

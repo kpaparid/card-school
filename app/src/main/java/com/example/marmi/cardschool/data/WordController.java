@@ -1,8 +1,11 @@
 package com.example.marmi.cardschool.data;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Environment;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 
@@ -16,7 +19,7 @@ import java.util.ArrayList;
 public class WordController implements Serializable {
 
     private WordModel wordModel;
-    private WordView view;
+    private Cursor dtb;
 
 //    public WordController(WordModel wordModel, WordView view){
         public WordController(){
@@ -28,11 +31,20 @@ public class WordController implements Serializable {
         importWord(row);
     }
 
+    public void initDB(String query, Context context){
+        DatabaseHelper mDatabaseHelper = new DatabaseHelper(context);
+        dtb = mDatabaseHelper.getData(query);
+        if(dtb==null){
+            System.out.println("Reading Database cause Null");
+            mDatabaseHelper.readData(mDatabaseHelper, context);
+            dtb = mDatabaseHelper.getData(query);
+        }
+        mDatabaseHelper.close();
+        importWord(dtb);
+    }
+
 
     public void importWord(Cursor row){
-
-
-
         String type = row.getString(0);
         int rate = row.getInt(1);
         String text = row.getString(2);
@@ -45,7 +57,6 @@ public class WordController implements Serializable {
             plural = text.substring(text.indexOf("-")+1);
             //  System.out.println(" Plural " +plural);
         }
-
         setWordText(text);
         setType(type);
         setRate(Integer.toString(rate));
@@ -213,4 +224,20 @@ public class WordController implements Serializable {
             return "ERROR";
         }
 
+
+    public void moveToNext() {
+        if (!dtb.moveToNext()) {
+            System.out.println("move to first");
+            dtb.moveToFirst();
+        }
+        importWord(dtb);
+    }
+
+    public void moveToPrevious() {
+        if (!dtb.moveToFirst()) {
+            System.out.println("move to first");
+            dtb.moveToFirst();
+        }
+        importWord(dtb);
+    }
 }

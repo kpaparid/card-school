@@ -27,7 +27,6 @@ import fragments.WiktionaryBtn;
 public class templatePresenter {
 
     public WordController wc;
-    public Translator translation;
     public String target = "en";
     public Cursor dtb;
     private String mode;

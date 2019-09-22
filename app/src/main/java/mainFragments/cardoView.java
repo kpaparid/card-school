@@ -17,7 +17,6 @@ public class cardoView extends templateView {
     private ConstraintLayout layout;
     private TextView wordTxt;
     private TextView original;
-
     private cardoPresenter cP;
 
 

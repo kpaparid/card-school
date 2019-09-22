@@ -80,7 +80,7 @@ public class arto extends templateFragment{
 
 
     private void update() {
-//        wc = new WordController();
+//        wordController = new WordController();
         wc.importWord(dtb);
         wordTxt.setText(wc.getWordText().substring(4));
         switch (wc.getArticle()) {

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
+import com.example.marmi.cardschool.data.DataModel;
 import com.example.marmi.cardschool.data.WordController;
 import com.transitionseverywhere.ChangeText;
 import com.transitionseverywhere.TransitionManager;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -50,17 +53,53 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
     public String mode;
     private int index;
 
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    WordController[] wc = null;
+    Bundle savedInstanceState;
+
+
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle sV) {
         v = inflater.inflate(getLayoutID(), container, false);
+        this.savedInstanceState = sV;
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            from = getArguments().getString("nfrom");
-            to = getArguments().getString("nto");
-            mode =getArguments().getString("mode");
+
+
+
+        if(savedInstanceState!=null)
+        {
+            wc = new WordController[4];
+            wc[0] =(WordController) savedInstanceState.getSerializable("wc0");
+            wc[1] =(WordController) savedInstanceState.getSerializable("wc1");
+            wc[2] =(WordController) savedInstanceState.getSerializable("wc2");
+            wc[3] =(WordController) savedInstanceState.getSerializable("wc3");
+
         }
+
+
         init();
         return v;
     }
+
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        System.out.println("onSave");
+        wc = qP.getWordController();
+        outState.putSerializable("wc0", wc[0]);
+        outState.putSerializable("wc1", wc[1]);
+        outState.putSerializable("wc2", wc[2]);
+        outState.putSerializable("wc3", wc[3]);
+        super.onSaveInstanceState(outState);
+
+
+    }
+
+
+
+
+
+
+
     public int getLayoutID(){
         return R.layout.fr_quiz;
     }
@@ -73,7 +112,7 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
 
     public void init(){
 
-        qP = new quizPresenter(getContext(),this);
+        qP = new quizPresenter(getContext(),wc ,this);
         initGUI();
         new initAsync().execute();
 
@@ -102,14 +141,11 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
         buttons.add(btn2);
         buttons.add(btn3);
         buttons.add(btn4);
-
+        Log.e("",word.getEn_translated());
+        Log.e("",random1.getEn_translated());
+        Log.e("",random2.getEn_translated());
+        Log.e("",random3.getEn_translated());
         anim(word);
-    }
-
-    private void anim(final WordController word) {
-
-        ConstraintLayout transitionsContainer = v.findViewById(R.id.contentlayout);
-        TransitionManager.beginDelayedTransition(transitionsContainer, new ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN));
         btn1.setText(words.get(0).getTranslated(qP.getTarget()));
         btn2.setText(words.get(1).getTranslated(qP.getTarget()));
         btn3.setText(words.get(2).getTranslated(qP.getTarget()));
@@ -117,11 +153,11 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
         wordTxt.setText(word.getWordText());
     }
 
+    private void anim(final WordController word) {
 
-
-
-
-
+        ConstraintLayout transitionsContainer = v.findViewById(R.id.contentlayout);
+        TransitionManager.beginDelayedTransition(transitionsContainer, new ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN));
+    }
     public void wrong(Button btn) {
         btn.setBackgroundColor(Color.RED);
         Button rightbtn = buttons.get(index);
@@ -152,6 +188,7 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
 
 
 
+
     public void onInputLanguage(final CharSequence input) {
 
 
@@ -177,7 +214,11 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
     @Override
     public void nestedListenerClicked(String mode) {
        // dtb.moveToPrevious();
-        listener.onFragmentListener(qP.wc,mode);
+
+        wc = qP.getWordController();
+
+        listener.onFragmentListener(qP.getWordController()[0],mode);
+
     }
 
     /**

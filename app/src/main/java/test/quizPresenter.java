@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.marmi.cardschool.R;
+import com.example.marmi.cardschool.data.DataModel;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
 import com.example.marmi.cardschool.data.WordModel;
@@ -19,41 +20,50 @@ public class quizPresenter{
 
     private quizView qV;
     private Context context;
-
+    private WordController wordController;
     private WordController currentRandom1;
     private WordController currentRandom2;
     private WordController currentRandom3;
     private DatabaseHelper mDatabaseHelper;
-    public WordController wc;
     private String target = "en";
-    private Cursor dtb;
+    private String from;
+    private String to;
+    private String mode;
 
 
-    public quizPresenter(Context context, quizView qV) {
+
+
+    public quizPresenter(Context context, WordController[] wc, quizView qV) {
 
         this.context = context;
         this.qV = qV;
-        initDB(" WHERE rate >= \" + from + \" AND rate <= \" + to +\" \"+ nmode + \" ORDER BY RANDOM()");
-    }
-
-    public void initDB(String query){
-
-
-        DatabaseHelper mDatabaseHelper = new DatabaseHelper(context);
-        dtb = mDatabaseHelper.getData(query);
-        if(dtb==null){
-            System.out.println("Reading Database cause Null");
-            mDatabaseHelper.readData(mDatabaseHelper, context);
-            dtb = mDatabaseHelper.getData(query);
+        if (qV.getArguments() != null) {
+            from = qV.getArguments().getString("nfrom");
+            to = qV.getArguments().getString("nto");
+            mode =qV.getArguments().getString("mode");
+            System.out.println(to);
         }
-        mDatabaseHelper.close();
+
+        if(wc == null){
+            System.out.println("world controller null");
+            wordController = new WordController();
+            wordController.initDB(" WHERE rate >= " + from + " AND rate <= " + to + mode + " ORDER BY RANDOM()",context);
+            randomGenerator(wordController.getType());
+        }
+        else {
+            this.wordController = wc[0];
+            this.currentRandom1 = wc[1];
+            this.currentRandom2 = wc[2];
+            this.currentRandom3 = wc[3];
+        }
 
     }
+
 
 
     private void control(Button btn) {
         String text = btn.getText().toString();
-        if (text == wc.getTranslated(target)) {
+        if (text == wordController.getTranslated(target)) {
             qV.right(btn);
         } else {
             qV.wrong(btn);
@@ -61,6 +71,7 @@ public class quizPresenter{
     }
 
     public void randomGenerator(String type) {
+        System.out.println("random generator");
         String query = " WHERE rate >= " + 0 + " AND rate <= " + 100 + " AND type = '" + type + "' ORDER BY RANDOM() LIMIT 3";
         mDatabaseHelper = new DatabaseHelper(context);
         Cursor randomWords = mDatabaseHelper.getRandom(3, query);
@@ -73,16 +84,10 @@ public class quizPresenter{
         mDatabaseHelper.close();
     }
     public void initV() {
-        if(dtb == null){
-            System.out.println("wtf InitV");
-        }
-        wc = new WordController();
-        wc.importWord(dtb);
-        randomGenerator(wc.getType());
-        qV.update(wc, currentRandom1, currentRandom2, currentRandom3);
 
 
-        System.out.println("Finish InitV "+wc.getWordText());
+        qV.update(wordController, currentRandom1, currentRandom2, currentRandom3);
+        System.out.println("Finish InitV "+wordController.getWordText());
     }
 
 
@@ -110,15 +115,13 @@ public class quizPresenter{
         qV.setClickable(false);
         final Runnable r = new Runnable() {
             public void run() {
-                if (!dtb.moveToNext()) {
-                    System.out.println("move to first");
-                    dtb.moveToFirst();
-                }
 
-                wc.importWord(dtb);
+
+                wordController.moveToNext();
+                randomGenerator(wordController.getType());
                 qV.resetGUI();
-                qV.update(wc, currentRandom1, currentRandom2, currentRandom3);
-                randomGenerator(wc.getType());
+                qV.update(wordController, currentRandom1, currentRandom2, currentRandom3);
+
                 qV.setClickable(true);
             }
         };
@@ -130,7 +133,7 @@ public class quizPresenter{
 
 
     public WordController[] getCurrents(){
-        WordController currents[] = {wc, currentRandom1, currentRandom2, currentRandom3};
+        WordController currents[] = {wordController, currentRandom1, currentRandom2, currentRandom3};
         return currents;
     }
 
@@ -141,5 +144,10 @@ public class quizPresenter{
 
     public String getTarget() {
         return target;
+    }
+
+
+    public WordController[] getWordController() {
+        return new WordController[]{wordController,currentRandom1,currentRandom2,currentRandom3};
     }
 }
