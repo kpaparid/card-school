@@ -1,7 +1,6 @@
 package test;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,12 +16,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.DataModel;
 import com.example.marmi.cardschool.data.WordController;
 import com.transitionseverywhere.ChangeText;
 import com.transitionseverywhere.TransitionManager;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 

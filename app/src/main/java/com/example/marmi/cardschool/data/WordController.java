@@ -3,16 +3,7 @@ package com.example.marmi.cardschool.data;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.os.Environment;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
-import android.view.View;
 
-import com.example.marmi.cardschool.normal.CSVWriter;
-
-import java.io.File;
-import java.io.FileWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -70,6 +61,32 @@ public class WordController implements Serializable {
         setColor();
 
     }
+//    public void importSpecificWord(String ){
+//        String type = row.getString(0);
+//        int rate = row.getInt(1);
+//        String text = row.getString(2);
+//        String en_translated = row.getString(3);
+//        String gr_translated = row.getString(4);
+//        String hr_translated = row.getString(5);
+//        String sr_translated = row.getString(6);
+//        String plural = "";
+//        if(type.equals("Nomen")){
+//            plural = text.substring(text.indexOf("-")+1);
+//            //  System.out.println(" Plural " +plural);
+//        }
+//        setWordText(text);
+//        setType(type);
+//        setRate(Integer.toString(rate));
+//        setEn_translated(en_translated);
+//        setGr_translated(gr_translated);
+//        setHr_translated(hr_translated);
+//        setSr_translated(sr_translated);
+//        setPlural(plural);
+//        setWiki(wordModel.getWordText());
+//        setArticle();
+//        setColor();
+//
+//    }
 
 
 
@@ -149,7 +166,10 @@ public class WordController implements Serializable {
             //System.out.println("wiki "+wiki);
             if(wiki.contains("|")){
                 wiki = wiki.replace("|","");
+            }else if (wiki.contains("/")){
+                    wiki = wiki.replace("/","");
             }
+
             ArrayList<String> refl = new ArrayList<String>();
             refl.add("sich");
             refl.add("sich");
@@ -172,7 +192,7 @@ public class WordController implements Serializable {
             wiki = parts[i];
 
             while (wiki.contains(".")||wiki.contains("/")||refl.contains(wiki)){
-
+                System.out.println(word+"   "+(parts.length-i));
                 wiki = parts[parts.length-i];
                 i++;
             }

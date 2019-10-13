@@ -1,30 +1,22 @@
 package activities;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
-import com.example.marmi.cardschool.data.Word;
 import com.example.marmi.cardschool.data.WordController;
-import com.example.marmi.cardschool.data.WordModel;
 import com.example.marmi.cardschool.normal.MyRecyclerViewAdapter;
 
 import java.util.ArrayList;
-
-import fragments.EditBtn;
 
 public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.ItemClickListener {
 
@@ -36,9 +28,6 @@ public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.Ite
     String mode = "";
     Cursor dtb;
 
-    public void setDtb(Cursor dtb) {
-        this.dtb = dtb;
-    }
 
     public interface FragmentListener {
         void onFragmentListener(WordController Word, String mode);

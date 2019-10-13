@@ -69,13 +69,26 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
             if (!(misAt.contains("Word") || misAt.contains("Article") || misAt.contains("Type"))) {
 
 
+
+
                 en = ent.getText().toString();
                 gr = grt.getText().toString();
                 hr = hrt.getText().toString();
                 sr = set.getText().toString();
+                rate = ratet.getText().toString();
+
+                if(type.equals("Nomen")){
+
+                    de = de.substring(4,de.indexOf(","));
+                    System.out.println("de "+de);
+                    de =article +" "+de +",- "+plural.getText();
+                    System.out.println(de);
+                }
+
 
                 Log.e("translate", "rate:  " + rate);
                 Log.e("translate", "type:  " + type);
+                Log.e("translate","article"+article);
                 Log.e("translate", "de:  " + de);
                 Log.e("translate", "en:  " + en);
                 Log.e("translate", "el:  " + gr);

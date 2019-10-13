@@ -1,9 +1,5 @@
 package com.example.marmi.cardschool.data;
 
-import android.database.Cursor;
-
-import java.util.ArrayList;
-
 public class WordModel {
     private String text = "";
     private String type = "";

@@ -10,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -27,17 +25,12 @@ import test.ItemData;
 
 public class FragmentLanguage extends Fragment {
     private FragmentLanguageListener listener;
-    private EditText editText;
 
-    private Button buttonOk;
-    //private ImageView img;
     private String targetLang;
     private View v;
     private Spinner sp;
     private ArrayList<ItemData> list;
-//    private SpinnerAdapter adapter;
     private NewAdapter adapter;
-    private int listsize;
     private ImageView img;
     LayoutInflater inflator;
 

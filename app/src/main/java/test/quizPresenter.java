@@ -1,20 +1,13 @@
 package test;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Button;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.DataModel;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
-import com.example.marmi.cardschool.data.WordModel;
-import com.example.marmi.cardschool.normal.Translator;
-
-import java.lang.reflect.Array;
 
 public class quizPresenter{
 

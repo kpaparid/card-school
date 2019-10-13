@@ -1,8 +1,10 @@
 package activities;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -12,11 +14,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -107,6 +112,9 @@ return v;
 
     private void init() {
 
+        ImageView del = v.findViewById(R.id.deleteWord);
+        del.setVisibility(View.INVISIBLE);
+
         pb = v.findViewById(R.id.pB);
 
         addFragment();
@@ -171,7 +179,10 @@ return v;
                 if(word.getText().toString().equals("delete")){
                     mDatabaseHelper.delete();
                     getActivity().getSupportFragmentManager().popBackStack();
-                }else if(word.getText().equals("")){
+                }else if(word.getText().toString().equals("copydb")){
+                    mDatabaseHelper.exportCopyDB();
+                    getActivity().getSupportFragmentManager().popBackStack();
+                }else if(word.getText().toString().equals("")){
 
                 }
                 else {
@@ -224,13 +235,17 @@ return v;
         });
     }
     private void loading(Boolean bool){
+        ConstraintLayout cl = v.findViewById(R.id.constraintLayout5);
         if(bool){
             System.out.println("bool true");
             pb.setVisibility(View.VISIBLE);
+
+            cl.setAlpha(0.1f);
         }else {
 
             System.out.println("bool false");
             pb.setVisibility(View.INVISIBLE);
+            cl.setAlpha(1);
         }
     }
 
@@ -239,7 +254,7 @@ return v;
 
 
         List misAt = getMissingAttribute();
-        if(!(translateFinished||misAt.contains("Word")||misAt.contains("Rate")||misAt.contains("Article")||misAt.contains("Type"))){
+        if(!(!translateFinished||misAt.contains("Word")||misAt.contains("Rate")||misAt.contains("Article")||misAt.contains("Type"))){
             insert.setVisibility(View.GONE);
             translate.setVisibility(View.VISIBLE);
             if(type.equals("Nomen")){
@@ -271,24 +286,15 @@ return v;
     };
     private View.OnClickListener translateListener = new View.OnClickListener() {
         public void onClick(View v) {
-
-
             List misAt = getMissingAttribute();
             if(!(misAt.contains("Word"))){
-
                 de = word.getText().toString();
                 String dev = de;
-
                 if(type.equals("Verb")) {
                     dev = "wir " + dev;
                     System.out.println(de);
                 }
-
-
                 new translateasync(dev).execute();
-
-
-
 
             }
         }
@@ -326,7 +332,7 @@ return v;
         protected void onPreExecute() {
             loading(true);
             System.out.println("pre execute");
-            translateFinished = true;
+            translateFinished = false;
         }
 
 
@@ -477,9 +483,6 @@ return v;
         getChildFragmentManager().beginTransaction()
                 .replace(R.id.containera, wik)
                 .commit();
-
-
-
     }
     @Override
     public void nestedListenerClicked(String mode) {

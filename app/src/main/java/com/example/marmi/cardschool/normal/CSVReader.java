@@ -6,7 +6,6 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.example.marmi.cardschool.data.DatabaseHelper;
-import com.example.marmi.cardschool.data.Word;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,93 +17,51 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import static android.content.ContentValues.TAG;
 
 public class CSVReader {
     Context context;
-    String fileName;
     DatabaseHelper Database;
-    List<Word> rows = new ArrayList<>();
-
-    public CSVReader(Context context,DatabaseHelper Database, String Path) throws IOException {
+    String en;
+    String gr;
+    String hr;
+    String sr;
+    String type;
+    int rate;
+    String de;
+    File file;
+    public CSVReader(Context context,DatabaseHelper Database) throws IOException {
         this.context = context;
-        this.fileName = fileName;
         this.Database = Database;
 
-        if(Path.equals("Asset"))
-            readAsset();
-        else if (Path.equals("Local")){
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+        if (!exportDir.exists())
+        {
+            exportDir.mkdirs();
+        }
+        file = new File(exportDir, "exportedFile.txt");
+        if(file.exists()){
             readLocal();
-        }else if (Path.equals("input")){
-            try {
-                readInput();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        }else {
+            readAsset();
         }
 
-    }
-    class translateasync extends AsyncTask<String, Void, String> {
 
-        private final String lang;
+    }
+    class translateasync extends AsyncTask<String, Void, String[]> {
+
         private final String word;
-        private Exception exception;
-        translateasync(String lang, String word){
-            this.lang = lang;
+        translateasync(String word){
             this.word = word;
 
         }
 
-        protected String doInBackground(String... urls) {
+        protected String translate(String lang) throws Exception{
             String wiki = word;
-            try {
-
-                String urlStr = "https://script.google.com/macros/s/AKfycbyrvkKW6iSQtj4F7zLSknEJlQYAU-mdis60YcOp2dJJS1iIlBsD/exec" +
-                        "?q=" + URLEncoder.encode(wiki, "UTF-8") +
-                        "&target=" + lang +
-                        "&source=" + "de";
-                URL url = new URL(urlStr);
-                StringBuilder response = new StringBuilder();
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestProperty("User-Agent", "Mozilla/5.0");
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-                String inputLine;
-                while ((inputLine = in.readLine()) != null) {
-                    response.append(inputLine);
-                }
-                in.close();
-                wiki = response.toString();
-
-
-
-            }catch (IOException e) {
-                e.printStackTrace();
-            }
-            return wiki;
-
-        }
-
-        protected void onPostExecute(String feed) {
-            // TODO: check this.exception
-            // TODO: do something with the feed
-        }
-    }
-    private String translate(String lang, String word) {
-//        String wiki = getWiki(c2,c0);
-        String wiki = word;
-        System.out.println(wiki);
-        try {
-
             String urlStr = "https://script.google.com/macros/s/AKfycbyrvkKW6iSQtj4F7zLSknEJlQYAU-mdis60YcOp2dJJS1iIlBsD/exec" +
                     "?q=" + URLEncoder.encode(wiki, "UTF-8") +
-                    "&target=" + "en" +
+                    "&target=" + lang +
                     "&source=" + "de";
             URL url = new URL(urlStr);
             StringBuilder response = new StringBuilder();
@@ -118,19 +75,63 @@ public class CSVReader {
             }
             in.close();
             wiki = response.toString();
-
-
-
-        }catch (IOException e) {
-            e.printStackTrace();
+            return wiki;
         }
-        return wiki;
+
+
+        protected void onPreExecute() {
+            System.out.println("pre execute");
+        }
+
+
+
+        protected String[] doInBackground(String... urls) {
+
+            String[] wiki = new String[4];
+            try {
+
+                wiki[0] = translate("en");
+                wiki[1] = translate("el");
+                wiki[2] = translate("hr");
+                wiki[3] = translate("sr");
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("hmm");
+            return wiki;
+
+        }
+        protected void onPostExecute(String[] feed) {
+
+            System.out.println("post execute");
+            en = feed[0];
+            gr = feed[1];
+            hr = feed[2];
+            sr = feed[3];
+
+            en = en.replace("we ","");
+            en = en.replace("the ","");
+            gr = gr.replace("το ","");
+            hr = hr.replace("mi ","");
+            sr = sr.replace("ми ","");
+            Database.addData(type,rate,de,en,gr,hr,sr);
+            Log.e("translate", "de:  " + de);
+            Log.e("translate", "en:  " + en);
+            Log.e("translate", "el:  " + gr);
+            Log.e("translate", "hr:  " + hr);
+            Log.e("translate", "sr:  " + sr);
+
+
+
+        }
     }
-    public void readInput() throws IOException, ExecutionException, InterruptedException {
+    public void readInput() throws IOException {
 
     Log.e("Database ", "Reading Input");
     InputStream is = context.getAssets().open("insert.txt");
-    InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
+    InputStreamReader isr = new InputStreamReader(is);
     BufferedReader br = new BufferedReader(isr);
     String line;
     String csvSplitBy = ";";
@@ -154,9 +155,9 @@ public class CSVReader {
          */
 
 
-        String type= row[0];
-        Integer rate = Integer.parseInt(row[1]);
-        String de = row[2];
+        type= row[0];
+        rate = Integer.parseInt(row[1]);
+        de = row[2];
         String dev = de;
 
          if(type.equals("Verb")) {
@@ -167,27 +168,9 @@ public class CSVReader {
              dev = de.substring(0,de.indexOf(","));
          }
 
-
-        String en = new translateasync("en",dev).execute().get();
-        en = en.replace("we ","");
-        en = en.replace("the ","");
-        String gr = new translateasync("el",dev).execute().get();
-        gr = gr.replace("το ","");
-        String hr = new translateasync("hr",dev).execute().get();
-        hr = hr.replace("mi ","");
-        String sr = new translateasync("sr",dev).execute().get();
-        sr = sr.replace("ми ","");
+         new translateasync(dev).execute();
 
 
-
-
-
-        Database.addData(type,rate,de,en,gr,hr,sr);
-        Log.e("translate", "de:  " + dev);
-        Log.e("translate", "en:  " + en);
-        Log.e("translate", "el:  " + gr);
-        Log.e("translate", "hr:  " + hr);
-        Log.e("translate", "sr:  " + sr);
 
     }
     System.out.println("finish adding");
@@ -203,7 +186,7 @@ public class CSVReader {
 
         Log.e("Database ", "Reading Asset");
         InputStream is = context.getAssets().open("prototypeFile.txt");
-        InputStreamReader isr = new InputStreamReader(is, StandardCharsets.UTF_8);
+        InputStreamReader isr = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(isr);
         String line;
         String csvSplitBy = ";";
@@ -240,55 +223,46 @@ public class CSVReader {
 
         Database.exportDB();
     }
-    public void readLocal() {
+    public void readLocal() throws IOException {
 
     Log.e("Database ", "Reading Local");
 
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            String csvSplitBy = ";";
 
-    File exportDir = new File(Environment.getExternalStorageDirectory(), "");
-    if (!exportDir.exists())
-    {
-        exportDir.mkdirs();
-    }
-
-    File file = new File(exportDir, "exportedFile.txt");
+            while ((line = br.readLine()) != null) {
+                String[] row = line.split(csvSplitBy);
 
 
-    StringBuilder text = new StringBuilder();
-
-    try {
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line;
-        String csvSplitBy = ";";
-
-        while ((line = br.readLine()) != null) {
-            String[] row = line.split(csvSplitBy);
-
-
-            /**
-             * @param row0 german
-             * @param row1 english
-             * @param row2 greek
-             * @param row3 sector
-             * @param row4 verb
-             * @param row5 difficulty
-             */
-                    Log.e("e", "row0:  " + row[0]);
-        Log.e("e", "row1:  " + row[1]);
-        Log.e("e", "row2:  " + row[2]);
-        Log.e("e", "row3:  " + row[3]);
-        Log.e("e", "row4:  " + row[4]);
-        Log.e("e", "row5:  " + row[5]);
-            Database.addData(row[0],Integer.parseInt(row[1]),row[2],row[3],row[4],row[5],row[6]);
-        }
-        br.close();
-    }
-    catch (IOException e) {
-        //You'll need to add proper error handling here
-    }
+                /**
+                 * @param row0 german
+                 * @param row1 english
+                 * @param row2 greek
+                 * @param row3 sector
+                 * @param row4 verb
+                 * @param row5 difficulty
+                 */
+                Log.e("e", "row0:  " + row[0]);
+                Log.e("e", "row1:  " + row[1]);
+                Log.e("e", "row2:  " + row[2]);
+                Log.e("e", "row3:  " + row[3]);
+                Log.e("e", "row4:  " + row[4]);
+                Log.e("e", "row5:  " + row[5]);
+                Database.addData(row[0],Integer.parseInt(row[1]),row[2],row[3],row[4],row[5],row[6]);
+            }
+            br.close();
 
 
     }
+
+
+
+
+
+
+
+
 }
 
 

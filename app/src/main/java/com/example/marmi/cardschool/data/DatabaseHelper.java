@@ -2,34 +2,21 @@ package com.example.marmi.cardschool.data;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
 
-import mainFragments.Menu;
-
 import com.example.marmi.cardschool.normal.CSVReader;
 import com.example.marmi.cardschool.normal.CSVWriter;
-import com.example.marmi.cardschool.normal.Translator;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
-import static java.math.RoundingMode.FLOOR;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -118,8 +105,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (!data.moveToFirst()){
             data = null;
         }
+
         return data;
     }
+
+//    public Cursor getData(String query)  {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String q ="SELECT * FROM " + TABLE_NAME +  query ;
+//        Cursor data = db.rawQuery(q, null);
+//        if (!data.moveToFirst()){
+//            data = null;
+//        }
+//        return data;
+//    }
+
+
+
     public Cursor getRandom(Integer n, String query) {
 
        // Log.e(TAG, "getRandom");
@@ -206,8 +207,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean checkDataBase(Context context) {
 
         Boolean rowExists = Boolean.FALSE;
-
-
         Log.e("DATABASE", "Checking Database" );
         File dbFile = context.getDatabasePath(TABLE_NAME);
         if (dbFile.exists()==true){
@@ -276,7 +275,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.e("Menu", sqlEx.getMessage(), sqlEx);
         }
     }
+    public void exportCopyDB() {
 
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+        exportDir.mkdirs();
+        if (!exportDir.exists())
+        {
+            exportDir.mkdirs();
+        }
+
+        File file = new File(exportDir, "backupDB.txt");
+        try
+        {
+            file.createNewFile();
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
+
+            while(curCSV.moveToNext())
+            {
+
+
+                String c0 = curCSV.getString(0);
+                String c1 = curCSV.getString(1);
+                String c2 = curCSV.getString(2);
+                String c3 = curCSV.getString(3);
+                String c4 = curCSV.getString(4);
+                String c5 = curCSV.getString(5);
+                String c6 = curCSV.getString(6);
+
+
+
+                String arrStr[] ={c0,c1,c2,c3,c4,c5,c6};
+                csvWrite.writeNext(arrStr);
+            }
+            csvWrite.close();
+            curCSV.close();
+        }
+        catch(Exception sqlEx)
+        {
+            Log.e("Menu", sqlEx.getMessage(), sqlEx);
+        }
+    }
 
 
 
@@ -286,26 +326,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          * else create from asset storage
          */
         System.out.println("reading");
-        if(checkDataBase(context)){
+        if(!checkDataBase(context)){
 
             try {
+                new CSVReader(context,mDatabaseHelper);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
                 /**
                  * create database from Local
                  */
-                new CSVReader(context,mDatabaseHelper,"Local");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        else{
-            try {
-                /**
-                 * create database from Asset
-                 */
-                new CSVReader(context ,mDatabaseHelper,"Asset");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+
         }
     }
     public boolean emptyCheck(Context context, Cursor dtb){

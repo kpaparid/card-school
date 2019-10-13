@@ -1,7 +1,6 @@
 package test;
 
 import android.content.Context;
-import android.database.Cursor;
 
 import com.example.marmi.cardschool.data.WordController;
 

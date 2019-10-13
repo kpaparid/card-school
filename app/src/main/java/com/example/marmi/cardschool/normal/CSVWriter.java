@@ -22,7 +22,6 @@ package com.example.marmi.cardschool.normal;
  *   writeAll(), all methods related to sql
  */
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 

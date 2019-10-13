@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.Word;
 import com.example.marmi.cardschool.data.WordController;
 
 import java.util.List;

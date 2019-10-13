@@ -3,7 +3,6 @@ package activities;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.transition.Fade;
 import android.support.transition.TransitionInflater;
@@ -16,21 +15,11 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
-
-import java.io.Serializable;
 
 import fragments.Edit;
 import fragments.WiktionaryWebFragment;
 import mainFragments.Menu;
-import mainFragments.TestFragment;
-import mainFragments.artoView;
-import mainFragments.cardoView;
-import mainFragments.quizo;
-import mainFragments.quizoView;
-import mainFragments.templateFragment;
-import mainFragments.templateView;
 import test.CardView;
 import test.articleView;
 import test.quizView;
@@ -45,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
     EditText nfrom;
     EditText nto;
     Edit edit;
-    private String currentFrName;
 
 
     @Override
@@ -64,37 +52,8 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
             t.addToBackStack(null);
             nfrom = findViewById(R.id.nfrom);
             nto = findViewById(R.id.nto);
-            currentFrName = "menu";
+
         }
-        else {
-            System.out.println("exw idi fragment");
-            fragment = getSupportFragmentManager().findFragmentById(R.id.frs);
-
-
-            if(fragment instanceof InsertFragment){
-                currentFrName = "insert";
-            }
-            else if(fragment instanceof PrintFragment){
-                currentFrName = "print";
-            }
-            else {
-
-                String query;
-                if(fragment instanceof cardoView){
-
-                    currentFrName = "card";
-                }
-                if(fragment instanceof quizView){
-
-                    currentFrName = "quiz";
-                }
-                if(fragment instanceof artoView){
-
-                    currentFrName = "article";
-
-                }
-            }
-            System.out.println("fragment "+ currentFrName);
 
 
 
@@ -107,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
 
 
 
-    }
+
 
 
     /**
@@ -157,39 +116,6 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
                     }else {
                         getSupportFragmentManager().popBackStack();
                     }
-
-
-//                    if(currentFrName.equals("menu")) {
-//                        System.out.println("Exit main");
-//                        finish();
-//                    }
-                    //else
-//                        if ((wik == null || wik.isHidden())& edit == null) {
-//                        System.out.println("Exit to Menu");
-//                        currentFrName = "menu";
-////                        getSupportFragmentManager().popBackStack();
-//                        t = getSupportFragmentManager().beginTransaction();
-//                        fragment = new Menu();
-//                        t.replace(R.id.frs, fragment);
-//                        t.commit();
-//
-//
-//                    }
-//                    else if(wik != null){
-//                        if (wik.onBack()) {
-//                            System.out.println("CLICKED BACK");
-//                        }else {
-//                            getSupportFragmentManager().popBackStack();
-//                            wik = null;
-//                        }
-//                    }
-//                    else if(edit != null){
-//                        System.out.println("exit edit");
-//                        getSupportFragmentManager().popBackStack();
-//                        edit = null;
-//
-//                    }
-
                     return true;
             }
         }
@@ -212,21 +138,15 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
 
         if (input.equals("card")) {
             fragment = new CardView();
-            currentFrName = "card";
         }  else if (input.equals("article")) {
             fragment = new articleView();
-            currentFrName = "article";
         } else if (input.equals("quiz")) {
 
             fragment = new quizView();
-            currentFrName = "quiz";
 
         } else if (input.equals("insert")) {
             fragment = new InsertFragment();
-            currentFrName = "insert";
         }else if (input.equals("print")) {
-
-            currentFrName = "print";
             fragment = new PrintFragment();
 
         }
@@ -242,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         fragment.setArguments(bundle);
         System.out.println("set argument "+ from+"\t"+to+"\t"+nmode);
         t = getSupportFragmentManager().beginTransaction();
-        animator(previous,fragment);
+        //animator(previous,fragment);
         t.replace(R.id.frs, fragment);
 
         t.addToBackStack(null);

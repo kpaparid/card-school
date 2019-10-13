@@ -3,7 +3,6 @@ package test;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -14,11 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
 
 import java.util.ArrayList;
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 import fragments.EditBtn;
 import fragments.FragmentLanguage;
 import fragments.WiktionaryBtn;
-import mainFragments.artoPresenter;
 
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
