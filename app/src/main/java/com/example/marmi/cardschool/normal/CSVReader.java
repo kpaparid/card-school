@@ -228,11 +228,13 @@ public class CSVReader {
     Log.e("Database ", "Reading Local");
 
             BufferedReader br = new BufferedReader(new FileReader(file));
+            System.out.println("file "+file.getName());
             String line;
             String csvSplitBy = ";";
 
             while ((line = br.readLine()) != null) {
                 String[] row = line.split(csvSplitBy);
+                System.out.println(line);
 
 
                 /**

@@ -17,6 +17,8 @@ import com.example.marmi.cardschool.data.WordController;
 import com.example.marmi.cardschool.normal.MyRecyclerViewAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.ItemClickListener {
 
@@ -26,7 +28,8 @@ public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.Ite
     String nfrom = "0";
     String nto = "20";
     String mode = "";
-    Cursor dtb;
+//    Cursor dtb;
+    WordController dtb;
 
 
     public interface FragmentListener {
@@ -48,35 +51,47 @@ public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.Ite
         if (getArguments() != null) {
             nfrom = getArguments().getString("nfrom");
             nto = getArguments().getString("nto");
-            mode =getArguments().getString("mode");
+            mode = getArguments().getString("mode");
+            dtb = (WordController) getArguments().getSerializable("wc");
         }
 
-        String query = " WHERE rate >= " + nfrom + " AND rate <= " + nto +" "+ mode + " ORDER BY rate";
 
-        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
-        System.out.println("nfrom "+nfrom);
-        System.out.println("nto "+nto);
-        dtb = mDatabaseHelper.getData(query);
-        if(dtb==null){
-            System.out.println("Reading Database cause Null");
-            mDatabaseHelper.readData(mDatabaseHelper, getContext());
-            dtb = mDatabaseHelper.getData(query);
-        }
-        mDatabaseHelper.close();
-        System.out.println("init db");
-        words = new ArrayList<>();
-        if (dtb.moveToFirst()) {
 
-            do {
-                WordController wc = new WordController();
-                wc.importWord(dtb);
-                words.add(wc);
-            } while (dtb.moveToNext());
+//        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
+//        System.out.println("nfrom "+nfrom);
+//        System.out.println("nto "+nto);
+//        String query = " WHERE rate >= " + nfrom + " AND rate <= " + nto +" "+ mode + " ORDER BY rate";
+//        dtb = mDatabaseHelper.getData(query);
+//        if(dtb==null){
+//            System.out.println("Reading Database cause Null");
+//            mDatabaseHelper.readData(mDatabaseHelper, getContext());
+//            dtb = mDatabaseHelper.getData(query);
+//        }
+//        mDatabaseHelper.close();
+//        System.out.println("init db");
+//        words = new ArrayList<>();
+//        if (dtb != null) {
+//            if (dtb.moveToFirst()) {
+//
+//                do {
+//                    WordController wc = new WordController();
+//                    wc.importWord(dtb);
+//                    words.add(wc);
+//                } while (dtb.moveToNext());
+//
+//            }
+//            RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
+//            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+//            adapter = new MyRecyclerViewAdapter(context, words);
+//            adapter.setClickListener(this);
+//            recyclerView.setAdapter(adapter);
+//        }
 
-        }
+
+
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new MyRecyclerViewAdapter(context, words);
+        adapter = new MyRecyclerViewAdapter(context, dtb);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 

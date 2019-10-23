@@ -1,8 +1,10 @@
 package fragments;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -25,11 +27,17 @@ import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
+public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Serializable {
 
 
     WordController inputWord;
@@ -76,26 +84,31 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
                 hr = hrt.getText().toString();
                 sr = set.getText().toString();
                 rate = ratet.getText().toString();
+                de = word.getText().toString();
+
+                type = type.replace(" ","");
+                while (de.endsWith(" ")){
+                    de = de.substring(0,de.length()-1);
+                }
+
 
                 if(type.equals("Nomen")){
-
-                    de = de.substring(4,de.indexOf(","));
-                    System.out.println("de "+de);
-                    de =article +" "+de +",- "+plural.getText();
+                    String plur = plural.getText().toString().replace(" ","");
+                    de = article+" "+de+",- "+plur;
                     System.out.println(de);
                 }
 
 
                 Log.e("translate", "rate:  " + rate);
                 Log.e("translate", "type:  " + type);
-                Log.e("translate","article"+article);
+                Log.e("translate","article "+article);
                 Log.e("translate", "de:  " + de);
                 Log.e("translate", "en:  " + en);
                 Log.e("translate", "el:  " + gr);
                 Log.e("translate", "hr:  " + hr);
                 Log.e("translate", "sr:  " + sr);
 
-                mDatabaseHelper.deleteName(inputWord.getWordText());
+                mDatabaseHelper.deleteID(inputWord.getID());
                 mDatabaseHelper.addData(type, Integer.parseInt(rate), de, en, gr, hr, sr);
                 mDatabaseHelper.exportDB();
                 mDatabaseHelper.close();
@@ -110,7 +123,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
     private View.OnClickListener deleteListener = new View.OnClickListener() {
         public void onClick(View v) {
 
-            mDatabaseHelper.deleteName(inputWord.getWordText());
+            mDatabaseHelper.deleteID(inputWord.getID());
             mDatabaseHelper.exportDB();
             fm.popBackStack();
 
@@ -212,7 +225,8 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
         insert.setOnClickListener(submitListener);
 
         translate = v.findViewById(R.id.translate);
-        translate.setVisibility(View.GONE);
+        translate.setOnClickListener(translateListener);
+        //translate.setVisibility(View.GONE);
         insert.setVisibility(View.VISIBLE);
 
         typeSpinner = v.findViewById(R.id.type);
@@ -386,7 +400,121 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
 
 
     }
+    private View.OnClickListener translateListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            List misAt = getMissingAttribute();
+            if(!(misAt.contains("Word"))){
+                de = word.getText().toString();
+                String dev = de;
+                if(type.equals("Verb")) {
+                    dev = "wir " + dev;
+                    System.out.println(de);
+                }
+                new translateasync(dev).execute();
 
+            }
+        }
+    };
+    Boolean translateFinished = true;
+    private void loading(Boolean bool){
+        ConstraintLayout cl = v.findViewById(R.id.constraintLayout5);
+        if(bool){
+            System.out.println("bool true");
+            //pb.setVisibility(View.VISIBLE);
+
+            cl.setAlpha(0.1f);
+        }else {
+
+            System.out.println("bool false");
+            //pb.setVisibility(View.INVISIBLE);
+            cl.setAlpha(1);
+        }
+    }
+    class translateasync extends AsyncTask<String, Void, String[]> {
+
+        private final String word;
+        translateasync(String word){
+
+            if(word.contains("(")&&word.contains("+")){
+                System.out.println(word);
+                word = word.substring(0,word.indexOf("(")-1);
+            }
+            this.word = word;
+        }
+
+        protected String translate(String lang) throws Exception{
+            String wiki = word;
+            String urlStr = "https://script.google.com/macros/s/AKfycbyrvkKW6iSQtj4F7zLSknEJlQYAU-mdis60YcOp2dJJS1iIlBsD/exec" +
+                    "?q=" + URLEncoder.encode(wiki, "UTF-8") +
+                    "&target=" + lang +
+                    "&source=" + "de";
+            URL url = new URL(urlStr);
+            StringBuilder response = new StringBuilder();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestProperty("User-Agent", "Mozilla/5.0");
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            wiki = response.toString();
+            return wiki;
+        }
+
+
+        protected void onPreExecute() {
+            loading(true);
+            System.out.println("pre execute");
+            translateFinished = false;
+        }
+
+
+
+        protected String[] doInBackground(String... urls) {
+
+            String[] wiki = new String[4];
+            try {
+
+                wiki[0] = translate("en");
+                wiki[1] = translate("el");
+                wiki[2] = translate("hr");
+                wiki[3] = translate("sr");
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("hmm");
+            return wiki;
+
+        }
+        protected void onPostExecute(String[] feed) {
+
+            System.out.println("post execute");
+            loading(false);
+            translateFinished = true;
+            en = feed[0];
+            en = en.replace("we ","");
+            en = en.replace("the ","");
+
+            gr = feed[1];
+            gr = gr.replace("το ","");
+
+            hr = feed[2];
+            hr = hr.replace("mi ","");
+
+            sr = feed[3];
+            sr = sr.replace("ми ","");
+            ent.setText(en);
+            grt.setText(gr);
+            set.setText(sr);
+            hrt.setText(hr);
+
+
+        }
+    }
     private void addFragment() {
 
         WiktionaryBtn wik = new WiktionaryBtn();
@@ -431,15 +559,6 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener {
             System.out.println("wordController text "+word.getText().toString());
             System.out.println("wordController type "+ type);
             System.out.println("wordController text "+ article);
-
-
-            //WordController wordController = new WordController();
-            //wordController.setWiki(word.getText().toString());
-
-
-
-
-
             listenerb.onFragmentListener(inputWord, "Wiki");
 
         }else {

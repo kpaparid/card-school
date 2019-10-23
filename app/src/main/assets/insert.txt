@@ -1,107 +1,209 @@
-Nomen;12;die Phase, -n
-Nomen;12;das Gehirn, e 
-Nomen;12;die Pubertät, -
-Nomen;12;der Altersgenosse, -n
-Verb;12;austragen
-Nomen;12;die Geburt, -en
-Nomen;12;die Gleichaltrige, -n
-Verb;12;gestalten
-Nomen;12;die Umstellung, -en
-Verb;12;hinauszögern
-Nomen;12;der Durchschnitt, -e
-Adjektiv;12;mühsam
-Nomen;11;die Nachricht, -en
-Adjektiv;11;sehenswert
-Conj;11;weiterhin
-Verb;11;beobachten
-Nomen;11;das Wettbewerb, -e
-Nomen;11;das Naturschutygebiet, -e
-Nomen;11;die Geschäftsbedingungen, -
-Nomen;11;das Stichwort, -ö er
-Adjektiv;11;angemessen
-Adjektiv;11;passend
-Nomen;12;das Heimweh, -
-Nomen;13;die Gardine, -n
-Nomen;13;das Parkett, -s
-Nomen;13;die Puppe, -n
-Nomen;13;der Rollladen, -ä
-Nomen;13;das Kissen, -
-Nomen;13;die Kommode, -n
-Nomen;13;die Schulblade, -n
-Nomen;13;die Stehlampe, -n
-Nomen;13;das Spielzeug, -e
-Nomen;13;die Wolldecke, -n
-Nomen;13;das Einkommen, -
-Nomen;13;die Einrichtung, -en
-Verb;13;sich einig sein (über)
-Nomen;13;die Tiefkühlschrank, -ä e
-Nomen;13;der Wasserkocher, -
-Adjektiv;13;geräumig
-Nomen;13;der Grundriss, -e
-Verb;13;sich vormerken lassen
-Nomen;13;die Unterlagen ,-
-Nomen;13;der Nachweis, -e
-Nomen;13;die Hausverwaltung, -en
-Verb;13;beauftragen
-Verb;13;schleifen
-Verb;13;streichen
-Nomen;13;die Fliese, -n
-Nomen;13;der Internetanschluss, -ü e
-Verb;13;anschliessen
-Verb;13;besorgen
-Nomen;13;der Sekt, -
-Verb;13;anstossen
-Verb;13;(sich) ummelden
-Nomen;13;der Handyanbieter, -
-Nomen;13;der Klick, -s
-Nomen;13;die Einweihungsparty, -s
-Verb;13;einen Nachsendeantrag stellen
-Nomen;13;der Umzugskarton, -s
-Nomen;13;der Fliesenleger, -
-Nomen;13;die Mieterhöhung, -en
-Nomen;13;die Gelegenheit, -en
-Nomen;13;die Wohnfläche, -n
-Adjektiv;13;befristet
-Adjektiv;13;verbindlich
-Conj;13;eventuell
-Nomen;13;die Vorauszahlung, -en
-Nomen;13;die Betriebskosten, -
-Adjektiv;13;gründlich
-Nomen;13;die Reinigung, -en
-Nomen;13;der Schaden, -ä
-Adjektiv;13;zumutbar
-Nomen;13;die Kündigungsfrist, -en
-Verb;13;ein Angebot einholen
-Adjektiv;13;flexibel
-Adjektiv;13;ausgebucht
-Verb;13;entgegenkommen
-Nomen;13;der Fixpreis, -e
-Adjektiv;13;spontan
-Adjektiv;13;neugierig sein
-Nomen;13;die Bemühung, -en
-Nomen;13;die Verkehrsanbindung, -
-Nomen;13;der Vorort, -e
-Nomen;13;der Abfluss, -ü e
-Nomen;13;die Sprechanlage, -n
-Nomen;13;der Fenstergriff, -e
-Nomen;13;die Türklinke, -n
-tropfen;13;tropfen
-Adjektiv;13;verstopft
-Verb;13;etwas austauschen
-Verb;13;klemmen
-Verb;13;abbrechen
-Adjektiv;13;dicht
-Verb;13;anschrauben
-Verb;13;entlüften
-Verb;13;verständigen
-Verb;13;einen Schäden beheben
-Conj;13;bei Bedarf
-Verb;13;ein Problem schildern
-Verb;13;sich beziehen
-Conj;13;im Voraus
-Nomen;13;die Nachbesserung, -en
-Verb;13;etwas vereinbaren
-Verb;13;ein Problem klären
-Nomen;13;die Rückfrage, -n
-Verb;13;etwas veranlassen
-Verb;13;zurechtkommen
+﻿der Arbeitsmarkt,  -e 
+aufsagen 
+bezweifeln 
+demografisch 
+die duale Hochschule, -n 
+der Einfluss (Sg.) (auf + A.) 
+einheimisch 
+entfernt 
+der Fachkräftebedarf (Sg.) 
+gebürtig 
+glänzend (glänzende Augen bekommen)
+der Integrationshelfer, - 
+integrieren 
+die Medizintechnik (Sg.) 
+mit sich bringen 
+die Regionalpolitik (Sg.) 
+schrumpfen 
+schwärmen (für + A. / von + D.) 
+steigend 
+die Traumstadt,  -e 
+vielfältig 
+die Viertelstunde, -n 
+die Wohnungssuche, -n 
+die Zuwanderung, -en 
+der Deutschunterricht (Sg.) 
+die Geburtenrate, -n 
+der Lohn,  -e 
+der Praktikumsplatz,  -e 
+beeinflussen 
+beunruhigt 
+Gedanken machen (sich) 
+der Kurzvortrag,  -e 
+die Formulierung, -en 
+nützlich 
+die Videofunktion, -en 
+zweiminötige 
+der Anlagenbau (Sg.) 
+die Ausbildungsdauer (Sg.) 
+der Ausbildungsort, -e 
+fährend 
+die Recyclingtechnik, -en 
+unabhängig 
+die Vergütung, -en 
+die Anlage, -n 
+der Bedarf (Sg.) 
+beiliegend 
+ersehen 
+reizen 
+die Semesterferien (Pl.) 
+der Studienplatz,  -e 
+zusenden 
+das Bewerbungsschreiben, - 
+der Gliederungspunkt, -e 
+die Jahrgangsstufe, -n 
+umgangssprachlich 
+die Änderung, -en 
+die Angabe, -n 
+die Auflösung, -en
+das Ausscheiden 
+bedürfen (+G)
+beiderseits 
+berufsqualifizierend 
+betrieblich 
+das Betriebsgeheimnis, -se 
+bewahren 
+enden 
+erfolgen 
+das Erfordernis, -se 
+die Erlangung (Sg.) 
+der Fortgang (Sg.) 
+gesetzlich 
+der Krankheitstag, -e 
+der Kündigungsgrund,  -e 
+die Laufzeit, -en 
+die Partei, -en 
+das Praxisprojekt, -e 
+die Projektphase, -n 
+der Prüfungsmonat, -e 
+die Recyclingmaschine, -n 
+regeln
+das Regelstudium, Regelstudien 
+die Regelung, -en richten (sich) (nach + D.) 
+die Rücksichtnahme, -n (auf + A.) 
+der Shadensersatz (Sg.) 
+die Schriftform, -en 
+das Stillschweigen (Sg.) 
+die Struktur, -en 
+das Studienjahr, -e 
+das Studienziel, -e 
+der/die Studierende, -n 
+tariflich 
+der Urlaubsanspruch, -e 
+die Vereinbarung, -en 
+der Vertragsbeginn (Sg.) 
+das Vertragsverhältnis, -se 
+vorzeitig 
+der Schlosspark, -s 
+das Technik-Museum, - seen 
+der Wasserturm,  -e 
+ergeben 
+reihum 
+das Ausflugsziel, -e 
+das Assoziogramm, -e 
+das Studio, -s 
+die Vielfalt (Sg.) 
+die Studiengebühr, -en 
+schätzen 
+die Stadtansicht, -en 
+kleinschreiben 
+altersmäßig 
+die Ausbildungsstelle, -n 
+die Bahnreise, -n 
+der Bann (Sg.) 
+die Begrenzung, -en 
+das Berufsleben, - 
+brennen 
+der Bundesfreiwilligendienst 
+erkunden 
+der Feuerschein (Sg.) 
+der Fotografie-Kurs, -e 
+fotografisch 
+die Fotoschule, -n 
+die Foto-Stadtsafari, -s 
+geheimnisvoll 
+das GPS-Gerät, -e 
+das Kartenbild (Sg.) 
+die Kurzbeschreibung, -en 
+das Leuchtfeuer, - 
+die Methode, -n 
+die Neuauflage, -n 
+niederbrennen
+der Paradeplatz,  -e 
+die Radfahrt, -en 
+der Radfernweg, -e 
+die Radroute, -n 
+die Regionalkarte, -n 
+reifest 
+richten (sich) (an + D.) 
+die Ruine, -n 
+die Schlossbeleuchtung, -en 
+der Sonnenkönig, -e 
+die Truppe, -n 
+berarbeitet 
+die Überbrückung, -en 
+das UTM-Gitternetz, -e 
+weltberühmt 
+wetterfest 
+zauberhaft 
+abstimmen (auf + A.) 
+die Akustikgitarre, -n 
+die Altersgruppe, -n 
+angehend
+aufstrebend 
+das Ausbildungsjahr, -e 
+der AV-Modus, -di
+das Bedärfnis, -se 
+die Behandlung, -en 
+der Behandlungsstil, -e 
+die Blendenvorwahl (Sg.) 
+blutig 
+die Burg, -en 
+die Burgherrlichkeit (Sg.) 
+die E-Gitarre, -n 
+der Einklang (Sg.)
+erlernen 
+der Fahrradkurs, -e 
+die Familienradtour, -en 
+der Fels, -en 
+das Festival, -s 
+die Flusslandschaft, -en 
+die Fröhlichkeit (Sg.) 
+der Geist, -er 
+das Gespür (Sg.) 
+der Gitarrenunterricht (Sg.) 
+der Grundlagenkurs, -e 
+hochwertig 
+das Hotelschiff, -e 
+der Hügel, - 
+imponierend 
+in Einklang bringen
+der Jahreskalender, - 
+die Jazzinitiative, -n 
+die Jazzspiele (Pl.) 
+der Jungstar, -s 
+die Kosmetikbehandlung, -en 
+die Kreuzfahrt, -en 
+künstlerisch 
+die Lehrkraft,  -e 
+locken
+die Massage, -n 
+die Mischung, -en 
+mittelalterlich 
+musikkulturell 
+die Naturkosmetik (Sg.) 
+der Praxisunterricht (Sg.) 
+die Priorität, -en 
+der Profimusiker, - 
+die Radreise, -n 
+sanft 
+säumen 
+die Seele, -n 
+spielerisch 
+stehen (für + A.) 
+die Theorie, -n 
+der TV-Modus,- di 
+das Unterrichtsangebot, -e
+der Veranstaltungskalender, - 
+verordnen 
+vielbesungen 

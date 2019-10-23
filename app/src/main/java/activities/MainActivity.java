@@ -3,6 +3,7 @@ package activities;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.transition.Fade;
 import android.support.transition.TransitionInflater;
@@ -15,7 +16,11 @@ import android.view.KeyEvent;
 import android.widget.EditText;
 
 import com.example.marmi.cardschool.R;
+import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import fragments.Edit;
 import fragments.WiktionaryWebFragment;
@@ -27,13 +32,14 @@ import test.quizView;
 public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, quizView.FragmentListener, Edit.FragmentListener, CardView.FragmentListener, articleView.FragmentListener {
 
     FragmentTransaction t;
-    private WiktionaryWebFragment wik;
     private Fragment fragment;
-    private long MOVE_DEFAULT_TIME = 100;
-    private long FADE_DEFAULT_TIME = 200;
+    private ArrayList dtb;
+    private WordController wc;
     EditText nfrom;
     EditText nto;
     Edit edit;
+
+
 
 
     @Override
@@ -79,12 +85,12 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         if(mode.equals("Wiki"))
         {
             System.out.println("Wiki");
-            wik = new WiktionaryWebFragment();
+            WiktionaryWebFragment wik = new WiktionaryWebFragment();
             Bundle bundle = new Bundle();
             bundle.putString("message", word.getWiki());
             wik.setArguments(bundle);
             t = getSupportFragmentManager().beginTransaction();
-            t.replace(R.id.frs,wik);
+            t.replace(R.id.frs, wik);
             t.addToBackStack(null);
             t.commit();
 
@@ -101,6 +107,22 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
             t.addToBackStack(null);
             t.commit();
         }
+    }
+
+    @Override
+    public void initDataBase(String query) {
+        DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
+        dtb = mDatabaseHelper.getData2(query);
+        if(dtb==null){
+            System.out.println("Reading Database cause Null");
+            mDatabaseHelper.readData(mDatabaseHelper, this);
+            dtb = mDatabaseHelper.getData2(query);
+        }
+        mDatabaseHelper.close();
+        //importWord(dtb);
+        wc = new WordController();
+        wc.setList(dtb);
+
     }
 
 
@@ -150,6 +172,10 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
             fragment = new PrintFragment();
 
         }
+        else if (input.equals("imports")) {
+            fragment = new ImportsFragment();
+
+        }
 
         System.out.println("init db");
 
@@ -158,7 +184,8 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         bundle.putString("nfrom", from);
         bundle.putString("nto", to);
         bundle.putString("mode",nmode);
-
+        String DESCRIBABLE_KEY = "wc";
+        bundle.putSerializable(DESCRIBABLE_KEY, wc);
         fragment.setArguments(bundle);
         System.out.println("set argument "+ from+"\t"+to+"\t"+nmode);
         t = getSupportFragmentManager().beginTransaction();
@@ -172,11 +199,13 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
     private void animator(Fragment previous, Fragment fragment) {
         // 1. Exit for Previous Fragment
         Fade exitFade = new Fade();
+        long FADE_DEFAULT_TIME = 200;
         exitFade.setDuration(FADE_DEFAULT_TIME);
         previous.setExitTransition(exitFade);
         // 2. Shared Elements Transition
         TransitionSet enterTransitionSet = new TransitionSet();
         enterTransitionSet.addTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.move));
+        long MOVE_DEFAULT_TIME = 100;
         enterTransitionSet.setDuration(MOVE_DEFAULT_TIME);
         enterTransitionSet.setStartDelay(FADE_DEFAULT_TIME);
         fragment.setSharedElementEnterTransition(enterTransitionSet);

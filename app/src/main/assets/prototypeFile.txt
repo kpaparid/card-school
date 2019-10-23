@@ -1137,7 +1137,7 @@ Verb;1;sich begeistern;are excited;είμαστε ενθουσιασμένοι;u
 Verb;1;behaupten;claim;ισχυριζόμαστε;tvrdimo;тврдимо
 Verb;1;sich beschweren bei/über;complain at / about;διαμαρτύρονται για / περίπου;žalimo se na / oko;жалимо се на / око
 Verb;1;erwähnen;mention;αναφέρουμε;ćemo spomenuti;споменемо
-Verb;1;funtionieren;work;δουλεύουμε;radimo;радимо
+Verb;1;funktionieren;work;δουλεύουμε;radimo;радимо
 Verb;1;sich gewöhnen;get used to it;συνηθίζουμε σε αυτό;navikavamo se na to;навикавамо се на то
 Verb;1;verlosen;We are giving away;δίνουμε μακριά;dijelimo;дајемо
 Verb;1;wirken;work;δουλεύουμε;radimo;радимо

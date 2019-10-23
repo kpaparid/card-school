@@ -12,6 +12,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -25,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.R;
@@ -111,6 +113,8 @@ return v;
     }
 
     private void init() {
+
+
 
         ImageView del = v.findViewById(R.id.deleteWord);
         del.setVisibility(View.INVISIBLE);
@@ -258,7 +262,7 @@ return v;
             insert.setVisibility(View.GONE);
             translate.setVisibility(View.VISIBLE);
             if(type.equals("Nomen")){
-                de =article +" "+de +",- "+plural.getText();
+                de =article +" "+de+",- "+plural.getText();
                 System.out.println(de);
             }
 
@@ -303,8 +307,12 @@ return v;
 
         private final String word;
         translateasync(String word){
-            this.word = word;
 
+            if(word.contains("(")&&word.contains("+")){
+                System.out.println(word);
+                word = word.substring(0,word.indexOf("(")-1);
+            }
+            this.word = word;
         }
 
         protected String translate(String lang) throws Exception{

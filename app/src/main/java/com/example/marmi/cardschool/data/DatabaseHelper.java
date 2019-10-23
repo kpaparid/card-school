@@ -14,11 +14,15 @@ import com.example.marmi.cardschool.normal.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.Inflater;
 
 import static android.content.ContentValues.TAG;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
 
 
@@ -35,7 +39,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COL_GR = "gr_text";
     private static final String COL_HR = "hr_text";
     private static final String COL_SR = "sr_text";
+    //private int COL_ID;
 
+    private static String COL_ID = "id";
     public static final String DATABASE_CREATE = "create table "
             + TABLE_NAME + " ("
                 // SQL -> String
@@ -45,13 +51,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COL_EN + " text not null,"
             + COL_GR + " text not null,"
             + COL_HR + " text not null,"
-            + COL_SR + " text not null"
+            + COL_SR + " text not null,"
+            + COL_ID + " integer primary key autoincrement"
 
 
             + ")";
 
     public DatabaseHelper(Context context) {
-        super(context, TABLE_NAME, null, 8);
+        super(context, TABLE_NAME, null, 9);
         c = context;
 
     }
@@ -84,6 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_GR, grtext);  //3
         contentValues.put(COL_HR, hrtext);
         contentValues.put(COL_SR, srtext);
+
         long result ;
         result = db.update(TABLE_NAME, contentValues, COL_DE+"=?", new String[]{dtext});
 
@@ -107,6 +115,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return data;
+    }
+    public ArrayList getData2(String query)  {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String q ="SELECT * FROM " + TABLE_NAME +  query ;
+        Cursor data = db.rawQuery(q, null);
+        ArrayList items = new ArrayList<>();
+        while(data.moveToNext()) {
+            String[] row = new String[8];
+            row[0] = data.getString(0);
+            row[1] = Integer.toString(data.getInt(1));
+            row[2] = data.getString(2);
+            row[3] = data.getString(3);
+            row[4] = data.getString(4);
+            row[5] = data.getString(5);
+            row[6] = data.getString(6);
+            row[7] = Integer.toString(data.getInt(7));
+            items.add(row);
+        }
+        data.close();
+        return items;
     }
 
 //    public Cursor getData(String query)  {
@@ -188,15 +216,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * Delete from database
      *
-     * @param name
+     * @param id
      */
-    public void deleteName(String name) {
+    public void deleteID(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME + " WHERE "
 
-                 + COL_DE + " = '" + name + "'";
-        Log.d(TAG, "deleteName: query: " + query);
-        Log.d(TAG, "deleteName: Deleting " + name + " from database.");
+                 + COL_ID + " = '" + id + "'";
+        Log.d(TAG, "deleteID: query: " + query);
+        Log.d(TAG, "deleteID: Deleting " + COL_DE + " from database.");
         db.execSQL(query);
     }
     public void delete() {
@@ -275,6 +303,53 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.e("Menu", sqlEx.getMessage(), sqlEx);
         }
     }
+    public void exportImportedDB() {
+
+        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
+        exportDir.mkdirs();
+        if (!exportDir.exists())
+        {
+            exportDir.mkdirs();
+        }
+
+        File file = new File(exportDir, "importedWords.txt");
+        if(!file.exists()){
+            exportDir.mkdirs();
+        }
+        try
+        {
+            file.createNewFile();
+            CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE rate = 200",null);
+
+            while(curCSV.moveToNext())
+            {
+
+
+                String c0 = curCSV.getString(0);
+                String c1 = curCSV.getString(1);
+                String c2 = curCSV.getString(2);
+                String c3 = curCSV.getString(3);
+                String c4 = curCSV.getString(4);
+                String c5 = curCSV.getString(5);
+                String c6 = curCSV.getString(6);
+
+
+
+                String arrStr[] ={c0,c1,c2,c3,c4,c5,c6};
+                csvWrite.writeNext(arrStr);
+            }
+            csvWrite.close();
+            curCSV.close();
+        }
+        catch(Exception sqlEx)
+        {
+            Log.e("Menu", sqlEx.getMessage(), sqlEx);
+        }
+    }
+
+
     public void exportCopyDB() {
 
         File exportDir = new File(Environment.getExternalStorageDirectory(), "");
@@ -285,6 +360,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         File file = new File(exportDir, "backupDB.txt");
+        if(!file.exists()){
+            file.mkdirs();
+        }
         try
         {
             file.createNewFile();

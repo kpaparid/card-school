@@ -22,6 +22,7 @@ public class Menu extends Fragment {
     private Button article;
     private Button insert;
     private Button print;
+    private Button imports;
     private EditText nfrom;
     private EditText nto;
     private String from;
@@ -45,6 +46,7 @@ public class Menu extends Fragment {
         card = v.findViewById(R.id.Normal);
         article = v.findViewById(R.id.derdiedas);
         print = v.findViewById(R.id.print);
+        imports = v.findViewById(R.id.imports);
 
         nfrom = v.findViewById(R.id.nfrom);
         nto = v.findViewById(R.id.nto);
@@ -53,6 +55,7 @@ public class Menu extends Fragment {
         card.setOnClickListener(cardListener);
         article.setOnClickListener(articleListener);
         print.setOnClickListener(printListener);
+        imports.setOnClickListener(importsListener);
 
 
         insert = v.findViewById(R.id.insert);
@@ -65,7 +68,7 @@ public class Menu extends Fragment {
 return v;
     }
 
-    
+
 
     private View.OnClickListener printListener = new View.OnClickListener() {
         public void onClick(View v) {
@@ -89,6 +92,31 @@ return v;
             listener.onInputMenu("print", from, to, mode);
         }
     };
+    private View.OnClickListener importsListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            from = nfrom.getText().toString();
+            to = nto.getText().toString();
+
+            String mode = "";
+            int skmode = seekBar.getProgress();
+            if(skmode == 0){
+                mode = "AND type = 'Nomen'";
+
+            }else if (skmode == 1){
+                mode = "AND type = 'Verb'";
+            }else if (skmode == 2){
+                mode = "AND type = 'Adjektiv'";
+            }else if (skmode == 3){
+                mode = "";
+            }
+
+
+            listener.onInputMenu("imports", from, to, mode);
+        }
+    };
+
+
+
     private View.OnClickListener quizListener = new View.OnClickListener() {
         public void onClick(View v) {
             from = nfrom.getText().toString();

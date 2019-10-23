@@ -145,6 +145,8 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
     }
     public interface FragmentListener {
         void onFragmentListener(WordController Word, String mode);
+        void initDataBase(String query);
+
     }
     @Override
     public void onAttach(Context context) {

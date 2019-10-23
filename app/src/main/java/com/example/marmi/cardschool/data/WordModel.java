@@ -1,6 +1,8 @@
 package com.example.marmi.cardschool.data;
 
-public class WordModel {
+import java.io.Serializable;
+
+public class WordModel implements Serializable {
     private String text = "";
     private String type = "";
     private String en_translated = "";
@@ -12,6 +14,7 @@ public class WordModel {
     private String rate = "";
     private int color = 0;
     private String wiki = "";
+    private int ID;
 
 
 
@@ -76,5 +79,11 @@ public class WordModel {
     }
 
 
+    public int getID() {
+        return ID;
+    }
 
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 }
