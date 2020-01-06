@@ -9,18 +9,19 @@ import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private List<WordController> mData;
+    private List<WordModel> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
 
     // data is passed into the constructor
-    public MyRecyclerViewAdapter(Context context, List<WordController> data) {
+    public MyRecyclerViewAdapter(Context context, List<WordModel> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -40,6 +41,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         String gr = mData.get(position).getGr_translated();
         String rate = mData.get(position).getRate();
         String ty = mData.get(position).getType();
+
+        if(ty.equals("Nomen")){
+            de = mData.get(position).getArticle()+" "+de+",-"+mData.get(position).getPlural();
+        }
         holder.de.setText(de);
         holder.en.setText(tr);
         holder.type.setText(ty);
@@ -82,7 +87,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     }
 
     // convenience method for getting data at click position
-    public WordController getItem(int id) {
+    public WordModel getItem(int id) {
         return mData.get(id);
 
     }

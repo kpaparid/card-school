@@ -26,6 +26,25 @@
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline21">
 
+
+
+        <Button
+            android:id="@+id/imports"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="imports"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/guideline15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Normal"
+            app:layout_constraintVertical_bias="0.0" />
+
         <Button
             android:id="@+id/Normal"
             android:layout_width="0dp"
@@ -150,7 +169,7 @@
             app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
         <EditText
-            android:id="@+id/nto"
+            android:id="@+id/rate"
             android:layout_width="133dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

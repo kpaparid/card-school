@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -40,7 +41,7 @@ import java.util.List;
 public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Serializable {
 
 
-    WordController inputWord;
+    WordModel inputWord;
     TextInputEditText word;
     TextInputEditText plural;
     TextView comma;
@@ -111,7 +112,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
                 mDatabaseHelper.deleteID(inputWord.getID());
                 mDatabaseHelper.addData(type, Integer.parseInt(rate), de, en, gr, hr, sr);
                 mDatabaseHelper.exportDB();
-                mDatabaseHelper.close();
+
 
                 fm.popBackStack();
 
@@ -169,7 +170,6 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
                 articleSpinner.setVisibility(View.INVISIBLE);
                 plural.setVisibility(View.GONE);
                 comma.setVisibility(View.GONE);
-
                 articleSpinner.setSelection(listArticle.size() - 1);
             }
             if (!type.equals("Type")) {
@@ -196,7 +196,8 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
         super.onCreate(savedInstanceState);
         inflator = inflater;
         v = inflater.inflate(R.layout.fr_insert2, container, false);
-        inputWord = (WordController) getArguments().getSerializable("word_key");
+        inputWord = (WordModel) getArguments().getSerializable("word_key");
+        System.out.println("inputWord "+inputWord.getWordText());
         init();
         return v;
     }
@@ -253,47 +254,12 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
 
         mDatabaseHelper = new DatabaseHelper(getContext());
         word.addTextChangedListener(new TextWatcher() {
-
             public void afterTextChanged(Editable s) {
-
                 if (!word.getText().toString().equals("")) {
                     wiki.setVisibility(View.VISIBLE);
                 } else {
                     wiki.setVisibility(View.GONE);
                 }
-
-//                List misAt = getMissingAttribute();
-////                if(!misAt.contains("Word")){
-////                    de = wordController.getText().toString();
-////                    String dev = de;
-////
-////                    if(type.equals("Verb")) {
-////                        dev = "wir " + dev;
-////                        System.out.println(de);
-////                    }
-////                    try {
-////                        en = new translateasync("en",dev).execute().get();
-////                        en = en.replace("we ","");
-////                        en = en.replace("the ","");
-////                        gr = new translateasync("el",dev).execute().get();
-////                        gr = gr.replace("το ","");
-////                        hr = new translateasync("hr",dev).execute().get();
-////                        hr = hr.replace("mi ","");
-////                        sr = new translateasync("sr",dev).execute().get();
-////                        sr = sr.replace("ми ","");
-////
-////                        ent.setText(en);
-////                        grt.setText(gr);
-////                        set.setText(sr);
-////                        hrt.setText(hr);
-////
-////                    } catch (ExecutionException e) {
-////                        e.printStackTrace();
-////                    } catch (InterruptedException e) {
-////                        e.printStackTrace();
-////                    }
-////                }
-
             }
 
             public void beforeTextChanged(CharSequence s, int start,
@@ -311,7 +277,6 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
                 }
             }
         });
-
         plural.addTextChangedListener(new TextWatcher() {
 
             public void afterTextChanged(Editable s) {
@@ -332,23 +297,41 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
         type = inputWord.getType();
         article = inputWord.getArticle();
 
-        if (type.equals("Verb")) {
-            typeSpinner.setSelection(0);
-        } else if (type.equals("Nomen")) {
-            typeSpinner.setSelection(1);
-            if (article.equals("der")) {
-                articleSpinner.setSelection(0);
-            } else if (article.equals("die")) {
-                articleSpinner.setSelection(1);
-            } else if (article.equals("das")) {
-                articleSpinner.setSelection(2);
+        switch (type){
+            case "Verb":{
+                typeSpinner.setSelection(0);
+                break;
             }
-        } else if (type.equals("Adjektiv")) {
-            typeSpinner.setSelection(2);
-        } else if (type.equals("Conj")) {
-            typeSpinner.setSelection(3);
+            case "Adjektiv":{
+                typeSpinner.setSelection(2);
+                break;
+            }
+            case "Conj":{
+                typeSpinner.setSelection(3);
+                break;
+            }
+            case "Nomen":{
+                typeSpinner.setSelection(1);
+                switch (article){
+                    case "der":{
+                        articleSpinner.setSelection(0);
+                        break;
+                    }
+                    case "die":{
+                        articleSpinner.setSelection(1);
+                        break;
+                    }
+                    case "das":{
+                        articleSpinner.setSelection(2);
+                        break;
+                    }
+                }
+                plural.setText(inputWord.getPlural());
+                break;
+            }
         }
 
+        word.setText(inputWord.getWordText());
         en = inputWord.getEn_translated();
         gr = inputWord.getGr_translated();
         de = inputWord.getWordText();
@@ -381,17 +364,8 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
             }
         });
 
-        if (type.equals("Nomen")) {
-            plural.setText(inputWord.getPlural());
-            if(inputWord.getPlural().equals("")){
-                plural.setText(" ");
-            }
-            word.setText(inputWord.getWordText().replace("-" + inputWord.getPlural(), "").replace(",", "").substring(4));
 
 
-        } else {
-            word.setText(inputWord.getWordText());
-        }
 
         ent.setText(en);
         grt.setText(gr);
@@ -559,6 +533,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
             System.out.println("wordController text "+word.getText().toString());
             System.out.println("wordController type "+ type);
             System.out.println("wordController text "+ article);
+            inputWord.setWordText(word.getText().toString());
             listenerb.onFragmentListener(inputWord, "Wiki");
 
         }else {
@@ -568,7 +543,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
     }
 
     public interface FragmentListener {
-        void onFragmentListener(WordController word, String mode);
+        void onFragmentListener(WordModel word, String mode);
     }
 
     class NewAdapter extends BaseAdapter {

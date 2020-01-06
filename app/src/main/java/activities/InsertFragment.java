@@ -31,6 +31,7 @@ import android.widget.Toast;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -84,7 +85,7 @@ public class InsertFragment extends Fragment implements WiktionaryBtn.NestedList
 
 
     public interface FragmentListener {
-        void onFragmentListener(WordController word, String mode);
+        void onFragmentListener(WordModel word, String mode);
     }
 
 
@@ -504,10 +505,10 @@ return v;
 
 
             WordController wc = new WordController();
-            wc.setWiki(word.getText().toString());
+            wc.setWordText(word.getText().toString());
 
             System.out.println("wcc text "+wc.getWordText());
-            listener.onFragmentListener(wc, "Wiki");
+            listener.onFragmentListener(wc.getWordModel(), "Wiki");
 
         }else {
             System.out.println("wtf");

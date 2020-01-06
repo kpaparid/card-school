@@ -162,18 +162,7 @@ return v;
         public void onClick(View v) {
             from = nfrom.getText().toString();
             to = nto.getText().toString();
-            String mode = "";
-            int skmode = seekBar.getProgress();
-            if(skmode == 0){
-                mode = " AND type = 'Nomen'";
-
-            }else if (skmode == 1){
-                mode = " AND type = 'Verb'";
-            }else if (skmode == 2){
-                mode = " AND type = 'Adjektiv'";
-            }else if (skmode == 3){
-                mode = "";
-            }
+            String mode = " AND type = 'Nomen'";
             listener.onInputMenu("article", from, to, mode);
         }
     };

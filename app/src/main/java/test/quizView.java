@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 import com.transitionseverywhere.ChangeText;
 import com.transitionseverywhere.TransitionManager;
 
@@ -38,7 +39,7 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
     public ProgressBar progressBar;
     public FragmentListener listener;
     private quizPresenter qP;
-    ArrayList<WordController> words;
+    ArrayList<WordModel> words;
     ArrayList<Button> buttons;
     private TextView was;
     public Button btn1;
@@ -50,7 +51,8 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
     public String mode;
     private int index;
 
-    WordController[] wc = null;
+    WordModel[] randoms = null;
+    WordController wc = null;
     Bundle savedInstanceState;
 
 
@@ -58,22 +60,22 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
         v = inflater.inflate(getLayoutID(), container, false);
         this.savedInstanceState = sV;
         super.onCreate(savedInstanceState);
-
-
-
         if(savedInstanceState!=null)
         {
-            wc = new WordController[4];
-            wc[0] =(WordController) savedInstanceState.getSerializable("wc0");
-            wc[1] =(WordController) savedInstanceState.getSerializable("wc1");
-            wc[2] =(WordController) savedInstanceState.getSerializable("wc2");
-            wc[3] =(WordController) savedInstanceState.getSerializable("wc3");
+            randoms = new WordModel[3];
+            wc =(WordController) savedInstanceState.getSerializable("wc0");
+            randoms[0] =(WordModel) savedInstanceState.getSerializable("r0");
+            randoms[1] =(WordModel) savedInstanceState.getSerializable("r1");
+            randoms[2] =(WordModel) savedInstanceState.getSerializable("r2");
 
         }
-
-
         init();
         return v;
+    }
+    public void init(){
+        qP = new quizPresenter(getContext() ,this,randoms,wc);
+        initGUI();
+        new initAsync().execute();
     }
 
 
@@ -81,14 +83,12 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
     @Override
     public void onSaveInstanceState(Bundle outState) {
         System.out.println("onSave");
-        wc = qP.getWordController();
-        outState.putSerializable("wc0", wc[0]);
-        outState.putSerializable("wc1", wc[1]);
-        outState.putSerializable("wc2", wc[2]);
-        outState.putSerializable("wc3", wc[3]);
+        randoms = qP.getRandoms();
+        outState.putSerializable("wc0", qP.getWordController());
+        outState.putSerializable("r0", randoms[0]);
+        outState.putSerializable("r1", randoms[1]);
+        outState.putSerializable("r2", randoms[2]);
         super.onSaveInstanceState(outState);
-
-
     }
 
 
@@ -107,13 +107,7 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
     };
 
 
-    public void init(){
 
-        qP = new quizPresenter(getContext(),wc ,this);
-        initGUI();
-        new initAsync().execute();
-
-    }
     public void resetGUI() {
         btn1.setBackgroundColor(Color.parseColor("#AD7F2D"));
         btn2.setBackgroundColor(Color.parseColor("#AD7F2D"));
@@ -122,7 +116,7 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
     }
 
 
-    public void update(final WordController word, final WordController random1, final WordController random2, final WordController random3) {
+    public void update(final WordModel word, final WordModel random1, final WordModel random2, final WordModel random3) {
 
         words = new ArrayList<>();
         words.add(word);
@@ -147,10 +141,10 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
         btn2.setText(words.get(1).getTranslated(qP.getTarget()));
         btn3.setText(words.get(2).getTranslated(qP.getTarget()));
         btn4.setText(words.get(3).getTranslated(qP.getTarget()));
-        wordTxt.setText(word.getWordText());
+        wordTxt.setText(word.getFullWordText());
     }
 
-    private void anim(final WordController word) {
+    private void anim(final WordModel word) {
 
         ConstraintLayout transitionsContainer = v.findViewById(R.id.contentlayout);
         TransitionManager.beginDelayedTransition(transitionsContainer, new ChangeText().setChangeBehavior(ChangeText.CHANGE_BEHAVIOR_OUT_IN));
@@ -181,21 +175,13 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
         progressBar.setVisibility(View.INVISIBLE);
     }
 
-
-
-
-
-
     public void onInputLanguage(final CharSequence input) {
-
-
             if (!input.equals("Error")) {
                 qP.setTarget(input.toString());
                 resetGUI();
-                WordController[] currents = qP.getCurrents();
+                WordModel[] currents = qP.getCurrents();
                 update(currents[0],currents[1],currents[2],currents[3]);
             }
-
     }
     @Override
     public void onAttach(Context context) {
@@ -210,11 +196,11 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
      */
     @Override
     public void nestedListenerClicked(String mode) {
-       // dtb.moveToPrevious();
+
 
         wc = qP.getWordController();
+        listener.onFragmentListener(qP.getWordController().getWordModel(),mode);
 
-        listener.onFragmentListener(qP.getWordController()[0],mode);
 
     }
 
@@ -304,7 +290,7 @@ public class quizView extends Fragment implements FragmentLanguage.FragmentLangu
 
 
     public interface FragmentListener {
-        void onFragmentListener(WordController Word, String mode);
+        void onFragmentListener(WordModel Word, String mode);
     }
 
     public class initAsync extends AsyncTask<String, String, String> {

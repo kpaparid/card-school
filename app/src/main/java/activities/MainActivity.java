@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Debug;
 import android.support.transition.Fade;
 import android.support.transition.TransitionInflater;
 import android.support.transition.TransitionSet;
@@ -18,18 +19,25 @@ import android.widget.EditText;
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import fragments.Edit;
 import fragments.WiktionaryWebFragment;
 import mainFragments.Menu;
 import test.CardView;
+import test.VoiceView;
 import test.articleView;
 import test.quizView;
 
-public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, quizView.FragmentListener, Edit.FragmentListener, CardView.FragmentListener, articleView.FragmentListener {
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
+public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, quizView.FragmentListener, Edit.FragmentListener, CardView.FragmentListener, VoiceView.FragmentListener, articleView.FragmentListener {
 
     FragmentTransaction t;
     private Fragment fragment;
@@ -38,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
     EditText nfrom;
     EditText nto;
     Edit edit;
+    Boolean shuffle = true;
 
 
 
@@ -58,36 +67,22 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
             t.addToBackStack(null);
             nfrom = findViewById(R.id.nfrom);
             nto = findViewById(R.id.nto);
-
         }
-
-
-
-
-
-
         }
-
-
-
-
-
-
-
-
     /**
      *Listener from inside, swaps fragment to UtilFragments
      */
 
     @Override
-    public void onFragmentListener(WordController word, String mode) {
+    public void onFragmentListener(WordModel word, String mode) {
 
         if(mode.equals("Wiki"))
         {
             System.out.println("Wiki");
             WiktionaryWebFragment wik = new WiktionaryWebFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("message", word.getWiki());
+            WordController wc = new WordController(word);
+            bundle.putString("message", wc.getWiki());
             wik.setArguments(bundle);
             t = getSupportFragmentManager().beginTransaction();
             t.replace(R.id.frs, wik);
@@ -109,19 +104,19 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         }
     }
 
-    @Override
     public void initDataBase(String query) {
         DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
         dtb = mDatabaseHelper.getData2(query);
-        if(dtb==null){
+        if(dtb == null ||dtb.size() == 0){
             System.out.println("Reading Database cause Null");
             mDatabaseHelper.readData(mDatabaseHelper, this);
             dtb = mDatabaseHelper.getData2(query);
         }
+        System.out.println("dtb size "+dtb.size());
         mDatabaseHelper.close();
-        //importWord(dtb);
         wc = new WordController();
         wc.setList(dtb);
+        wc.shuffle(shuffle);
 
     }
 
@@ -131,8 +126,6 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK:
-
-
                     if(getSupportFragmentManager().getBackStackEntryCount() == 1){
                         finish();
                     }else {
@@ -143,40 +136,46 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
     /**
      *Gets Mode from Menu and changes fragment
      */
-
-
-
     @Override
     public void onInputMenu(CharSequence input, String from, String to, String nmode) {
         System.out.println(input);
-        Fragment previous = fragment;
-
-
-
-        if (input.equals("card")) {
-            fragment = new CardView();
-        }  else if (input.equals("article")) {
-            fragment = new articleView();
-        } else if (input.equals("quiz")) {
-
-            fragment = new quizView();
-
-        } else if (input.equals("insert")) {
-            fragment = new InsertFragment();
-        }else if (input.equals("print")) {
-            fragment = new PrintFragment();
-
+        switch (input.toString()){
+            case "card":{
+                shuffle = true;
+//                fragment = new CardView();
+                fragment = new VoiceView();
+                break;
+            }case "article":{
+                shuffle = true;
+                fragment = new articleView();
+                break;
+            }case "quiz":{
+                shuffle = true;
+                fragment = new quizView();
+                break;
+            }case "insert":{
+                shuffle = false;
+                fragment = new InsertFragment();
+                from = "0";
+                to = "9999";
+                break;
+            }case "print":{
+                shuffle = false;
+                fragment = new PrintFragment();
+                break;
+            }case "imports":{
+                shuffle = true;
+                fragment = new ImportsFragment();
+                from = "0";
+                to = "9999";
+                break;
+            }
         }
-        else if (input.equals("imports")) {
-            fragment = new ImportsFragment();
-
-        }
-
+        String query = " WHERE rate >= " + from + " AND rate <= " + to +" "+ nmode;
+        initDataBase(query);
         System.out.println("init db");
 
 
@@ -184,6 +183,7 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         bundle.putString("nfrom", from);
         bundle.putString("nto", to);
         bundle.putString("mode",nmode);
+        bundle.putString("query",query);
         String DESCRIBABLE_KEY = "wc";
         bundle.putSerializable(DESCRIBABLE_KEY, wc);
         fragment.setArguments(bundle);
@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         enterFade.setDuration(FADE_DEFAULT_TIME);
         fragment.setEnterTransition(enterFade);
     }
+
 
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;

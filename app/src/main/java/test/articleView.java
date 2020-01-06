@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,6 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
     public ProgressBar progressBar;
     private FragmentListener listener;
 
-    public Cursor dtb;
     public String from;
     public String to;
     public String mode;
@@ -70,7 +70,6 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
     public void onSaveInstanceState(Bundle outState) {
         System.out.println("onSave");
         wc = aP.getWordController();
-        System.out.println(wc.getWordText());
         outState.putSerializable("wc", wc);
         super.onSaveInstanceState(outState);
     }
@@ -111,7 +110,7 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
 
     private void update() {
 
-        wordTxt.setText(aP.getWordController().getWordText().substring(4));
+        wordTxt.setText(aP.getWordController().getFullWordText().substring(4));
     }
 
 
@@ -249,10 +248,10 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
     @Override
     public void nestedListenerClicked(String mode) {
 
-        listener.onFragmentListener(aP.getWordController(),mode);
+        listener.onFragmentListener(aP.getWordController().getWordModel(),mode);
     }
     public interface FragmentListener {
-        void onFragmentListener(WordController Word, String mode);
+        void onFragmentListener(WordModel Word, String mode);
     }
     @Override
     public void onAttach(Context context) {

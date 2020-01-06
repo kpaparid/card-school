@@ -15,10 +15,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
 import static android.content.ContentValues.TAG;
 
@@ -117,23 +114,29 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         return data;
     }
     public ArrayList getData2(String query)  {
+        System.out.println("getData2");
         SQLiteDatabase db = this.getWritableDatabase();
         String q ="SELECT * FROM " + TABLE_NAME +  query ;
+        System.out.println("query:"+q);
         Cursor data = db.rawQuery(q, null);
         ArrayList items = new ArrayList<>();
-        while(data.moveToNext()) {
-            String[] row = new String[8];
-            row[0] = data.getString(0);
-            row[1] = Integer.toString(data.getInt(1));
-            row[2] = data.getString(2);
-            row[3] = data.getString(3);
-            row[4] = data.getString(4);
-            row[5] = data.getString(5);
-            row[6] = data.getString(6);
-            row[7] = Integer.toString(data.getInt(7));
-            items.add(row);
+        if (data.moveToFirst()){
+            do{
+                String[] row = new String[8];
+                row[0] = data.getString(0);
+                row[1] = Integer.toString(data.getInt(1));
+                row[2] = data.getString(2);
+                row[3] = data.getString(3);
+                row[4] = data.getString(4);
+                row[5] = data.getString(5);
+                row[6] = data.getString(6);
+                row[7] = Integer.toString(data.getInt(7));
+                items.add(row);
+            }while(data.moveToNext());
         }
-        data.close();
+        System.out.println("count "+data.getCount());
+
+            data.close();
         return items;
     }
 
@@ -149,19 +152,42 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
 
 
-    public Cursor getRandom(Integer n, String query) {
+
+    public WordController getRandom(Integer n, String query) {
 
        // Log.e(TAG, "getRandom");
         SQLiteDatabase db = this.getWritableDatabase();
         String q ="SELECT * FROM " + TABLE_NAME +  query;
+        System.out.println("query "+query);
 
         Cursor data = db.rawQuery(q, null);
         data.moveToFirst();
 
+        WordController randoms = new WordController();
+
+
+        if (data.moveToFirst()){
+            do{
+                String[] row = new String[8];
+                row[0] = data.getString(0);
+                row[1] = Integer.toString(data.getInt(1));
+                row[2] = data.getString(2);
+                row[3] = data.getString(3);
+                row[4] = data.getString(4);
+                row[5] = data.getString(5);
+                row[6] = data.getString(6);
+                row[7] = Integer.toString(data.getInt(7));
+                randoms.importWord(row);
+                System.out.println("Adding "+row[2]);
+            }while(data.moveToNext());
+        }
 
 
 
-        return data;
+
+
+
+        return randoms;
     }
     public Cursor shuffle(String query) {
 
@@ -352,6 +378,8 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
     public void exportCopyDB() {
 
+        exportDB();
+
         File exportDir = new File(Environment.getExternalStorageDirectory(), "");
         exportDir.mkdirs();
         if (!exportDir.exists())
@@ -360,12 +388,10 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         }
 
         File file = new File(exportDir, "backupDB.txt");
-        if(!file.exists()){
-            file.mkdirs();
-        }
         try
         {
-            file.createNewFile();
+            if(file.createNewFile()){};
+
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);

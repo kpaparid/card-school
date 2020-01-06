@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
 import com.example.marmi.cardschool.normal.MyRecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -28,12 +29,13 @@ public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.Ite
     String nfrom = "0";
     String nto = "20";
     String mode = "";
+    String query ="";
 //    Cursor dtb;
     WordController dtb;
 
 
     public interface FragmentListener {
-        void onFragmentListener(WordController Word, String mode);
+        void onFragmentListener(WordModel Word, String mode);
     }
     FragmentListener listener;
     @Override
@@ -52,46 +54,27 @@ public class PrintFragment extends Fragment implements MyRecyclerViewAdapter.Ite
             nfrom = getArguments().getString("nfrom");
             nto = getArguments().getString("nto");
             mode = getArguments().getString("mode");
+            query = getArguments().getString("query");
             dtb = (WordController) getArguments().getSerializable("wc");
         }
 
-
-
-//        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
-//        System.out.println("nfrom "+nfrom);
-//        System.out.println("nto "+nto);
-//        String query = " WHERE rate >= " + nfrom + " AND rate <= " + nto +" "+ mode + " ORDER BY rate";
-//        dtb = mDatabaseHelper.getData(query);
-//        if(dtb==null){
-//            System.out.println("Reading Database cause Null");
-//            mDatabaseHelper.readData(mDatabaseHelper, getContext());
-//            dtb = mDatabaseHelper.getData(query);
-//        }
-//        mDatabaseHelper.close();
-//        System.out.println("init db");
-//        words = new ArrayList<>();
-//        if (dtb != null) {
-//            if (dtb.moveToFirst()) {
-//
-//                do {
-//                    WordController wc = new WordController();
-//                    wc.importWord(dtb);
-//                    words.add(wc);
-//                } while (dtb.moveToNext());
-//
-//            }
-//            RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
-//            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-//            adapter = new MyRecyclerViewAdapter(context, words);
-//            adapter.setClickListener(this);
-//            recyclerView.setAdapter(adapter);
-//        }
-
+        DatabaseHelper mDatabaseHelper = new DatabaseHelper(getContext());
+        ArrayList list = mDatabaseHelper.getData2(query);
+        if(list == null ||list.size() == 0){
+            System.out.println("Reading Database cause Null");
+            mDatabaseHelper.readData(mDatabaseHelper, getContext());
+            list = mDatabaseHelper.getData2(query);
+        }
+        System.out.println("dtb size "+list.size());
+        mDatabaseHelper.close();
+        dtb = new WordController();
+        dtb.setList(list);
+        dtb.shuffle(false);
 
 
         RecyclerView recyclerView = v.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        adapter = new MyRecyclerViewAdapter(context, dtb);
+        adapter = new MyRecyclerViewAdapter(context, dtb.getList());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 

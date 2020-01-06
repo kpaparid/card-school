@@ -6,16 +6,24 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
 import com.example.marmi.cardschool.data.WordController;
+import com.example.marmi.cardschool.data.WordModel;
+import com.example.marmi.cardschool.normal.MyRecyclerViewAdapter;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,9 +31,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImportsFragment extends Fragment {
 
@@ -37,11 +48,13 @@ public class ImportsFragment extends Fragment {
     private DatabaseHelper mDatabaseHelper;
 
     private String type = " ";
-    private Integer rate;
     private String de;
     //private Context context;
     private View v;
     private EditText text;
+    private EditText rateInput;
+    private ProgressBar pb;
+    private RecyclerView recyclerView;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -60,6 +73,39 @@ public class ImportsFragment extends Fragment {
         Button end = v.findViewById(R.id.end);
         end.setOnClickListener(endListener);
 
+        rateInput = v.findViewById(R.id.rate);
+        pb = v.findViewById(R.id.pB);
+        recyclerView = v.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        ArrayList<WordController> list = new ArrayList<>();
+        WordController wc = new WordController();
+        wc.importWord(new String[]{" ",rateInput.getText().toString(),"empty"," "," "," "," ","0"});
+        CustomAdapter adapter = new CustomAdapter(getContext(), list);
+        recyclerView.setAdapter(adapter);
+
+        text.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if(s.length() != 0){
+
+                    readInput2();
+                }
+
+            }
+        });
+
 
         return v;
     }
@@ -68,188 +114,131 @@ public class ImportsFragment extends Fragment {
 
         String plainText = text.getText().toString();
         String[] words = plainText.split("\n");
-        int c = 0;
-        while (words.length>c){
-            System.out.println("c "+words[c]);
-            if(!words[c].equals(" "))
-            mDatabaseHelper.addData(" ",200,words[c]," "," "," "," ");
-            c++;
+        int lineNum = 0;
+
+        String type = " ";
+        ArrayList<WordController> list = new ArrayList<>();
+        while (words.length>lineNum){
+            //System.out.println("c "+words[lineNum]);
+
+            if(!words[lineNum].equals(" ")&&!words[lineNum].equals(""))
+            {
+                WordController wc = new WordController();
+                wc.importWord(new String[]{type,rateInput.getText().toString(),words[lineNum]," "," "," "," ","0"});
+                list.add(wc);
+         }
+            lineNum++;
         }
+
+        CustomAdapter adapter = new CustomAdapter(getContext(), list);
+        recyclerView.setAdapter(adapter);
     }
 
 
     private View.OnClickListener endListener = new View.OnClickListener() {
         public void onClick(View v) {
             System.out.println("finish adding");
-            //mDatabaseHelper.exportDB();
-            //mDatabaseHelper.exportImportedDB();
             readInput2();
-            //getActivity().getSupportFragmentManager().popBackStack();
+            new Reading().execute(text.getText().toString());
         }
     };
 
+    class Reading extends AsyncTask<String, Void, String[]> {
+        @Override
+        protected void onPreExecute(){
+            pb.setVisibility(View.VISIBLE);
+        }
 
-    class translateasync extends AsyncTask<String, Void, String[]> {
+        @Override
+        protected String[] doInBackground(String... strings) {
 
-
-
-        private String word;
-        private String type;
-        translateasync(String word, String type){
-            if(word.contains("(")&&word.contains("+")){
-                System.out.println(word);
-                word = word.substring(0,word.indexOf("(")-1);
+            String plainText = strings[0];
+            //System.out.println("s   "+plainText);
+            String[] words = plainText.split("\n");
+            int lineNum = 0;
+            String type = " ";
+            while (words.length>lineNum){
+                if(!words[lineNum].equals(" ")&&!words[lineNum].equals(""))
+                    mDatabaseHelper.addData(type,Integer.parseInt(rateInput.getText().toString()),words[lineNum]," "," "," "," ");
+                lineNum++;
             }
-            this.word = word;
-            this.type = type;
+            return new String[0];
+        }
+        @Override
+        protected void onPostExecute(String[] feed){
+            pb.setVisibility(View.GONE);
+            mDatabaseHelper.exportDB();
+            mDatabaseHelper.exportImportedDB();
+            mDatabaseHelper.close();
+            getActivity().getSupportFragmentManager().popBackStack();
         }
 
-        protected String translate(String lang) throws Exception{
-            String wiki = word;
-            String urlStr = "https://script.google.com/macros/s/AKfycbyrvkKW6iSQtj4F7zLSknEJlQYAU-mdis60YcOp2dJJS1iIlBsD/exec" +
-                    "?q=" + URLEncoder.encode(wiki, "UTF-8") +
-                    "&target=" + lang +
-                    "&source=" + "de";
-            URL url = new URL(urlStr);
-            StringBuilder response = new StringBuilder();
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestProperty("User-Agent", "Mozilla/5.0");
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-            wiki = response.toString();
-            return wiki;
-        }
-
-
-        protected void onPreExecute() {
-
-            //System.out.println("pre execute");
-        }
-
-
-
-        protected String[] doInBackground(String... urls) {
-
-            String[] wiki = new String[5];
-            try {
-                wiki[0] = word;
-//                wiki[1] = translate("en");
-//                wiki[2] = translate("el");
-//                wiki[3] = translate("hr");
-//                wiki[4] = translate("sr");
-
-                wiki[1] = " ";
-                wiki[2] = " ";
-                wiki[3] = " ";
-                wiki[4] = " ";
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println(word);
-            return wiki;
-
-        }
-        protected void onPostExecute(String[] feed) {
-
-            System.out.println("post execute");
-            de = feed[0];
-            en = feed[1];
-            gr = feed[2];
-            hr = feed[3];
-            sr = feed[4];
-
-            en = en.replace("we ","");
-            en = en.replace("the ","");
-            gr = gr.replace("το ","");
-            hr = hr.replace("mi ","");
-            sr = sr.replace("ми ","");
-            mDatabaseHelper.addData(type,rate,de,en,gr,hr,sr);
-            Log.e("translate", "////////");
-            Log.e("translate","rate:    "+rate.toString());
-            Log.e("translate", "type:    "+type);
-            Log.e("translate", "de:  " + de);
-            Log.e("translate", "en:  " + en);
-            Log.e("translate", "el:  " + gr);
-            Log.e("translate", "hr:  " + hr);
-            Log.e("translate", "sr:  " + sr);
-
-        }
     }
-    public void readInput() throws IOException {
-
-        Log.e("Database ", "Reading Input");
-        InputStream is = getContext().getAssets().open("insert.txt");
-
-        InputStreamReader isr = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(isr);
 
 
 
-        File exportDir = new File(Environment.getExternalStorageDirectory(), "");
-        if (!exportDir.exists())
-        {
-            exportDir.mkdirs();
+    public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+
+        private List<WordController> mData;
+        private LayoutInflater mInflater;
+
+
+        // data is passed into the constructor
+        public CustomAdapter(Context context, List<WordController> data) {
+            this.mInflater = LayoutInflater.from(context);
+            this.mData = data;
         }
-        File file = new File(exportDir, "imports.docx");
-        br = new BufferedReader(new FileReader(file));
+
+        // inflates the row layout from xml when needed
+        @Override
+        public CustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = mInflater.inflate(R.layout.import_item, parent, false);
+            return new ViewHolder(view);
+        }
+
+        // binds the data to the TextView in each row
+        @Override
+        public void onBindViewHolder(CustomAdapter.ViewHolder holder, int position) {
+
+            String de = mData.get(position).getWordText();
+            String ty = mData.get(position).getType();
 
 
-        String line;
-        String csvSplitBy = ";";
+            if(ty.equals("Nomen")){
+                de = mData.get(position).getArticle()+" "+de+",-"+mData.get(position).getPlural();
+            }
+
+            //System.out.println(de);
+            holder.des.setText(de);
+            holder.types.setText(ty);
 
 
-        System.out.println("translating");
-        Integer c = 1;
-        while ((line = br.readLine()) != null) {
-       // while (c<10){
-            //line = br.readLine();
-            type = "";
-            de = "";
-            //System.out.println("Line "+c);
-            c++;
-            String[] row = line.split(csvSplitBy);
-            System.out.println("s"+row[0]);
-            de= row[0];
-            rate = 200;
-            if(row.length>1){
-                //System.out.println("parts "+row.length);
-                type = row[1];
+        }
+
+        @Override
+        public int getItemCount() {
+            return mData.size();
+        }
+
+
+        // stores and recycles views as they are scrolled off screen
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+            TextView des;
+            TextView types;
+
+            ViewHolder(View itemView) {
+                super(itemView);
+                des = itemView.findViewById(R.id.de);
+                types = itemView.findViewById(R.id.type);
+
+                itemView.setOnClickListener(this);
+            }
+
+            @Override
+            public void onClick(View view) {
 
             }
-            String dev = de;
-            switch (type) {
-                case "Verb":
-                    dev = "wir " + dev;
-                    System.out.println(de);
-                    break;
-                case "Nomen":
-                    dev = de.substring(0, de.indexOf(","));
-                    break;
-                default:
-                    //System.out.println("empty");
-                    type = " ";
-                    String article;
-                    if(de.length()>4){
-                        article = de.substring(0,4);
-                        //System.out.println("nomen "+article);
-                        if (article.equals("der ")||article.equals("die ")||article.equals("das ")){
-                            type = "Nomen";
-                        }
-                    }
-            }
-            new translateasync(dev,type).execute();
         }
-        br.close();
-        /**
-         * export Database in local csv
-         */
 
     }
 

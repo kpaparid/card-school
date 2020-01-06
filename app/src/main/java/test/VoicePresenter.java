@@ -8,9 +8,9 @@ import com.example.marmi.cardschool.data.WordController;
 
 import java.util.Locale;
 
-public class CardPresenter {
+public class VoicePresenter {
 
-    protected CardView cV;
+    protected VoiceView cV;
     public WordController wordController;
     public String target = "en";
     private String mode;
@@ -19,13 +19,11 @@ public class CardPresenter {
     public Context context;
     public TextToSpeech t1;
     public TextToSpeech t2;
+    boolean play = false;
+    private long delayMillis;
 
 
-
-
-
-
-    public CardPresenter(Context context, CardView cV, WordController wc) {
+    public VoicePresenter(Context context, VoiceView cV, WordController wc) {
 
         this.context = context;
         this.cV = cV;
@@ -52,15 +50,18 @@ public class CardPresenter {
                 }
             }
         });
+
+
+
     }
 
 
 
     public void backClick() {
 
-            wordController.moveToPrevious();
-            cV.origUI(wordController);
-            cV.Orig = true;
+        wordController.moveToPrevious();
+        cV.origUI(wordController);
+        cV.Orig = true;
     }
 
 
@@ -70,44 +71,52 @@ public class CardPresenter {
     public void setTarget(String target) {
         this.target = target;
     }
-    public void playClick() {
-        if(!cV.Orig){
-            System.out.println("orig");
-            wordController.moveToNext();
-            cV.origUI(wordController);
-            t1.speak(wordController.getArticle()+" "+wordController.getWordText(), TextToSpeech.QUEUE_FLUSH, null);
-            cV.Orig = true;
 
-        }else {
-            System.out.println("trans");
-            cV.transUI(wordController,target);
-            t2.speak(wordController.getEn_translated(), TextToSpeech.QUEUE_FLUSH, null);
-            cV.Orig = false;
-        }
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                textClick();
-            }
-        }, 5000);   //5 seconds
-
-    }
 
     public void textClick() {
+        delayMillis = 3000;
         if(!cV.Orig){
+
             System.out.println("orig");
             wordController.moveToNext();
             cV.origUI(wordController);
+
+            if(play == true){
+                t1.speak(wordController.getArticle()+" "+wordController.getWordText(), TextToSpeech.QUEUE_FLUSH, null);
+            }
             cV.Orig = true;
 
         }else {
+            delayMillis +=3000;
             System.out.println("trans");
             cV.transUI(wordController,target);
+            if(play == true){
+                t2.speak(wordController.getEn_translated(), TextToSpeech.QUEUE_FLUSH, null);
+            }
             cV.Orig = false;
         }
+        if(play == true){
+
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    textClick();
+                }
+            }, delayMillis);   //5 seconds
+        }
+
+
     }
 
     public WordController getWordController() {
         return wordController;
+    }
+
+    public void destroy() {
+        t1.stop();
+        t2.stop();
+        play = false;
+
     }
 }

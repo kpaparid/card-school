@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,7 +23,7 @@ import fragments.EditBtn;
 import fragments.FragmentLanguage;
 import fragments.WiktionaryBtn;
 
-public class CardView extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
+public class VoiceView extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
 
 
     View v;
@@ -32,14 +34,23 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
     public String to;
     public String mode;
     protected ConstraintLayout layout;
-    protected TextView wordTxt;
+    public TextView wordTxt;
     protected TextView original;
-    protected CardPresenter cP;
+    protected VoicePresenter cP;
     public Boolean Orig = true;
     protected WordController wc = null;
+    protected ImageButton play;
+    protected ImageButton pause;
+    private View mainlayout;
+    private View back;
 
 
+    public void onDestroy() {
+        System.out.println("Destroy");
+        cP.destroy();
+        super.onDestroy();
 
+    }
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         v = inflater.inflate(getLayoutID(), container, false);
@@ -57,11 +68,6 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
 
         return v;
     }
-    public void onDestroy() {
-        super.onDestroy();
-        cP.t1.stop();
-        cP.t2.stop();
-    }
     @Override
     public void onSaveInstanceState(Bundle outState) {
         System.out.println("onSave");
@@ -77,6 +83,31 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
 
         }
     };
+
+    private View.OnClickListener playListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            System.out.println("Click Play");
+            cP.play = true;
+            pause.setVisibility(View.VISIBLE);
+            play.setVisibility(View.INVISIBLE);
+            cP.textClick();
+            mainlayout.setClickable(false);
+            back.setClickable(false);
+        }
+    };
+    private View.OnClickListener pauseListener = new View.OnClickListener() {
+        public void onClick(View v) {
+
+            System.out.println("Click Pause");
+            cP.play = false;
+            play.setVisibility(View.VISIBLE);
+            pause.setVisibility(View.INVISIBLE);
+            mainlayout.setClickable(true);
+            back.setClickable(true);
+
+
+        }
+    };
     private View.OnClickListener backListener = new View.OnClickListener() {
         public void onClick(View v) {
             cP.backClick();
@@ -86,9 +117,8 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
     public void origUI(WordController w) {
         layout.setBackgroundColor(w.getColor());
         wordTxt.setText(w.getFullWordText());
+        System.out.println("w: "+wordTxt.getText().toString());
         original.setText("");
-
-
     }
     public void transUI(WordController w,String target) {
         layout.setBackgroundColor(Color.parseColor("#DB045B"));
@@ -96,12 +126,13 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
         original.setText("~ " + w.getFullWordText());
 
     }
+
     public int getLayoutID(){
         return R.layout.fr_card;
     }
     public void initGUI() {
-        ConstraintLayout mainlayout = v.findViewById(R.id.mainlayout);
-        ConstraintLayout back = v.findViewById(R.id.back);
+        mainlayout = v.findViewById(R.id.mainlayout);
+        back = v.findViewById(R.id.back);
         mainlayout.setOnClickListener(textListener);
         back.setOnClickListener(backListener);
         layout = v.findViewById(R.id.layout);
@@ -109,13 +140,15 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
         original = v.findViewById(R.id.original);
         original.setText("");
         progressBar.setVisibility(View.INVISIBLE);
+        play = v.findViewById(R.id.play);
+        pause = v.findViewById(R.id.pause);
+        play.setOnClickListener(playListener);
+        pause.setOnClickListener(pauseListener);
+
     }
     public void preExecute(){
         preInitGUI();
-        cP = new CardPresenter(getContext(),this, wc);
-
-
-
+        cP = new VoicePresenter(getContext(),this, wc);
     }
     public void postExecute(){
         addFragment("wiki","b");
@@ -123,8 +156,12 @@ public class CardView extends Fragment implements FragmentLanguage.FragmentLangu
         addFragment("language","a");
         initGUI();
         if(Orig){
+            System.out.println("Orig post");
+            System.out.println(cP.getWordController().getFullWordText()+":text");
             origUI(cP.getWordController());
         }else {
+
+            System.out.println("Trans post");
             transUI(cP.getWordController(), cP.getTarget());
         }
 

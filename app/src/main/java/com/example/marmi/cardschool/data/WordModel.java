@@ -77,6 +77,37 @@ public class WordModel implements Serializable {
     public String getSr_translated(){
         return sr_translated;
     }
+    public String getTranslated(String target) {
+
+
+        switch (target) {
+            case "en": {
+                return getEn_translated();
+
+            }
+            case "el": {
+                return getGr_translated();
+
+            }
+            case "hr": {
+                return getHr_translated();
+
+            }
+            case "sr": {
+                return getSr_translated();
+
+            }
+        }
+
+        return "ERROR";
+    }
+    public String getFullWordText(){
+        String fullWordText = getWordText();
+        if(getType()=="Nomen"){
+            fullWordText = getArticle()+" "+getWordText()+", -"+getPlural();
+        }
+        return fullWordText;
+    }
 
 
     public int getID() {
