@@ -89,6 +89,15 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         contentValues.put(COL_HR, hrtext);
         contentValues.put(COL_SR, srtext);
 
+        System.out.println("adding Database");
+        System.out.println(type);
+        System.out.println(rate);
+        System.out.println(dtext);
+        System.out.println(entext);
+        System.out.println(grtext);
+        System.out.println(hrtext);
+        System.out.println(srtext);
+
         long result ;
         result = db.update(TABLE_NAME, contentValues, COL_DE+"=?", new String[]{dtext});
 
