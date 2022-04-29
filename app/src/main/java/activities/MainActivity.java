@@ -3,12 +3,7 @@ package activities;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Debug;
-import android.support.transition.Fade;
-import android.support.transition.TransitionInflater;
-import android.support.transition.TransitionSet;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -22,26 +17,18 @@ import com.example.marmi.cardschool.data.WordController;
 import com.example.marmi.cardschool.data.WordModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 import fragments.Edit;
 import fragments.WiktionaryWebFragment;
 import mainFragments.Menu;
-import test.CardView;
+import test.ArticleView;
+import test.QuizView;
 import test.VoiceView;
-import test.articleView;
-import test.quizView;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
-
-public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, quizView.FragmentListener, Edit.FragmentListener, CardView.FragmentListener, VoiceView.FragmentListener, articleView.FragmentListener {
+public class MainActivity extends AppCompatActivity implements Menu.MenuListener, InsertFragment.FragmentListener, PrintFragment.FragmentListener, QuizView.FragmentListener, Edit.FragmentListener,  VoiceView.FragmentListener, ArticleView.FragmentListener {
 
     FragmentTransaction t;
     private Fragment fragment;
-    private ArrayList dtb;
     private WordController wc;
     EditText nfrom;
     EditText nto;
@@ -78,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
 
         if(mode.equals("Wiki"))
         {
-            System.out.println("Wiki");
             WiktionaryWebFragment wik = new WiktionaryWebFragment();
             Bundle bundle = new Bundle();
             WordController wc = new WordController(word);
@@ -91,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
 
         }
         else if(mode.equals("Edit")) {
-            System.out.println("Edit "+word.getWordText());
             edit = new Edit();
             Bundle bundle = new Bundle();
             String DESCRIBABLE_KEY = "word_key";
@@ -106,13 +91,12 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
 
     public void initDataBase(String query) {
         DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
-        dtb = mDatabaseHelper.getData2(query);
+        ArrayList dtb;
+        dtb = mDatabaseHelper.getData(query);
         if(dtb == null ||dtb.size() == 0){
-            System.out.println("Reading Database cause Null");
             mDatabaseHelper.readData(mDatabaseHelper, this);
-            dtb = mDatabaseHelper.getData2(query);
+            dtb = mDatabaseHelper.getData(query);
         }
-        System.out.println("dtb size "+dtb.size());
         mDatabaseHelper.close();
         wc = new WordController();
         wc.setList(dtb);
@@ -124,15 +108,14 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
+                if(keyCode == KeyEvent.KEYCODE_BACK){
                     if(getSupportFragmentManager().getBackStackEntryCount() == 1){
                         finish();
                     }else {
                         getSupportFragmentManager().popBackStack();
                     }
                     return true;
-            }
+                }
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -141,20 +124,18 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
      */
     @Override
     public void onInputMenu(CharSequence input, String from, String to, String nmode) {
-        System.out.println(input);
         switch (input.toString()){
             case "card":{
                 shuffle = true;
-//                fragment = new CardView();
                 fragment = new VoiceView();
                 break;
             }case "article":{
                 shuffle = true;
-                fragment = new articleView();
+                fragment = new ArticleView();
                 break;
             }case "quiz":{
                 shuffle = true;
-                fragment = new quizView();
+                fragment = new QuizView();
                 break;
             }case "insert":{
                 shuffle = false;
@@ -176,8 +157,6 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         }
         String query = " WHERE rate >= " + from + " AND rate <= " + to +" "+ nmode;
         initDataBase(query);
-        System.out.println("init db");
-
 
         Bundle bundle = new Bundle();
         bundle.putString("nfrom", from);
@@ -187,36 +166,12 @@ public class MainActivity extends AppCompatActivity implements Menu.MenuListener
         String DESCRIBABLE_KEY = "wc";
         bundle.putSerializable(DESCRIBABLE_KEY, wc);
         fragment.setArguments(bundle);
-        System.out.println("set argument "+ from+"\t"+to+"\t"+nmode);
         t = getSupportFragmentManager().beginTransaction();
-        //animator(previous,fragment);
         t.replace(R.id.frs, fragment);
 
         t.addToBackStack(null);
         t.commit();
     }
-
-    private void animator(Fragment previous, Fragment fragment) {
-        // 1. Exit for Previous Fragment
-        Fade exitFade = new Fade();
-        long FADE_DEFAULT_TIME = 200;
-        exitFade.setDuration(FADE_DEFAULT_TIME);
-        previous.setExitTransition(exitFade);
-        // 2. Shared Elements Transition
-        TransitionSet enterTransitionSet = new TransitionSet();
-        enterTransitionSet.addTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.move));
-        long MOVE_DEFAULT_TIME = 100;
-        enterTransitionSet.setDuration(MOVE_DEFAULT_TIME);
-        enterTransitionSet.setStartDelay(FADE_DEFAULT_TIME);
-        fragment.setSharedElementEnterTransition(enterTransitionSet);
-        // 3. Enter Transition for New Fragment
-        Fade enterFade = new Fade();
-        enterFade.setStartDelay(MOVE_DEFAULT_TIME + FADE_DEFAULT_TIME);
-        enterFade.setDuration(FADE_DEFAULT_TIME);
-        fragment.setEnterTransition(enterFade);
-    }
-
-
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {

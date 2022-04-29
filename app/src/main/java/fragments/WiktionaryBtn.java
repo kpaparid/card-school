@@ -17,16 +17,18 @@ import java.lang.reflect.Field;
 public class WiktionaryBtn extends Fragment {
 
     private NestedListener nl;
-    public interface NestedListener {
-        void nestedListenerClicked(String mode);
-    }
+    private final View.OnClickListener wiktionaryListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            nl.nestedListenerClicked("Wiki");
+        }
+    };
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_wiktionary, container, false);
         ImageView wiktionary = v.findViewById(R.id.wiktionary);
-        wiktionary.setOnClickListener( wiktionaryListener);
+        wiktionary.setOnClickListener(wiktionaryListener);
         return v;
     }
 
@@ -36,11 +38,6 @@ public class WiktionaryBtn extends Fragment {
         nl = (NestedListener) getParentFragment();
 
     }
-    private View.OnClickListener wiktionaryListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            nl.nestedListenerClicked("Wiki");
-        }
-    };
 
     @Override
     public void onDetach() {
@@ -56,6 +53,10 @@ public class WiktionaryBtn extends Fragment {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public interface NestedListener {
+        void nestedListenerClicked(String mode);
     }
 
 }

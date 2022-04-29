@@ -5,103 +5,256 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/insert"
-        android:layout_width="109dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="16dp"
-        android:text="Insert"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline17"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <SeekBar
+                android:id="@+id/seekBar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="fill_parent"
+                android:layout_height="23dp"
+                android:max="3"
+                android:progress="3" />
+
+            <LinearLayout
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="22"
+                    android:gravity="start"
+                    android:text="Nomen" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="25"
+                    android:gravity="center"
+                    android:text="Verb" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="24"
+                    android:gravity="end"
+                    android:text="Adjektiv" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="29"
+                    android:gravity="end"
+                    android:text="Default" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <EditText
+                        android:id="@+id/nfrom"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="75"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="200"
+                        android:inputType="number"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:gravity="end"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <EditText
+                        android:id="@+id/nto"
+                        android:layout_width="0dp"
+                        android:layout_height="55dp"
+                        android:layout_weight="75"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="20"
+                        android:inputType="number"
+                        android:text="20" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:gravity="center"
         android:orientation="vertical"
+        android:weightSum="175"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline17"
-        app:layout_constraintVertical_bias="0.35000002">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
+        app:layout_constraintVertical_bias="0.37">
 
-        <Button
-            android:id="@+id/Normal"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="Normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Normal" />
+            android:layout_height="0dp"
+            android:layout_margin="0dp"
+            android:layout_weight="50"
+            android:orientation="horizontal"
+            android:weightSum="90">
 
-        <Button
-            android:id="@+id/Quiz"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="Quiz"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Normal" />
+            <Button
+                android:id="@+id/derdiedas"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="30"
+                android:text="der die das"
+                app:layout_constraintTop_toBottomOf="@+id/Quiz" />
 
-        <Button
-            android:id="@+id/derdiedas"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="derdiedas"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Quiz" />
+            <Button
+                android:id="@+id/Normal"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="30"
+                android:text="Normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Normal" />
 
-        <Button
-            android:id="@+id/print"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="Print"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="309dp" />
+            <Button
+                android:id="@+id/Quiz"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="30"
+                android:text="Quiz"
+                app:layout_constraintTop_toBottomOf="@+id/Normal" />
 
-        <Button
-            android:id="@+id/imports"
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:text="imports"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="309dp" />
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:orientation="horizontal"
+            android:weightSum="90">
+
+            <Button
+                android:id="@+id/print"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="30"
+                android:text="List"
+                android:visibility="visible"
+                app:layout_constraintHorizontal_bias="0.508"
+                tools:layout_editor_absoluteY="309dp" />
+
+            <Button
+                android:id="@+id/insert"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="30"
+                android:text="Insert" />
+
+            <Button
+                android:id="@+id/imports"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_weight="30"
+                android:text="paste"
+                android:visibility="visible"
+                app:layout_constraintHorizontal_bias="0.508"
+                tools:layout_editor_absoluteY="309dp" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/learn"
@@ -127,143 +280,18 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="3dp" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="154dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline17"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/nfrom"
-            android:layout_width="133dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="200"
-            android:inputType="number"
-            android:text="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
-        <EditText
-            android:id="@+id/nto"
-            android:layout_width="133dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="20"
-            android:inputType="number"
-            android:text="20"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar" />
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="0dp"
-            android:layout_height="23dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:max="3"
-            android:progress="3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:text="Nomen"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Verb"
-            app:layout_constraintStart_toStartOf="@+id/guideline12"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Adjektiv"
-            app:layout_constraintEnd_toStartOf="@+id/guideline13"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:text="Default"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView10" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.30"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintGuide_percent="0.70"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </android.support.constraint.ConstraintLayout>
-
     <android.support.constraint.Guideline
         android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_begin="168dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
+        app:layout_constraintGuide_percent="1.0" />
 
 </android.support.constraint.ConstraintLayout>

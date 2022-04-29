@@ -1,7 +1,9 @@
 package test;
 
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
+
 import android.content.Context;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,59 +27,25 @@ import fragments.EditBtn;
 import fragments.FragmentLanguage;
 import fragments.WiktionaryBtn;
 
-import static android.graphics.Color.GREEN;
-import static android.graphics.Color.RED;
-
-public class articleView extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
+public class ArticleView extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
 
 
-    View v;
     public ProgressBar progressBar;
-    private FragmentListener listener;
-
     public String from;
     public String to;
     public String mode;
+    View v;
     ArrayList<Button> buttons;
+    private FragmentListener listener;
     private Button der;
     private Button die;
     private Button das;
     private TextView correctArticle;
     private TextView wordTxt;
-    private ConstraintLayout layout;
     private WordController wc = null;
-    private articlePresenter aP;
-
-
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        v = inflater.inflate(getLayoutID(), container, false);
-        super.onCreate(savedInstanceState);
-        if(savedInstanceState!=null)
-        {
-            System.out.println("no null");
-            wc = (WordController) savedInstanceState.getSerializable("wc");
-        }
-
-        aP = new articlePresenter(getContext(),this,wc);
-        initGUI();
-        update();
-
-
-        return v;
-}
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        System.out.println("onSave");
-        wc = aP.getWordController();
-        outState.putSerializable("wc", wc);
-        super.onSaveInstanceState(outState);
-    }
-
-
-    private View.OnClickListener buttonListener = new View.OnClickListener() {
-        public void onClick(View v)
-        {
+    private ArticlePresenter aP;
+    private final View.OnClickListener buttonListener = new View.OnClickListener() {
+        public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.der: {
                     control(der);
@@ -106,7 +74,29 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
             handler.postDelayed(r, 1200);
         }
     };
-    private ConstraintLayout articleContainer;
+
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        v = inflater.inflate(getLayoutID(), container, false);
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            wc = (WordController) savedInstanceState.getSerializable("wc");
+        }
+
+        aP = new ArticlePresenter(getContext(), this, wc);
+        initGUI();
+        update();
+
+
+        return v;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        wc = aP.getWordController();
+        outState.putSerializable("wc", wc);
+        super.onSaveInstanceState(outState);
+    }
 
     private void update() {
 
@@ -114,12 +104,7 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
     }
 
 
-
-
-
-
     private void wrong(Button btn) {
-        System.out.println("WRONG");
         btn.setBackgroundColor(Color.RED);
         correctArticle.setVisibility(View.VISIBLE);
         correctArticle.setVisibility(View.VISIBLE);
@@ -147,33 +132,9 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void initGUI() {
-        addFragment("wiki","a");
-        addFragment("edit","b");
+        addFragment("wiki", "a");
+        addFragment("edit", "b");
 
 
         der = v.findViewById(R.id.der);
@@ -196,21 +157,22 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
         die.setOnClickListener(buttonListener);
         das.setOnClickListener(buttonListener);
 
-        ConstraintLayout backlayout = v.findViewById(R.id.background);
-        backlayout.setBackgroundColor(Color.parseColor("#0E2F3C"));
+        ConstraintLayout backLayout = v.findViewById(R.id.background);
+        backLayout.setBackgroundColor(Color.parseColor("#0E2F3C"));
 
-        layout = v.findViewById(R.id.mainlayout);
+        ConstraintLayout layout = v.findViewById(R.id.mainlayout);
         layout.setBackgroundColor(Color.parseColor("#3C5C61"));
 
         buttons = new ArrayList<>();
         buttons.add(der);
         buttons.add(die);
         buttons.add(das);
-        articleContainer = v.findViewById(R.id.articleContainer);
+        ConstraintLayout articleContainer = v.findViewById(R.id.articleContainer);
         articleContainer.setVisibility(View.VISIBLE);
 
 
     }
+
     private void resetGUI() {
         der.setBackgroundColor(Color.parseColor("#FBAC44"));
         die.setBackgroundColor(Color.parseColor("#FBAC44"));
@@ -219,7 +181,6 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
         der.setClickable(true);
         die.setClickable(true);
         das.setClickable(true);
-
 
 
         der.setVisibility(View.VISIBLE);
@@ -235,79 +196,66 @@ public class articleView extends Fragment implements FragmentLanguage.FragmentLa
             aP.setTarget(input.toString());
         }
     }
-    public int getLayoutID(){
-        return R.layout.fr_article;
-    }
-    public void preInitGUI(){
-        progressBar = v.findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.VISIBLE);
 
+    public int getLayoutID() {
+        return R.layout.fr_article;
     }
 
 
     @Override
     public void nestedListenerClicked(String mode) {
 
-        listener.onFragmentListener(aP.getWordController().getWordModel(),mode);
+        listener.onFragmentListener(aP.getWordController().getWordModel(), mode);
     }
-    public interface FragmentListener {
-        void onFragmentListener(WordModel Word, String mode);
-    }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         listener = (FragmentListener) context;
     }
-    public void addFragment(String type,String container) {
+
+    public void addFragment(String type, String container) {
         int layoutID = 0;
-        if(container.equals("a")){
-            layoutID = R.id.containera;
-        }else if(container.equals("b")){
-            layoutID = R.id.containerb;
-        }else if(container.equals("c")){
-            layoutID = R.id.containerc;
+        switch (container) {
+            case "a":
+                layoutID = R.id.containera;
+                break;
+            case "b":
+                layoutID = R.id.containerb;
+                break;
+            case "c":
+                layoutID = R.id.containerc;
+                break;
         }
 
-        if(type.equals("wiki")){
-            WiktionaryBtn wik = new WiktionaryBtn();
+        switch (type) {
+            case "wiki":
+                WiktionaryBtn wik = new WiktionaryBtn();
 
-            getChildFragmentManager().beginTransaction()
-                    .replace(layoutID, wik)
-                    .commit();
+                getChildFragmentManager().beginTransaction()
+                        .replace(layoutID, wik)
+                        .commit();
+                break;
+            case "language":
+                FragmentLanguage fragmentLanguage = new FragmentLanguage();
+                getChildFragmentManager().beginTransaction()
+                        .replace(layoutID, fragmentLanguage)
+                        .commit();
+                break;
+            case "edit":
+                EditBtn editBtn = new EditBtn();
+                getChildFragmentManager().beginTransaction()
+                        .replace(layoutID, editBtn)
+                        .commit();
+                break;
         }
-        else if(type.equals("language")){
-            FragmentLanguage fragmentLanguage = new FragmentLanguage();
-            getChildFragmentManager().beginTransaction()
-                    .replace(layoutID, fragmentLanguage)
-                    .commit();
-        }
-        else if(type.equals("edit")){
-            EditBtn editBtn = new EditBtn();
-            getChildFragmentManager().beginTransaction()
-                    .replace(layoutID, editBtn)
-                    .commit();
-        }
-
-
-
-
-
 
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    public interface FragmentListener {
+        void onFragmentListener(WordModel Word, String mode);
+    }
 
 
 }

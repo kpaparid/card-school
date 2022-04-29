@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,6 @@ import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
 import com.example.marmi.cardschool.data.DatabaseHelper;
-import com.example.marmi.cardschool.data.WordController;
 import com.example.marmi.cardschool.data.WordModel;
 
 import java.io.BufferedReader;
@@ -70,99 +68,66 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
     FrameLayout wiki;
     FragmentManager fm;
     View v;
+    Boolean translateFinished = true;
     private DatabaseHelper mDatabaseHelper;
     private FragmentListener listenerb;
-    private View.OnClickListener submitListener = new View.OnClickListener() {
+    private final View.OnClickListener submitListener = new View.OnClickListener() {
         public void onClick(View v) {
             List misAt = getMissingAttribute();
             if (!(misAt.contains("Word") || misAt.contains("Article") || misAt.contains("Type"))) {
-
-
-
-
                 en = ent.getText().toString();
                 gr = grt.getText().toString();
                 hr = hrt.getText().toString();
                 sr = set.getText().toString();
                 rate = ratet.getText().toString();
                 de = word.getText().toString();
-
-                type = type.replace(" ","");
-                while (de.endsWith(" ")){
-                    de = de.substring(0,de.length()-1);
+                type = type.replace(" ", "");
+                while (de.endsWith(" ")) {
+                    de = de.substring(0, de.length() - 1);
                 }
-
-
-                if(type.equals("Nomen")){
-                    String plur = plural.getText().toString().replace(" ","");
-                    de = article+" "+de+",- "+plur;
-                    System.out.println(de);
+                if (type.equals("Nomen")) {
+                    String plur = plural.getText().toString().replace(" ", "");
+                    de = article + " " + de + ",- " + plur;
                 }
-
-
-                Log.e("translate", "rate:  " + rate);
-                Log.e("translate", "type:  " + type);
-                Log.e("translate","article "+article);
-                Log.e("translate", "de:  " + de);
-                Log.e("translate", "en:  " + en);
-                Log.e("translate", "el:  " + gr);
-                Log.e("translate", "hr:  " + hr);
-                Log.e("translate", "sr:  " + sr);
-
                 mDatabaseHelper.deleteID(inputWord.getID());
                 mDatabaseHelper.addData(type, Integer.parseInt(rate), de, en, gr, hr, sr);
                 mDatabaseHelper.exportDB();
-
-
                 fm.popBackStack();
-
             }
         }
     };
-
-
-    private View.OnClickListener deleteListener = new View.OnClickListener() {
+    private final View.OnClickListener deleteListener = new View.OnClickListener() {
         public void onClick(View v) {
-
             mDatabaseHelper.deleteID(inputWord.getID());
             mDatabaseHelper.exportDB();
             fm.popBackStack();
 
-            }
+        }
 
     };
-
-    private AdapterView.OnItemSelectedListener articleListener = new AdapterView.OnItemSelectedListener() {
+    private final AdapterView.OnItemSelectedListener articleListener = new AdapterView.OnItemSelectedListener() {
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
             article = listArticle.get(i);
             if (!article.equals("Article")) {
                 articleSpinner.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
             } else {
                 articleSpinner.setBackgroundResource(R.drawable.back);
             }
-
-            System.out.println(article);
-
-
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
         }
     };
-    private AdapterView.OnItemSelectedListener typeListener = new AdapterView.OnItemSelectedListener() {
+    private final AdapterView.OnItemSelectedListener typeListener = new AdapterView.OnItemSelectedListener() {
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-
             type = list.get(i);
-            System.out.println(type);
             if (type.equals("Nomen")) {
-
                 articleSpinner.setVisibility(View.VISIBLE);
                 plural.setVisibility(View.VISIBLE);
                 comma.setVisibility(View.VISIBLE);
@@ -185,6 +150,20 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
         public void onNothingSelected(AdapterView<?> adapterView) {
         }
     };
+    private final View.OnClickListener translateListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            List misAt = getMissingAttribute();
+            if (!(misAt.contains("Word"))) {
+                de = word.getText().toString();
+                String dev = de;
+                if (type.equals("Verb")) {
+                    dev = "wir " + dev;
+                }
+                new Translateasync(dev).execute();
+
+            }
+        }
+    };
 
     @Override
     public void onAttach(Context context) {
@@ -197,7 +176,6 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
         inflator = inflater;
         v = inflater.inflate(R.layout.fr_insert2, container, false);
         inputWord = (WordModel) getArguments().getSerializable("word_key");
-        System.out.println("inputWord "+inputWord.getWordText());
         init();
         return v;
     }
@@ -220,14 +198,11 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
         deleteWord.setOnClickListener(deleteListener);
         deleteWord.setVisibility(View.VISIBLE);
 
-
-
         insert = v.findViewById(R.id.insert);
         insert.setOnClickListener(submitListener);
 
         translate = v.findViewById(R.id.translate);
         translate.setOnClickListener(translateListener);
-        //translate.setVisibility(View.GONE);
         insert.setVisibility(View.VISIBLE);
 
         typeSpinner = v.findViewById(R.id.type);
@@ -249,9 +224,6 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
         articleSpinner.setSelection(listArticle.size() - 1);
         articleSpinner.setOnItemSelectedListener(articleListener);
 
-
-
-
         mDatabaseHelper = new DatabaseHelper(getContext());
         word.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
@@ -272,7 +244,7 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
                     mDatabaseHelper.delete();
                     fm.popBackStack();
 
-                }  else if(!word.getText().toString().equals("")) {
+                } else if (!word.getText().toString().equals("")) {
                     word.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
                 }
             }
@@ -297,31 +269,31 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
         type = inputWord.getType();
         article = inputWord.getArticle();
 
-        switch (type){
-            case "Verb":{
+        switch (type) {
+            case "Verb": {
                 typeSpinner.setSelection(0);
                 break;
             }
-            case "Adjektiv":{
+            case "Adjektiv": {
                 typeSpinner.setSelection(2);
                 break;
             }
-            case "Conj":{
+            case "Conj": {
                 typeSpinner.setSelection(3);
                 break;
             }
-            case "Nomen":{
+            case "Nomen": {
                 typeSpinner.setSelection(1);
-                switch (article){
-                    case "der":{
+                switch (article) {
+                    case "der": {
                         articleSpinner.setSelection(0);
                         break;
                     }
-                    case "die":{
+                    case "die": {
                         articleSpinner.setSelection(1);
                         break;
                     }
-                    case "das":{
+                    case "das": {
                         articleSpinner.setSelection(2);
                         break;
                     }
@@ -351,22 +323,13 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
 
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(ratet.getText().equals("")){
+                if (ratet.getText().toString().equals("")) {
                     ratet.setBackgroundResource(R.drawable.back);
-                    System.out.println("back ");
-                }
-                else
-                {
+                } else {
                     ratet.setBackgroundResource(android.R.drawable.screen_background_dark_transparent);
                 }
-
-
             }
         });
-
-
-
-
         ent.setText(en);
         grt.setText(gr);
         hrt.setText(hr);
@@ -374,49 +337,68 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
 
 
     }
-    private View.OnClickListener translateListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            List misAt = getMissingAttribute();
-            if(!(misAt.contains("Word"))){
-                de = word.getText().toString();
-                String dev = de;
-                if(type.equals("Verb")) {
-                    dev = "wir " + dev;
-                    System.out.println(de);
-                }
-                new translateasync(dev).execute();
 
-            }
-        }
-    };
-    Boolean translateFinished = true;
-    private void loading(Boolean bool){
+    private void loading(Boolean bool) {
         ConstraintLayout cl = v.findViewById(R.id.constraintLayout5);
-        if(bool){
-            System.out.println("bool true");
-            //pb.setVisibility(View.VISIBLE);
-
+        if (bool) {
             cl.setAlpha(0.1f);
-        }else {
-
-            System.out.println("bool false");
-            //pb.setVisibility(View.INVISIBLE);
+        } else {
             cl.setAlpha(1);
         }
     }
-    class translateasync extends AsyncTask<String, Void, String[]> {
+
+    private void addFragment() {
+        WiktionaryBtn wik = new WiktionaryBtn();
+        getChildFragmentManager().beginTransaction()
+                .replace(R.id.containera, wik)
+                .commit();
+    }
+
+    List getMissingAttribute() {
+        missingAttribute = new ArrayList<>();
+        if (word.getText().toString().equals("")) {
+            missingAttribute.add("Word");
+        }
+        if (type.equals("Type")) {
+            missingAttribute.add("Type");
+        }
+        if (type.equals("Nomen") && article.equals("Article")) {
+            missingAttribute.add("Article");
+        }
+        if (type.equals("Nomen") && plural.getText().toString().equals("")) {
+            missingAttribute.add("Plural");
+        }
+
+
+        return missingAttribute;
+    }
+
+    @Override
+    public void nestedListenerClicked(String mode) {
+        List misAt = getMissingAttribute();
+        if (!misAt.contains("Word")) {
+            inputWord.setWordText(word.getText().toString());
+            listenerb.onFragmentListener(inputWord, "Wiki");
+        }
+
+    }
+
+    public interface FragmentListener {
+        void onFragmentListener(WordModel word, String mode);
+    }
+
+    class Translateasync extends AsyncTask<String, Void, String[]> {
 
         private final String word;
-        translateasync(String word){
 
-            if(word.contains("(")&&word.contains("+")){
-                System.out.println(word);
-                word = word.substring(0,word.indexOf("(")-1);
+        Translateasync(String word) {
+            if (word.contains("(") && word.contains("+")) {
+                word = word.substring(0, word.indexOf("(") - 1);
             }
             this.word = word;
         }
 
-        protected String translate(String lang) throws Exception{
+        protected String translate(String lang) throws Exception {
             String wiki = word;
             String urlStr = "https://script.google.com/macros/s/AKfycbyrvkKW6iSQtj4F7zLSknEJlQYAU-mdis60YcOp2dJJS1iIlBsD/exec" +
                     "?q=" + URLEncoder.encode(wiki, "UTF-8") +
@@ -437,13 +419,10 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
             return wiki;
         }
 
-
         protected void onPreExecute() {
             loading(true);
-            System.out.println("pre execute");
             translateFinished = false;
         }
-
 
 
         protected String[] doInBackground(String... urls) {
@@ -460,90 +439,30 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("hmm");
             return wiki;
 
         }
-        protected void onPostExecute(String[] feed) {
 
-            System.out.println("post execute");
+        protected void onPostExecute(String[] feed) {
             loading(false);
             translateFinished = true;
             en = feed[0];
-            en = en.replace("we ","");
-            en = en.replace("the ","");
+            en = en.replace("we ", "");
+            en = en.replace("the ", "");
 
             gr = feed[1];
-            gr = gr.replace("το ","");
+            gr = gr.replace("το ", "");
 
             hr = feed[2];
-            hr = hr.replace("mi ","");
+            hr = hr.replace("mi ", "");
 
             sr = feed[3];
-            sr = sr.replace("ми ","");
+            sr = sr.replace("ми ", "");
             ent.setText(en);
             grt.setText(gr);
             set.setText(sr);
             hrt.setText(hr);
-
-
         }
-    }
-    private void addFragment() {
-
-        WiktionaryBtn wik = new WiktionaryBtn();
-        getChildFragmentManager().beginTransaction()
-                .replace(R.id.containera, wik)
-                .commit();
-
-
-    }
-
-
-
-    List getMissingAttribute() {
-        missingAttribute = new ArrayList<>();
-        if (word.getText().toString().equals("")) {
-            missingAttribute.add("Word");
-            System.out.println("missing Word");
-        }
-        if (type.equals("Type")) {
-            missingAttribute.add("Type");
-            System.out.println("missing Type");
-        }
-        if (type.equals("Nomen") && article.equals("Article")) {
-            missingAttribute.add("Article");
-            System.out.println("missing Article");
-        }
-        if (type.equals("Nomen") && plural.getText().toString().equals("")) {
-            missingAttribute.add("Plural");
-            System.out.println("missing Plural");
-        }
-
-
-        return missingAttribute;
-    }
-
-    @Override
-    public void nestedListenerClicked(String mode) {
-        System.out.println("Clicked NestedListener");
-        List misAt = getMissingAttribute();
-        if(!misAt.contains("Word"))
-        {
-            System.out.println("wordController text "+word.getText().toString());
-            System.out.println("wordController type "+ type);
-            System.out.println("wordController text "+ article);
-            inputWord.setWordText(word.getText().toString());
-            listenerb.onFragmentListener(inputWord, "Wiki");
-
-        }else {
-            System.out.println("wtf");
-        }
-
-    }
-
-    public interface FragmentListener {
-        void onFragmentListener(WordModel word, String mode);
     }
 
     class NewAdapter extends BaseAdapter {
@@ -589,7 +508,6 @@ public class Edit extends Fragment implements WiktionaryBtn.NestedListener, Seri
             }
             TextView text = convertView.findViewById(R.id.text);
             text.setText(list.get(position));
-
             return convertView;
         }
     }

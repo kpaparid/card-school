@@ -17,66 +17,95 @@ public class WordModel implements Serializable {
     private int ID;
 
 
-
-
-
     public void setWordText(String text) {
         this.text = text;
     }
-    public void setType(String type){
+
+    public void setType(String type) {
         this.type = type;
     }
+
     public void setRate(String rate) {
         this.rate = rate;
     }
+
     public void setArticle(String article) {
         this.article = article;
     }
+
     public void setWiki(String wiki) {
         this.wiki = wiki;
     }
+
     public void setPlural(String plural) {
         this.plural = plural;
     }
+
     public void setColor(int color) {
         this.color = color;
     }
-    public void setEn_translated(String text){ this.en_translated = text; }
-    public void setGr_translated(String text){ this.gr_translated = text; }
-    public void setHr_translated(String text){ this.hr_translated = text; }
-    public void setSr_translated(String text){ this.sr_translated = text; }
+
+    public void setEn_translated(String text) {
+        this.en_translated = text;
+    }
+
+    public void setGr_translated(String text) {
+        this.gr_translated = text;
+    }
+
+    public void setHr_translated(String text) {
+        this.hr_translated = text;
+    }
+
+    public void setSr_translated(String text) {
+        this.sr_translated = text;
+    }
 
 
+    public String getWordText() {
+        return text;
+    }
 
-    public String getWordText() { return text; }
-    public String getType(){
+    public String getType() {
         return type;
     }
+
     public String getRate() {
-        return rate.toString();
+        return rate;
     }
+
     public String getArticle() {
         return article;
     }
+
     public String getWiki() {
         return wiki;
     }
-    public String getPlural() { return plural; }
+
+    public String getPlural() {
+        return plural;
+    }
+
     public int getColor() {
         return color;
     }
-    public String getEn_translated(){
+
+    public String getEn_translated() {
         return en_translated;
     }
-    public String getGr_translated(){
+
+    public String getGr_translated() {
         return gr_translated;
     }
-    public String getHr_translated(){
+
+    public String getHr_translated() {
         return hr_translated;
     }
-    public String getSr_translated(){
+
+    public String getSr_translated() {
         return sr_translated;
     }
+
     public String getTranslated(String target) {
 
 
@@ -101,10 +130,11 @@ public class WordModel implements Serializable {
 
         return "ERROR";
     }
-    public String getFullWordText(){
+
+    public String getFullWordText() {
         String fullWordText = getWordText();
-        if(getType()=="Nomen"){
-            fullWordText = getArticle()+" "+getWordText()+", -"+getPlural();
+        if (getType().equals("Nomen")) {
+            fullWordText = getArticle() + " " + getWordText() + ", -" + getPlural();
         }
         return fullWordText;
     }

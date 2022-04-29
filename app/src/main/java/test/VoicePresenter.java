@@ -10,94 +10,110 @@ import java.util.Locale;
 
 public class VoicePresenter {
 
-    protected VoiceView cV;
     public WordController wordController;
     public String target = "en";
-    private String mode;
     public String from;
     public String to;
     public Context context;
     public TextToSpeech t1;
     public TextToSpeech t2;
+    protected VoiceView cV;
     boolean play = false;
-    private long delayMillis;
 
 
-    public VoicePresenter(Context context, VoiceView cV, WordController wc) {
+    public VoicePresenter(Context context, VoiceView cV) {
 
         this.context = context;
         this.cV = cV;
         if (cV.getArguments() != null) {
             from = cV.getArguments().getString("nfrom");
             to = cV.getArguments().getString("nto");
-            mode =cV.getArguments().getString("mode");
             wordController = (WordController) cV.getArguments().getSerializable("wc");
         }
-        System.out.println(wordController.getFullWordText());
-        t2=new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+        t2 = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.UK);
+                if (status != TextToSpeech.ERROR) {
+                    t2.setLanguage(Locale.ENGLISH);
+                    t2.setSpeechRate((float) (0.6));
                 }
             }
         });
-        t1=new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+        t1 = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if(status != TextToSpeech.ERROR) {
+                if (status != TextToSpeech.ERROR) {
                     t1.setLanguage(Locale.GERMAN);
                 }
             }
         });
-
-
-
     }
 
 
-
     public void backClick() {
-
         wordController.moveToPrevious();
         cV.origUI(wordController);
         cV.Orig = true;
     }
 
 
-    public String getTarget(){
+    public String getTarget() {
         return target;
     }
-    public void setTarget(String target) {
+
+    public void setTarget(final String target) {
         this.target = target;
+        this.t2 = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != TextToSpeech.ERROR) {
+                    Locale language = null;
+                    switch (target) {
+                        case "en": {
+                            language = Locale.ENGLISH;
+                            t2.setSpeechRate((float) (0.6));
+                            break;
+                        }
+                        case "el": {
+                            language = new Locale("el");
+                            t2.setSpeechRate((float) (1));
+                            break;
+                        }
+                        case "hr": {
+                            language = new Locale("sr");
+                            t2.setSpeechRate((float) (1));
+                            break;
+                        }
+                        case "sr": {
+                            language = new Locale("sr");
+                            t2.setSpeechRate((float) (1));
+                        }
+                    }
+                    t2.setLanguage(language);
+                }
+            }
+        });
     }
 
-
     public void textClick() {
-        delayMillis = 3000;
-        if(!cV.Orig){
-
-            System.out.println("orig");
+        long delayMillis = 3000;
+        if (!cV.Orig) {
             wordController.moveToNext();
             cV.origUI(wordController);
-
-            if(play == true){
-                t1.speak(wordController.getArticle()+" "+wordController.getWordText(), TextToSpeech.QUEUE_FLUSH, null);
+            if (play) {
+                t1.speak(wordController.getArticle() + " " + wordController.getWordText(), TextToSpeech.QUEUE_FLUSH, null);
             }
             cV.Orig = true;
 
-        }else {
-            delayMillis +=3000;
-            System.out.println("trans");
-            cV.transUI(wordController,target);
-            if(play == true){
-                t2.speak(wordController.getEn_translated(), TextToSpeech.QUEUE_FLUSH, null);
+        } else {
+            delayMillis += 3000;
+            cV.transUI(wordController, target);
+            if (play) {
+                t2.speak(wordController.getTranslated(target), TextToSpeech.QUEUE_FLUSH, null);
             }
             cV.Orig = false;
         }
-        if(play == true){
-
-
+        if (play) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {

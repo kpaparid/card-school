@@ -8,15 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.marmi.cardschool.R;
-import com.example.marmi.cardschool.data.WordController;
 import com.example.marmi.cardschool.data.WordModel;
 
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
-    private List<WordModel> mData;
-    private LayoutInflater mInflater;
+    private final List<WordModel> mData;
+    private final LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
 
@@ -42,8 +41,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         String rate = mData.get(position).getRate();
         String ty = mData.get(position).getType();
 
-        if(ty.equals("Nomen")){
-            de = mData.get(position).getArticle()+" "+de+",-"+mData.get(position).getPlural();
+        if (ty.equals("Nomen")) {
+            de = mData.get(position).getArticle() + " " + de + ",-" + mData.get(position).getPlural();
         }
         holder.de.setText(de);
         holder.en.setText(tr);
@@ -58,6 +57,21 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         return mData.size();
     }
 
+    // convenience method for getting data at click position
+    public WordModel getItem(int id) {
+        return mData.get(id);
+
+    }
+
+    // allows clicks events to be caught
+    public void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    // parent activity will implement this method to respond to click events
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
+    }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -84,21 +98,5 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
 
         }
-    }
-
-    // convenience method for getting data at click position
-    public WordModel getItem(int id) {
-        return mData.get(id);
-
-    }
-
-    // allows clicks events to be caught
-    public void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
     }
 }

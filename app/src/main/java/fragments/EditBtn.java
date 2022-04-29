@@ -17,16 +17,18 @@ import java.lang.reflect.Field;
 public class EditBtn extends Fragment {
 
     private NestedListener nl;
-    public interface NestedListener {
-        void nestedListenerClicked(String mode);
-    }
+    private final View.OnClickListener editListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            nl.nestedListenerClicked("Edit");
+        }
+    };
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_edit, container, false);
         ImageView editBtn = v.findViewById(R.id.edit);
-        editBtn.setOnClickListener( editListener);
+        editBtn.setOnClickListener(editListener);
         return v;
     }
 
@@ -36,11 +38,6 @@ public class EditBtn extends Fragment {
         nl = (NestedListener) getParentFragment();
 
     }
-    private View.OnClickListener editListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            nl.nestedListenerClicked("Edit");
-        }
-    };
 
     @Override
     public void onDetach() {
@@ -56,6 +53,10 @@ public class EditBtn extends Fragment {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public interface NestedListener {
+        void nestedListenerClicked(String mode);
     }
 
 }

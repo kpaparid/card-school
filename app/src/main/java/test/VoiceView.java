@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -26,114 +25,107 @@ import fragments.WiktionaryBtn;
 public class VoiceView extends Fragment implements FragmentLanguage.FragmentLanguageListener, WiktionaryBtn.NestedListener, EditBtn.NestedListener {
 
 
-    View v;
     public ProgressBar progressBar;
-    private FragmentListener listener;
-
     public String from;
     public String to;
     public String mode;
-    protected ConstraintLayout layout;
     public TextView wordTxt;
+    public Boolean Orig = true;
+    protected ConstraintLayout layout;
     protected TextView original;
     protected VoicePresenter cP;
-    public Boolean Orig = true;
     protected WordController wc = null;
     protected ImageButton play;
     protected ImageButton pause;
-    private View mainlayout;
+    View v;
+    private FragmentListener listener;
+    private View mainLayout;
     private View back;
-
-
-    public void onDestroy() {
-        System.out.println("Destroy");
-        cP.destroy();
-        super.onDestroy();
-
-    }
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        v = inflater.inflate(getLayoutID(), container, false);
-        super.onCreate(savedInstanceState);
-
-        if(savedInstanceState!=null)
-        {
-            System.out.println("no null");
-            wc = (WordController) savedInstanceState.getSerializable("wc");
-            Orig = savedInstanceState.getBoolean("orig");
-        }
-
-        new init().execute();
-
-
-        return v;
-    }
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        System.out.println("onSave");
-        wc = cP.getWordController();
-        System.out.println(wc.getFullWordText());
-        outState.putSerializable("wc", wc);
-        outState.putBoolean("orig", Orig);
-        super.onSaveInstanceState(outState);
-    }
-    private View.OnClickListener textListener = new View.OnClickListener() {
+    private final View.OnClickListener textListener = new View.OnClickListener() {
         public void onClick(View v) {
             cP.textClick();
 
         }
     };
-
-    private View.OnClickListener playListener = new View.OnClickListener() {
+    private final View.OnClickListener playListener = new View.OnClickListener() {
         public void onClick(View v) {
-            System.out.println("Click Play");
             cP.play = true;
             pause.setVisibility(View.VISIBLE);
             play.setVisibility(View.INVISIBLE);
             cP.textClick();
-            mainlayout.setClickable(false);
+            mainLayout.setClickable(false);
             back.setClickable(false);
         }
     };
-    private View.OnClickListener pauseListener = new View.OnClickListener() {
+    private final View.OnClickListener pauseListener = new View.OnClickListener() {
         public void onClick(View v) {
-
-            System.out.println("Click Pause");
             cP.play = false;
             play.setVisibility(View.VISIBLE);
             pause.setVisibility(View.INVISIBLE);
-            mainlayout.setClickable(true);
+            mainLayout.setClickable(true);
             back.setClickable(true);
 
 
         }
     };
-    private View.OnClickListener backListener = new View.OnClickListener() {
+    private final View.OnClickListener backListener = new View.OnClickListener() {
         public void onClick(View v) {
             cP.backClick();
 
         }
     };
+
+    public void onDestroy() {
+        cP.destroy();
+        super.onDestroy();
+
+    }
+
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        v = inflater.inflate(getLayoutID(), container, false);
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            wc = (WordController) savedInstanceState.getSerializable("wc");
+            Orig = savedInstanceState.getBoolean("orig");
+        }
+
+        new Init().execute();
+
+
+        return v;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        wc = cP.getWordController();
+        outState.putSerializable("wc", wc);
+        outState.putBoolean("orig", Orig);
+        super.onSaveInstanceState(outState);
+    }
+
     public void origUI(WordController w) {
         layout.setBackgroundColor(w.getColor());
         wordTxt.setText(w.getFullWordText());
-        System.out.println("w: "+wordTxt.getText().toString());
         original.setText("");
     }
-    public void transUI(WordController w,String target) {
+
+    public void transUI(WordController w, String target) {
         layout.setBackgroundColor(Color.parseColor("#DB045B"));
         wordTxt.setText(w.getTranslated(target));
         original.setText("~ " + w.getFullWordText());
 
     }
 
-    public int getLayoutID(){
+    public int getLayoutID() {
         return R.layout.fr_card;
     }
+
     public void initGUI() {
-        mainlayout = v.findViewById(R.id.mainlayout);
+        mainLayout = v.findViewById(R.id.mainlayout);
         back = v.findViewById(R.id.back);
-        mainlayout.setOnClickListener(textListener);
+        mainLayout.setOnClickListener(textListener);
         back.setOnClickListener(backListener);
         layout = v.findViewById(R.id.layout);
         wordTxt = v.findViewById(R.id.word);
@@ -146,29 +138,30 @@ public class VoiceView extends Fragment implements FragmentLanguage.FragmentLang
         pause.setOnClickListener(pauseListener);
 
     }
-    public void preExecute(){
-        preInitGUI();
-        cP = new VoicePresenter(getContext(),this, wc);
-    }
-    public void postExecute(){
-        addFragment("wiki","b");
-        addFragment("edit","c");
-        addFragment("language","a");
-        initGUI();
-        if(Orig){
-            System.out.println("Orig post");
-            System.out.println(cP.getWordController().getFullWordText()+":text");
-            origUI(cP.getWordController());
-        }else {
 
-            System.out.println("Trans post");
+    public void preExecute() {
+        preInitGUI();
+        cP = new VoicePresenter(getContext(), this);
+    }
+
+    public void postExecute() {
+        addFragment("wiki", "b");
+        addFragment("edit", "c");
+        addFragment("language", "a");
+        initGUI();
+        if (Orig) {
+            origUI(cP.getWordController());
+        } else {
             transUI(cP.getWordController(), cP.getTarget());
         }
 
     }
-    public WordController getWord(){return cP.getWordController();}
 
-    public void preInitGUI(){
+    public WordController getWord() {
+        return cP.getWordController();
+    }
+
+    public void preInitGUI() {
         progressBar = v.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
     }
@@ -177,57 +170,72 @@ public class VoiceView extends Fragment implements FragmentLanguage.FragmentLang
     public void nestedListenerClicked(String mode) {
 
         wc = cP.getWordController();
-        listener.onFragmentListener(wc.getWordModel(),mode);
+        listener.onFragmentListener(wc.getWordModel(), mode);
     }
-    public interface FragmentListener {
-        void onFragmentListener(WordModel Word, String mode);
-        void initDataBase(String query);
 
-    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         listener = (FragmentListener) context;
     }
-    public void addFragment(String type,String container) {
+
+    public void addFragment(String type, String container) {
         int layoutID = 0;
-        if(container.equals("a")){
-            layoutID = R.id.containera;
-        }else if(container.equals("b")){
-            layoutID = R.id.containerb;
-        }else if(container.equals("c")){
-            layoutID = R.id.containerc;
+        switch (container) {
+            case "a":
+                layoutID = R.id.containera;
+                break;
+            case "b":
+                layoutID = R.id.containerb;
+                break;
+            case "c":
+                layoutID = R.id.containerc;
+                break;
         }
 
-        if(type.equals("wiki")){
-            WiktionaryBtn wik = new WiktionaryBtn();
-
-            getChildFragmentManager().beginTransaction()
-                    .replace(layoutID, wik)
-                    .commit();
+        switch (type) {
+            case "wiki":
+                WiktionaryBtn wik = new WiktionaryBtn();
+                getChildFragmentManager().beginTransaction()
+                        .replace(layoutID, wik)
+                        .commit();
+                break;
+            case "language":
+                FragmentLanguage fragmentLanguage = new FragmentLanguage();
+                getChildFragmentManager().beginTransaction()
+                        .replace(layoutID, fragmentLanguage)
+                        .commit();
+                break;
+            case "edit":
+                EditBtn editBtn = new EditBtn();
+                getChildFragmentManager().beginTransaction()
+                        .replace(layoutID, editBtn)
+                        .commit();
+                break;
         }
-        else if(type.equals("language")){
-            FragmentLanguage fragmentLanguage = new FragmentLanguage();
-            getChildFragmentManager().beginTransaction()
-                    .replace(layoutID, fragmentLanguage)
-                    .commit();
+    }
+
+    @Override
+    public void onInputLanguage(CharSequence input) {
+        if (!input.equals("Error")) {
+            String target = input.toString();
+            if (Orig) {
+                origUI(cP.getWordController());
+            } else {
+                transUI(cP.getWordController(), target);
+            }
+            cP.setTarget(target);
         }
-        else if(type.equals("edit")){
-            EditBtn editBtn = new EditBtn();
-            getChildFragmentManager().beginTransaction()
-                    .replace(layoutID, editBtn)
-                    .commit();
-        }
+    }
 
+    public interface FragmentListener {
+        void onFragmentListener(WordModel Word, String mode);
 
-
-
-
-
+        void initDataBase(String query);
 
     }
 
-    public class init extends AsyncTask<String, String, String> {
+    public class Init extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
 
@@ -241,31 +249,6 @@ public class VoiceView extends Fragment implements FragmentLanguage.FragmentLang
             postExecute();
         }
     }
-
-
-    @Override
-    public void onInputLanguage(CharSequence input) {
-        if (!input.equals("Error")) {
-            String target = input.toString();
-            System.out.println(target);
-
-            if(Orig){
-                origUI(cP.getWordController());
-            }
-            else {
-                transUI(cP.getWordController(),target);
-            }
-            cP.setTarget(target);
-        }
-    }
-
-
-
-
-
-
-
-
 
 
 }

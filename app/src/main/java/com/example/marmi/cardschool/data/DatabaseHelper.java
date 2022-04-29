@@ -1,5 +1,7 @@
 package com.example.marmi.cardschool.data;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -17,18 +19,9 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import static android.content.ContentValues.TAG;
-
 public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
-
-
-
     private static final String TABLE_NAME = "words_table";
-
-
-
-    private Context c;
     private static final String COL_TY = "type";
     private static final String COL_RA = "rate";
     private static final String COL_DE = "de_text";
@@ -36,12 +29,11 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
     private static final String COL_GR = "gr_text";
     private static final String COL_HR = "hr_text";
     private static final String COL_SR = "sr_text";
-    //private int COL_ID;
 
-    private static String COL_ID = "id";
+    private static final String COL_ID = "id";
     public static final String DATABASE_CREATE = "create table "
             + TABLE_NAME + " ("
-                // SQL -> String
+            // SQL -> String
             + COL_TY + " text not null,"
             + COL_RA + " Int not null,"
             + COL_DE + " text not null,"
@@ -50,87 +42,56 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
             + COL_HR + " text not null,"
             + COL_SR + " text not null,"
             + COL_ID + " integer primary key autoincrement"
-
-
             + ")";
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 9);
-        c = context;
 
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-
-        System.out.println("Database created");
-
-
         db.execSQL("DROP TABLE IF EXISTS words_table");
         db.execSQL(DATABASE_CREATE);
 
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        // TODO Auto-generated method stub
-       // db.execSQL("DROP TABLE IF EXISTS words_table");
         onCreate(db);
     }
-    public boolean addData(String type, Integer rate, String dtext, String entext, String grtext, String hrtext, String srtext ) {
 
+    public void addData(String type, Integer rate, String deText, String enText, String grText, String hrText, String srText) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_TY, type);    //5
         contentValues.put(COL_RA, rate);    //5
-        contentValues.put(COL_DE, dtext);     //1
-        contentValues.put(COL_EN, entext);  //2
-        contentValues.put(COL_GR, grtext);  //3
-        contentValues.put(COL_HR, hrtext);
-        contentValues.put(COL_SR, srtext);
+        contentValues.put(COL_DE, deText);     //1
+        contentValues.put(COL_EN, enText);  //2
+        contentValues.put(COL_GR, grText);  //3
+        contentValues.put(COL_HR, hrText);
+        contentValues.put(COL_SR, srText);
 
-        System.out.println("adding Database");
-        System.out.println(type);
-        System.out.println(rate);
-        System.out.println(dtext);
-        System.out.println(entext);
-        System.out.println(grtext);
-        System.out.println(hrtext);
-        System.out.println(srtext);
+        long result;
+        result = db.update(TABLE_NAME, contentValues, COL_DE + "=?", new String[]{deText});
 
-        long result ;
-        result = db.update(TABLE_NAME, contentValues, COL_DE+"=?", new String[]{dtext});
-
-        if (result == 0){
-            db.insertWithOnConflict(TABLE_NAME,null,contentValues,SQLiteDatabase.CONFLICT_REPLACE);
+        if (result == 0) {
+            db.insertWithOnConflict(TABLE_NAME, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
         }
-        return true;
     }
 
     /**
      * Returns all the data from database
-     *
-     * @return
      */
-    public Cursor getData(String query)  {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String q ="SELECT * FROM " + TABLE_NAME +  query ;
-        Cursor data = db.rawQuery(q, null);
-        if (!data.moveToFirst()){
-            data = null;
-        }
 
-        return data;
-    }
-    public ArrayList getData2(String query)  {
-        System.out.println("getData2");
+    public ArrayList getData(String query) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String q ="SELECT * FROM " + TABLE_NAME +  query ;
-        System.out.println("query:"+q);
+        String q = "SELECT * FROM " + TABLE_NAME + query;
         Cursor data = db.rawQuery(q, null);
         ArrayList items = new ArrayList<>();
-        if (data.moveToFirst()){
-            do{
+        if (data.moveToFirst()) {
+            do {
                 String[] row = new String[8];
                 row[0] = data.getString(0);
                 row[1] = Integer.toString(data.getInt(1));
@@ -141,42 +102,24 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
                 row[6] = data.getString(6);
                 row[7] = Integer.toString(data.getInt(7));
                 items.add(row);
-            }while(data.moveToNext());
+            } while (data.moveToNext());
         }
-        System.out.println("count "+data.getCount());
 
-            data.close();
+        data.close();
         return items;
     }
 
-//    public Cursor getData(String query)  {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String q ="SELECT * FROM " + TABLE_NAME +  query ;
-//        Cursor data = db.rawQuery(q, null);
-//        if (!data.moveToFirst()){
-//            data = null;
-//        }
-//        return data;
-//    }
+    public WordController getRandom(String query) {
 
-
-
-
-    public WordController getRandom(Integer n, String query) {
-
-       // Log.e(TAG, "getRandom");
         SQLiteDatabase db = this.getWritableDatabase();
-        String q ="SELECT * FROM " + TABLE_NAME +  query;
-        System.out.println("query "+query);
+        String q = "SELECT * FROM " + TABLE_NAME + query;
 
         Cursor data = db.rawQuery(q, null);
         data.moveToFirst();
 
         WordController randoms = new WordController();
-
-
-        if (data.moveToFirst()){
-            do{
+        if (data.moveToFirst()) {
+            do {
                 String[] row = new String[8];
                 row[0] = data.getString(0);
                 row[1] = Integer.toString(data.getInt(1));
@@ -187,33 +130,18 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
                 row[6] = data.getString(6);
                 row[7] = Integer.toString(data.getInt(7));
                 randoms.importWord(row);
-                System.out.println("Adding "+row[2]);
-            }while(data.moveToNext());
+            } while (data.moveToNext());
         }
-
-
-
-
-
-
+        data.close();
         return randoms;
     }
+
     public Cursor shuffle(String query) {
 
-        Log.e(TAG, "Shuffle");
         SQLiteDatabase db = this.getWritableDatabase();
-
-        String q ="SELECT * FROM " + TABLE_NAME +  query;
-
+        String q = "SELECT * FROM " + TABLE_NAME + query;
         Cursor data = db.rawQuery(q, null);
         data.moveToFirst();
-
-
-
-
-
-
-        //data.close();
         return data;
     }
 
@@ -227,8 +155,7 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT " + COL_TY + " FROM " + TABLE_NAME +
                 " WHERE " + COL_DE + " = '" + name + "'";
-        Cursor data = db.rawQuery(query, null);
-        return data;
+        return db.rawQuery(query, null);
     }
 
     /**
@@ -257,66 +184,51 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME + " WHERE "
 
-                 + COL_ID + " = '" + id + "'";
+                + COL_ID + " = '" + id + "'";
         Log.d(TAG, "deleteID: query: " + query);
         Log.d(TAG, "deleteID: Deleting " + COL_DE + " from database.");
         db.execSQL(query);
     }
+
     public void delete() {
-        Log.e("DATABASE","Dropping Database");
+        Log.e("DATABASE", "Dropping Database");
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("delete from " + TABLE_NAME);
     }
+
     public boolean checkDataBase(Context context) {
 
         Boolean rowExists = Boolean.FALSE;
-        Log.e("DATABASE", "Checking Database" );
+        Log.e("DATABASE", "Checking Database");
         File dbFile = context.getDatabasePath(TABLE_NAME);
-        if (dbFile.exists()==true){
-
+        if (dbFile.exists()) {
             SQLiteDatabase db = this.getWritableDatabase();
-
             Cursor mCursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
-            System.out.println("finishing check");
-            if (mCursor.moveToFirst())
-            {
-                // DO SOMETHING WITH CURSOR
-                rowExists = true;
-
-            } else
-            {
-                // I AM EMPTY
-                rowExists = false;
-                //Log.e(TAG, "Row DOESNT Exists  " );
-            }
+            rowExists = mCursor.moveToFirst();
             mCursor.close();
 
 
         }
         return rowExists;
     }
+
     public void exportDB() {
 
         File exportDir = new File(Environment.getExternalStorageDirectory(), "");
         exportDir.mkdirs();
-        if (!exportDir.exists())
-        {
+        if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
 
         File file = new File(exportDir, "exportedFile.txt");
-        try
-        {
+        try {
             file.createNewFile();
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
-            while(curCSV.moveToNext())
-            {
-
-
+            while (curCSV.moveToNext()) {
                 String c0 = curCSV.getString(0);
                 String c1 = curCSV.getString(1);
                 String c2 = curCSV.getString(2);
@@ -324,42 +236,35 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
                 String c4 = curCSV.getString(4);
                 String c5 = curCSV.getString(5);
                 String c6 = curCSV.getString(6);
-
-
-
-                String arrStr[] ={c0,c1,c2,c3,c4,c5,c6};
+                String[] arrStr = {c0, c1, c2, c3, c4, c5, c6};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();
             curCSV.close();
-        }
-        catch(Exception sqlEx)
-        {
+        } catch (Exception sqlEx) {
             Log.e("Menu", sqlEx.getMessage(), sqlEx);
         }
     }
+
     public void exportImportedDB() {
 
         File exportDir = new File(Environment.getExternalStorageDirectory(), "");
         exportDir.mkdirs();
-        if (!exportDir.exists())
-        {
+        if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
 
         File file = new File(exportDir, "importedWords.txt");
-        if(!file.exists()){
+        if (!file.exists()) {
             exportDir.mkdirs();
         }
-        try
-        {
+        try {
             file.createNewFile();
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME +" WHERE rate = 200",null);
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE rate = 200", null);
 
-            while(curCSV.moveToNext())
-            {
+            while (curCSV.moveToNext()) {
 
 
                 String c0 = curCSV.getString(0);
@@ -371,15 +276,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
                 String c6 = curCSV.getString(6);
 
 
-
-                String arrStr[] ={c0,c1,c2,c3,c4,c5,c6};
+                String[] arrStr = {c0, c1, c2, c3, c4, c5, c6};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();
             curCSV.close();
-        }
-        catch(Exception sqlEx)
-        {
+        } catch (Exception sqlEx) {
             Log.e("Menu", sqlEx.getMessage(), sqlEx);
         }
     }
@@ -391,24 +293,19 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
 
         File exportDir = new File(Environment.getExternalStorageDirectory(), "");
         exportDir.mkdirs();
-        if (!exportDir.exists())
-        {
+        if (!exportDir.exists()) {
             exportDir.mkdirs();
         }
 
         File file = new File(exportDir, "backupDB.txt");
-        try
-        {
-            if(file.createNewFile()){};
+        try {
+            file.createNewFile();
 
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME,null);
+            Cursor curCSV = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
 
-            while(curCSV.moveToNext())
-            {
-
-
+            while (curCSV.moveToNext()) {
                 String c0 = curCSV.getString(0);
                 String c1 = curCSV.getString(1);
                 String c2 = curCSV.getString(2);
@@ -416,61 +313,31 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Serializable {
                 String c4 = curCSV.getString(4);
                 String c5 = curCSV.getString(5);
                 String c6 = curCSV.getString(6);
-
-
-
-                String arrStr[] ={c0,c1,c2,c3,c4,c5,c6};
+                String[] arrStr = {c0, c1, c2, c3, c4, c5, c6};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();
             curCSV.close();
-        }
-        catch(Exception sqlEx)
-        {
+        } catch (Exception sqlEx) {
             Log.e("Menu", sqlEx.getMessage(), sqlEx);
         }
     }
 
 
-
-    public void readData(DatabaseHelper mDatabaseHelper, Context context){
+    public void readData(DatabaseHelper mDatabaseHelper, Context context) {
         /**
          * if DB is empty then read from local
          * else create from asset storage
          */
-        System.out.println("reading");
-        if(!checkDataBase(context)){
-
+        if (!checkDataBase(context)) {
             try {
-                new CSVReader(context,mDatabaseHelper);
-
+                new CSVReader(context, mDatabaseHelper);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-
-                /**
-                 * create database from Local
-                 */
-
-
         }
     }
-    public boolean emptyCheck(Context context, Cursor dtb){
-        if (!dtb.moveToFirst()){
-
-
-
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-
 
 
 }
